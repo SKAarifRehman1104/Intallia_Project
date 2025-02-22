@@ -1,11 +1,9 @@
 
-import { Sidebar } from "@/components/layout/Sidebar";
+import { MainLayout } from "@/components/layout/MainLayout";
+import { Button } from "@/components/ui/button";
 import { UserTable } from "@/components/users/UserTable";
 import { UserTableActions } from "@/components/users/UserTableActions";
-import { Button } from "@/components/ui/button";
-import { UserManagementLayout } from "@/components/layout/UserManagementLayout";
 import { useState } from "react";
-import { MainLayout } from "@/components/layout/MainLayout";
 
 const UserManagement = () => {
   const [currentPage, setCurrentPage] = useState(1);
