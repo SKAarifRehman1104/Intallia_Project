@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
 @layer base {
     :root {
         --background: 0 0% 98%;
@@ -35,20 +36,13 @@
 
         --radius: 0.5rem;
 
-        --sidebar-background: 0, 0%, 100%;
-
+        --sidebar-background: 0 0% 100%;
         --sidebar-foreground: 240 5.3% 26.1%;
-
-        --sidebar-primary: 240 5.9% 10%;
-
-        --sidebar-primary-foreground: 0, 0%, 100%;
-
+        --sidebar-primary: 240, 3%, 15%, 1;
+        --sidebar-primary-foreground: 0 0% 100%;
         --sidebar-accent: 240 4.8% 95.9%;
-
         --sidebar-accent-foreground: 240 4.8% 95.9%;
-
         --sidebar-border: 220 13% 91%;
-
         --sidebar-ring: 217.2 91.2% 59.8%;
     }
 
@@ -80,6 +74,7 @@
         --border: 217.2 32.6% 17.5%;
         --input: 217.2 32.6% 17.5%;
         --ring: 212.7 26.8% 83.9%;
+
         --sidebar-background: 240 5.9% 10%;
         --sidebar-foreground: 240 4.8% 95.9%;
         --sidebar-primary: 224.3 76.3% 48%;
@@ -97,19 +92,17 @@
     }
 
     body {
-        @apply bg-background text-foreground;
+        @apply bg-background text-foreground font-plusJakarta;
     }
+
     .gradient-background {
         background: linear-gradient(180deg, #0dafdc 0%, #22e9a2 100%);
     }
-     .gradient-border {
-       
-     @apply border-2 border-solid rounded-full ring-1;
+
+    .gradient-border {
+        @apply border-2 border-solid rounded-full ring-1;
         border-image: linear-gradient(180deg, #0dafdc 0%, #22e9a2 100%);
         border-image-slice: 1;
-
-        
-}
-
     }
+}
 

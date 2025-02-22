@@ -35,13 +35,13 @@ export function Sidebar() {
                             key={item.label}
                             to={item.href}
                             className={cn(
-                                "flex items-center gap-3 px-3 py-2 rounded-md text-sidebar-foreground/60",
+                                "flex items-center gap-3 px-3 py-2 rounded-md text-sidebar-foreground",
                                 "hover:gradient-background hover:text-sidebar-accent-foreground",
                                 "transition-colors duration-200"
                             )}
                         >
                             <item.icon className="h-5 w-5" />
-                            <span>{item.label}</span>
+                            <span >{item.label}</span>
                         </Link>
                     ))}
                 </nav>
@@ -67,7 +67,7 @@ export function Sidebar() {
                 </div>
 
                 <button className="flex items-center gap-3 px-3 py-2 w-full text-sidebar-foreground/60 hover:text-sidebar-foreground ">
-                    <LogOut className="h-5 w-5" />
+                    <LogOut className="h-5 w-5 text-red-600" />
                     <span className="text-red-600 font-normal text-base/5">
                         Logout
                     </span>
