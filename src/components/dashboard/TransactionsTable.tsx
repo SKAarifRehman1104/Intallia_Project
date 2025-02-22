@@ -86,43 +86,49 @@ const transactions = [
 
 export function TransactionsTable() {
   return (
-    <div className="bg-white rounded-lg border border-border">
-      <div className="p-6 flex items-center justify-between border-b border-border">
-        <h2 className="text-lg font-semibold">Transactions</h2>
-        <Button variant="outline">Export to PDF</Button>
+      <div className="bg-white rounded-lg border border-border">
+          <div className="p-6 flex items-center justify-between border-b border-border">
+              <h2 className="font-medium mb-6 font-plusJakarta text-[22px] leading-[28px]">
+                  Transactions
+              </h2>
+              <Button variant="outline">Export to PDF</Button>
+          </div>
+
+          <ScrollArea className="h-[400px]">
+              <Table>
+                  <TableHeader>
+                      <TableRow>
+                          <TableHead>Name</TableHead>
+                          <TableHead>Email</TableHead>
+                          <TableHead>Package Category</TableHead>
+                          <TableHead>Date</TableHead>
+                          <TableHead>Amount</TableHead>
+                          <TableHead>Action</TableHead>
+                      </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                      {transactions.map((transaction, index) => (
+                          <TableRow key={index}>
+                              <TableCell>{transaction.name}</TableCell>
+                              <TableCell>{transaction.email}</TableCell>
+                              <TableCell>{transaction.category}</TableCell>
+                              <TableCell>{transaction.date}</TableCell>
+                              <TableCell>{transaction.amount}</TableCell>
+                              <TableCell>
+                                  <Button
+                                      variant="ghost"
+                                      size="sm"
+                                      className="gap-2"
+                                  >
+                                      <Download className="h-4 w-4" />
+                                      Download Invoice
+                                  </Button>
+                              </TableCell>
+                          </TableRow>
+                      ))}
+                  </TableBody>
+              </Table>
+          </ScrollArea>
       </div>
-      
-      <ScrollArea className="h-[400px]">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Name</TableHead>
-              <TableHead>Email</TableHead>
-              <TableHead>Package Category</TableHead>
-              <TableHead>Date</TableHead>
-              <TableHead>Amount</TableHead>
-              <TableHead>Action</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {transactions.map((transaction, index) => (
-              <TableRow key={index}>
-                <TableCell>{transaction.name}</TableCell>
-                <TableCell>{transaction.email}</TableCell>
-                <TableCell>{transaction.category}</TableCell>
-                <TableCell>{transaction.date}</TableCell>
-                <TableCell>{transaction.amount}</TableCell>
-                <TableCell>
-                  <Button variant="ghost" size="sm" className="gap-2">
-                    <Download className="h-4 w-4" />
-                    Download Invoice
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </ScrollArea>
-    </div>
   );
 }

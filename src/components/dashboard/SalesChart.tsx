@@ -16,24 +16,26 @@ const data = [
 
 export function SalesChart() {
   return (
-    <div className="bg-white p-6 rounded-lg border border-border">
-      <h2 className="text-lg font-semibold mb-6">Sales Details</h2>
-      <div className="h-[300px]">
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Line 
-              type="monotone" 
-              dataKey="value" 
-              stroke="hsl(var(--primary))" 
-              strokeWidth={2}
-            />
-          </LineChart>
-        </ResponsiveContainer>
+      <div className="bg-white p-6 rounded-lg border border-border">
+          <h2 className="font-medium mb-6 font-plusJakarta text-[22px] leading-[28px]">
+              Sales Details
+          </h2>
+          <div className="h-[300px]">
+              <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={data}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                      <Line
+                          type="monotone"
+                          dataKey="value"
+                          stroke="hsl(var(--primary))"
+                          strokeWidth={2}
+                      />
+                  </LineChart>
+              </ResponsiveContainer>
+          </div>
       </div>
-    </div>
   );
 }

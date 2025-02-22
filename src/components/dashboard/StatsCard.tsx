@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 
+
 interface StatsCardProps {
   title: string;
   value: string;
@@ -18,8 +19,9 @@ export function StatsCard({ title, value, icon, className }: StatsCardProps) {
         <h3 className="text-sm font-medium text-muted-foreground">{title}</h3>
         <p className="text-2xl font-semibold mt-1">{value}</p>
       </div>
-      <div className="h-12 w-12 flex items-center justify-center rounded-full bg-primary/10">
+      <div className="h-12 w-12 flex items-center justify-center rounded-lg text-white gradient-background">
         {icon}
+       
       </div>
     </div>
   );
