@@ -28,13 +28,22 @@ export const UserTableActions = ({ onSearch }: UserTableActionsProps) => {
                     Filter By
                 </Button>
 
-                <Button
-                    className="gap-2 ml-auto"
+                {/* <Button
+                    className="gap-2"
                     onClick={() => navigate("/add-user")}
                 >
                     <Plus className="w-4 h-4" />
                     Add New User
                 </Button>
+
+                <Button
+                    className="gap-2"
+                    onClick={() => navigate("/add-company")}
+                >
+                    <Plus className="w-4 h-4" />
+                    Add New Company
+                </Button> */}
+
             </div>
 
             <div className="relative">

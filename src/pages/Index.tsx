@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/popover";
 import { format } from "date-fns";
 import { DollarSign, UserCheck, UserPlus, Users, UserX, Wallet } from "lucide-react";
-import { IoWallet } from "react-icons/io5";
 import { useState } from "react";
 
 const Index = () => {

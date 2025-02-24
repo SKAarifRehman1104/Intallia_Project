@@ -7,7 +7,7 @@ import { UserTableActions } from "@/components/users/UserTableActions";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const UserManagement = () => {
+const CompanyManagement = () => {
   const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -34,12 +34,12 @@ const UserManagement = () => {
       <main className="flex-1 p-8">
         <div className="space-y-6">
           <div className="flex justify-between items-center">
-            <h1 className="text-3xl font-bold tracking-tight">User Management (Users)</h1>
+            <h1 className="text-3xl font-bold tracking-tight">User Management (Company)</h1>
             <ActionButton 
               variant="primary"
-              onClick={() => navigate('/add-user')}
+              onClick={() => navigate('/add-company')}
             >
-              Add New User
+              Add New Company
             </ActionButton>
 
           </div>
@@ -91,4 +91,4 @@ const UserManagement = () => {
   );
 };
 
-export default UserManagement;
+export default CompanyManagement;

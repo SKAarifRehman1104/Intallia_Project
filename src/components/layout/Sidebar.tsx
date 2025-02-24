@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import { cn } from "@/lib/utils";
-
+import { Link, useLocation } from "react-router-dom";
+import { cn } from "@/lib/utils"
+"Hello"
 import {
     LayoutDashboard,
     Users,
@@ -9,19 +9,75 @@ import {
     Package,
     CreditCard,
     LogOut,
+    Building,
 } from "lucide-react";
-import userlogo from "@/assets/super_admin.png";
+
+import userlogo from "@/assets/super_admin.png"
 
 const menuItems = [
-    { icon: LayoutDashboard, label: "Dashboard", href: "/" },
-    { icon: Users, label: "Roles & Access", href: "/roles" },
-    { icon: UserCog, label: "User Management", href: "/users" },
-    { icon: BookOpen, label: "Simulation", href: "/simulation" },
-    { icon: Package, label: "Plans & Package", href: "/plans" },
-    { icon: CreditCard, label: "Payments", href: "/payments" },
+    { 
+        icon: LayoutDashboard, 
+        label: "Dashboard", 
+        href: "/" 
+    },
+    { 
+        icon: Users, 
+        label: "Roles & Access", 
+        href: "/roles" 
+    },
+    { 
+        icon: UserCog, 
+        label: "User Management", 
+        href: "/users", 
+        subroutes: [
+            {
+                icon: Building,
+                label: "Company",
+                href: "/company",
+                subroutes: [
+                    {
+                        icon: Building,
+                        label: "Add Company",
+                        href: "/add-company",
+                    }
+                ]
+            },
+            {
+                icon: Users,
+                label: "Users",
+                href: "/users",
+                subroutes: [
+                    {
+                        icon: Users,
+                        label: "Add User",
+                        href: "/add-user",
+                    }
+                ]
+            },
+        ],
+    },
+
+    { 
+        icon: BookOpen, 
+        label: "Simulation", 
+        href: "/simulation" 
+    },
+    { 
+        icon: Package, 
+        label: "Plans & Package", 
+        href: "/plans" 
+    },
+    { 
+        icon: CreditCard, 
+        label: "Payments", 
+        href: "/payments" 
+    },
 ];
 
 export function Sidebar() {
+    const location = useLocation();
+    const currentPath = location.pathname;
+
     return (
         <div className="h-screen w-64 bg-sidebar fixed left-0 top-0 border-r border-sidebar-border">
             <div className="p-6">
@@ -30,26 +86,63 @@ export function Sidebar() {
                 </div>
 
                 <nav className="space-y-2">
-                    {menuItems.map((item) => (
-                        <Link
-                            key={item.label}
-                            to={item.href}
-                            className={cn(
-                                "flex items-center gap-3 px-3 py-2 rounded-md text-sidebar-foreground",
-                                "hover:gradient-background hover:text-sidebar-accent-foreground",
-                                "transition-colors duration-200"
-                            )}
-                        >
-                            <item.icon className="h-5 w-5" />
-                            <span >{item.label}</span>
-                        </Link>
-                    ))}
+                    {menuItems.map((item, index) => {
+                        const isActive = item.href && (currentPath === item.href || 
+                            (item.subroutes?.some(route => currentPath === route.href || 
+                            route.subroutes?.some(subroute => currentPath === subroute.href))));
+
+
+                        return (
+                            <div key={index}>
+                                <Link
+                                    to={item.href}
+                                    className={cn(
+                                        "flex items-center gap-3 px-3 py-2 rounded-md",
+                                        !isActive && "hover:bg-gray-300 text-sidebar-foreground transition-colors duration-200",
+                                        isActive && "bg-[linear-gradient(90deg,#0DAFDC_0%,#22E9A2_100%)] text-white"
+                                    )}
+                                >
+                                    <item.icon className="h-5 w-5" />
+                                    <span>{item.label}</span>
+                                </Link>
+
+                                {isActive && item.subroutes && (
+                                    <div className="mt-2 ml-8 space-y-2">
+                                        {item.subroutes.map((subroute, idx) => (
+                                            <div key={idx} className="relative">
+                                                <div 
+                                                    className={cn(
+                                                        "absolute left-[-16px] w-[16px] border-l-2 border-b-2 h-[24px] border-gray-200",
+                                                        currentPath === subroute.href && "border-[#0DAFDC]"
+                                                    )}
+                                                />
+                                                <Link
+                                                    to={subroute.href}
+                                                    className={cn(
+                                                        "flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-700",
+                                                    currentPath !== subroute.href && "hover:bg-gray-50 transition-colors duration-200",
+                                                    (currentPath === subroute.href || 
+                                                     subroute.subroutes?.some(sr => currentPath === sr.href)) && 
+                                                    "text-[#0DAFDC] bg-[#0DAFDC10]"
+
+                                                    )}
+                                                >
+                                                    <subroute.icon className="w-4 h-4" />
+                                                    {subroute.label}
+                                                </Link>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        );
+                    })}
                 </nav>
             </div>
 
             <div className="absolute bottom-8 w-full px-6">
                 <div className="flex items-center gap-3 px-3 py-4 border-t border-sidebar-border">
-                    <div className="w-10 h-10 rounded-full bg-sidebar-accent overflow-hidden ">
+                    <div className="w-10 h-10 rounded-full bg-sidebar-accent overflow-hidden">
                         <img
                             src={userlogo}
                             alt="Sample Image"
@@ -66,7 +159,7 @@ export function Sidebar() {
                     </div>
                 </div>
 
-                <button className="flex items-center gap-3 px-3 py-2 w-full text-sidebar-foreground/60 hover:text-sidebar-foreground ">
+                <button className="flex items-center gap-3 px-3 py-2 w-full text-sidebar-foreground/60 hover:text-sidebar-foreground">
                     <LogOut className="h-5 w-5 text-red-600" />
                     <span className="text-red-600 font-normal text-base/5">
                         Logout
