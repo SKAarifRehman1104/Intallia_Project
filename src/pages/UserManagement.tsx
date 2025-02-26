@@ -33,7 +33,7 @@ const UserManagement = () => {
                 <main className="flex-1 p-8">
                     <div className="space-y-6">
                         <div className="flex justify-between items-center">
-                            <h1 className="text-3xl font-bold tracking-tight">
+                            <h1 className="text-[28px] leading-8 font-semibold tracking-tight font-plusJakarta">
                                 User Management (Users)
                             </h1>
                             <ActionButton
