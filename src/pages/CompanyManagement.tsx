@@ -4,6 +4,7 @@ import { MainLayout } from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
 import { UserTable } from "@/components/users/UserTable";
 import { UserTableActions } from "@/components/users/UserTableActions";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -27,67 +28,76 @@ const CompanyManagement = () => {
   const endIndex = startIndex + usersPerPage;
 
   return (
-    <MainLayout>
+      <MainLayout>
+          <div className="flex min-h-screen bg-background">
+              <main className="flex-1 p-8">
+                  <div className="space-y-6">
+                      <div className="flex justify-between items-center">
+                          <h1 className="text-[28px] leading-8 font-semibold tracking-tight font-plusJakarta">
+                              User Management (Company)
+                          </h1>
+                          <ActionButton
+                              variant="primary"
+                              onClick={() => navigate("/add-company")}
+                          >
+                              Add New Company
+                          </ActionButton>
+                      </div>
 
-      <div className="flex min-h-screen bg-background">
-      
-      <main className="flex-1 p-8">
-        <div className="space-y-6">
-          <div className="flex justify-between items-center">
-            <h1 className="text-3xl font-bold tracking-tight">User Management (Company)</h1>
-            <ActionButton 
-              variant="primary"
-              onClick={() => navigate('/add-company')}
-            >
-              Add New Company
-            </ActionButton>
+                      <UserTableActions onSearch={setSearchQuery} />
+                      <div className="bg-white p-6 rounded-lg">
+                          <UserTable
+                              startIndex={startIndex}
+                              endIndex={endIndex}
+                              searchQuery={searchQuery}
+                          />
 
+                          <div className="flex items-center justify-between space-x-2 mt-2">
+                              <Button
+                                  variant="ghost"
+                                  className="gap-2 w-[111px] h-[37px] bg-gradient-to-r from-[#0DAFDC] to-[#22E9A2] p-[2px] rounded-full py-2 pl-2 pr-4"
+                                  onClick={handlePrevious}
+                                  disabled={currentPage === 1}
+                              >
+                                  <ChevronLeft className="w-4 h-4" />
+                                  Previous
+                              </Button>
+                              <div className="flex justify-center">
+                                  {[1, 2, 3, "...", 8, 9, 10].map((page, i) => (
+                                      <Button
+                                          key={i}
+                                          variant={
+                                              page === currentPage
+                                                  ? "secondary"
+                                                  : "ghost"
+                                          }
+                                          className="w-10 h-10 p-0"
+                                          onClick={() => {
+                                              if (typeof page === "number") {
+                                                  setCurrentPage(page);
+                                              }
+                                          }}
+                                          disabled={typeof page !== "number"}
+                                      >
+                                          {page}
+                                      </Button>
+                                  ))}
+                              </div>
+                              <Button
+                                  variant="ghost"
+                                  className="gap-2 w-[83px] h-[37px] bg-gradient-to-r from-[#0DAFDC] to-[#22E9A2] p-[2px] rounded-full py-2 pr-2 pl-4"
+                                  onClick={handleNext}
+                                  disabled={currentPage === totalPages}
+                              >
+                                  Next
+                                  <ChevronRight className="w-4 h-4" />
+                              </Button>
+                          </div>
+                      </div>
+                  </div>
+              </main>
           </div>
-
-          <UserTableActions onSearch={setSearchQuery} />
-
-          <UserTable startIndex={startIndex} endIndex={endIndex} searchQuery={searchQuery} />
-
-          <div className="flex items-center justify-center space-x-2">
-            <Button 
-              variant="outline" 
-              className="gap-2"
-              onClick={handlePrevious}
-              disabled={currentPage === 1}
-            >
-              Previous
-            </Button>
-            
-            {[1, 2, 3, '...', 8, 9, 10].map((page, i) => (
-              <Button
-                key={i}
-                variant={page === currentPage ? 'default' : 'outline'}
-                className="w-10 h-10 p-0"
-                onClick={() => {
-                  if (typeof page === 'number') {
-                    setCurrentPage(page);
-                  }
-                }}
-                disabled={typeof page !== 'number'}
-              >
-                {page}
-              </Button>
-            ))}
-            
-            <Button 
-              variant="outline" 
-              className="gap-2"
-              onClick={handleNext}
-              disabled={currentPage === totalPages}
-            >
-              Next
-            </Button>
-          </div>
-        </div>
-      </main>
-    </div>
-    </MainLayout>
-
+      </MainLayout>
   );
 };
 

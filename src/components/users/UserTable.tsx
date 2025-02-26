@@ -1,4 +1,6 @@
 
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
     Table,
     TableBody,
@@ -6,10 +8,8 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-  } from "@/components/ui/table";
-  import { Badge } from "@/components/ui/badge";
-  import { MoreVertical } from "lucide-react";
-  import { Button } from "@/components/ui/button";
+} from "@/components/ui/table";
+import { MoreVertical } from "lucide-react";
   
   const users = [
     {
@@ -114,41 +114,58 @@ import {
     const displayedUsers = filteredUsers.slice(startIndex, endIndex);
     
     return (
-      <div className="rounded-md border">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="text-base">User ID</TableHead>
-              <TableHead className="text-base">Name</TableHead>
-              <TableHead className="text-base">Email</TableHead>
-              <TableHead className="text-base">Phone Number</TableHead>
-              <TableHead className="text-base">User Type</TableHead>
-              <TableHead className="text-base">Linkedin URL</TableHead>
-              <TableHead className="text-base">Action</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {displayedUsers.map((user) => (
-              <TableRow key={user.id} className="text-base">
-                <TableCell className="py-4">{user.id}</TableCell>
-                <TableCell className="py-4">{user.name}</TableCell>
-                <TableCell className="py-4">{user.email}</TableCell>
-                <TableCell className="py-4">{user.phone}</TableCell>
-                <TableCell className="py-4">
-                  <Badge variant={user.type === 'Paid User' ? 'default' : 'secondary'}>
-                    {user.type}
-                  </Badge>
-                </TableCell>
-                <TableCell className="py-4 text-blue-600">{user.linkedin}</TableCell>
-                <TableCell className="py-4">
-                  <Button variant="ghost" size="icon">
-                    <MoreVertical className="w-4 h-4" />
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div>
+        <div className="rounded-md">
+            <Table>
+                <TableHeader>
+                    <TableRow className="bg-[#F9FAFB]">
+                        <TableHead className="text-sm">User ID</TableHead>
+                        <TableHead className="text-sm">Name</TableHead>
+                        <TableHead className="text-sm">Email</TableHead>
+                        <TableHead className="text-sm">Phone Number</TableHead>
+                        <TableHead className="text-sm">User Type</TableHead>
+                        <TableHead className="text-sm">Linkedin URL</TableHead>
+                        <TableHead className="text-sm">Action</TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    {displayedUsers.map((user) => (
+                        <TableRow key={user.id} className="text-sm">
+                            <TableCell className="py-4 text-sm">
+                                {user.id}
+                            </TableCell>
+                            <TableCell className="py-4 text-sm">
+                                {user.name}
+                            </TableCell>
+                            <TableCell className="py-4 text-sm">
+                                {user.email}
+                            </TableCell>
+                            <TableCell className="py-4 text-sm">
+                                {user.phone}
+                            </TableCell>
+                            <TableCell className="py-4 text-sm">
+                                <Badge
+                                    variant={"secondary"}
+                                    className={
+                                        user.type === "Paid User"
+                                            ? "bg-[#ECFDF3] text-[#23C16B]"
+                                            : "bg-[#FEF3F2] text-[#FF3A3A]"
+                                    }
+                                >
+                                    {user.type}
+                                </Badge>
+                            </TableCell>
+                            <TableCell className="py-4 text-blue-600 text-sm">
+                                {user.linkedin}
+                            </TableCell>
+                            <TableCell className="py-4">
+                                <Button variant="ghost" size="icon">
+                                    <MoreVertical className="w-4 h-4" />
+                                </Button>
+                            </TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        </div>
     );
   };

@@ -90,12 +90,24 @@ export function TransactionsTable() {
                 <h2 className="font-medium font-plusJakarta text-[22px] leading-[28px]">
                     Transactions
                 </h2>
+
                 <Button
+                    variant="outline"
+                    className=" w-[128px] text-center h-[37px] border-1 border-transparent bg-gradient-to-r from-[#0DAFDC] to-[#22E9A2] p-[1px]  rounded-full"
+                >
+                    <div className="w-full h-full  rounded-full bg-white hover:bg-zinc-100 flex items-center justify-center gap-2  text-[#0DAFDC] , to-[#22E9A2] ">
+                        <p className="text-base bg-gradient-to-r from-[#0DAFDC] to-[#22E9A2] bg-clip-text text-transparent font-normal ">
+                            Export to PDF
+                        </p>
+                    </div>
+                </Button>
+
+                {/* <Button
                     variant="outline"
                     className=" rounded-full text-base bg-gradient-to-r from-blue-300 to-lime-500 bg-clip-text text-transparent"
                 >
                     Export to PDF
-                </Button>
+                </Button> */}
             </div>
 
             <ScrollArea className="h-[400px] p-6">
@@ -131,11 +143,11 @@ export function TransactionsTable() {
                                     {transaction.amount}
                                 </TableCell>
                                 <TableCell className="py-4 px-6">
-                                    <Button 
+                                    <Button
                                         variant="ghost"
                                         size="sm"
                                         className="gap-2 "
-                              >
+                                    >
                                         <StickyNote className="w-4 h-4" />
                                         Download Invoice
                                     </Button>
