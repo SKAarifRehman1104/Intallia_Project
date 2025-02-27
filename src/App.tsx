@@ -4,12 +4,14 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-import UserManagement from "./pages/UserManagement";
+import UserManagement from "./pages/User/UserManagement";
 import NotFound from "./pages/NotFound";
-import AddUser from "./pages/AddUser";
-import CompanyManagement from "./pages/CompanyManagement";
+import CompanyManagement from "./pages/Company/CompanyManagement";
+import RolesAndAccess from "./pages/RolesAndAccess/RolesAndAccess";
 import { AddNewUser } from "./components/users/AddNewUser";
 import { AddNewCompany } from "./components/users/AddNewCompany";
+import {RoleForm} from "@/pages/RolesAndAccess/RoleForm";
+import { AddNewRole } from "@/components/users/AddNewRole";
 
 const queryClient = new QueryClient();
 
@@ -22,10 +24,12 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/roles" element={<RolesAndAccess />} />
           <Route path="/users" element={<UserManagement />} />
           <Route path="/company" element={<CompanyManagement />} />
           <Route path="/add-user" element={<AddNewUser />} />
           <Route path="/add-company" element={<AddNewCompany />} />
+          <Route path="/add-role" element={<RoleForm/>} />
           <Route path="*" element={<NotFound />} />
 
         </Routes>
