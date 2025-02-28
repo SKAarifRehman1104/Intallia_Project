@@ -78,7 +78,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
                               <div className="flex flex-col gap-2">
                                   <label className="flex items-center gap-1">
-                                      <span className="text-[15px] text-black tracking-[-0.24px] leading-5">
+                                      <span className="text-[15px] text-[#444446] tracking-[-0.24px]">
                                           Job Title
                                       </span>
                                       <span className="text-[#FF3A3A] text-sm">
@@ -94,7 +94,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
 
                               <div className="flex flex-col gap-2">
                                   <label className="flex items-center gap-1">
-                                      <span className="text-[15px] text-black tracking-[-0.24px] leading-5">
+                                      <span className="text-[15px] text-[#444446] tracking-[-0.24px] leading-5">
                                           Company Name
                                       </span>
                                       <span className="text-[#FF3A3A] text-sm">
@@ -110,7 +110,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
 
                               <div className="flex flex-col gap-2">
                                   <label className="flex items-center gap-1">
-                                      <span className="text-[15px] text-black tracking-[-0.24px] leading-5">
+                                      <span className="text-[15px] text-[#444446] tracking-[-0.24px] leading-5">
                                           Start Date
                                       </span>
                                       <span className="text-[#FF3A3A] text-sm">
@@ -125,7 +125,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
 
                               <div className="flex flex-col gap-2">
                                   <label className="flex items-center gap-1">
-                                      <span className="text-[15px] text-black tracking-[-0.24px] leading-5">
+                                      <span className="text-[15px] text-[#444446] tracking-[-0.24px]leading-5">
                                           End Date
                                       </span>
                                       <span className="text-[#FF3A3A] text-sm">

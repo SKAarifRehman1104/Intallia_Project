@@ -15,7 +15,7 @@ export const UserForm: React.FC = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
                         <div className="flex flex-col gap-2">
                             <label className="flex items-center gap-1">
-                                <span className="text-[15px] text-black tracking-[-0.24px] leading-5 ">
+                                <span className="text-[15px] text-[#444446] leading-5 ">
                                     First Name
                                 </span>
                                 <span className="text-[#FF3A3A] text-sm">
@@ -31,7 +31,7 @@ export const UserForm: React.FC = () => {
 
                         <div className="flex flex-col gap-2">
                             <label className="flex items-center gap-1">
-                                <span className="text-[15px] text-black tracking-[-0.24px]">
+                                <span className="text-[15px] text-[#444446] tracking-[-0.24px]">
                                     Last Name
                                 </span>
                                 <span className="text-[#FF3A3A] text-sm">
@@ -47,7 +47,7 @@ export const UserForm: React.FC = () => {
 
                         <div className="flex flex-col gap-2">
                             <label className="flex items-center gap-1">
-                                <span className="text-[15px] text-black tracking-[-0.24px]">
+                                <span className="text-[15px] text-[#444446] tracking-[-0.24px]">
                                     Email
                                 </span>
                                 <span className="text-[#FF3A3A] text-sm">
@@ -63,7 +63,7 @@ export const UserForm: React.FC = () => {
 
                         <div className="flex flex-col gap-2">
                             <label className="flex items-center gap-1">
-                                <span className="text-[15px] text-black tracking-[-0.24px]">
+                                <span className="text-[15px] text-[#444446] tracking-[-0.24px]">
                                     Number
                                 </span>
                                 <span className="text-[#FF3A3A] text-sm">
@@ -98,7 +98,7 @@ export const UserForm: React.FC = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
                         <div className="flex flex-col gap-2">
                             <label className="flex items-center gap-1">
-                                <span className="text-[15px] text-black tracking-[-0.24px] ">
+                                <span className="text-[15px] text-[#444446] tracking-[-0.24px]">
                                     LinkedIn URL
                                 </span>
                                 <span className="text-[#FF3A3A] text-sm">
@@ -114,7 +114,7 @@ export const UserForm: React.FC = () => {
 
                         <div className="flex flex-col gap-2">
                             <label className="flex items-center gap-1">
-                                <span className="text-[15px] text-black tracking-[-0.24px] font-normal">
+                                <span className="text-[15px] text-[#444446] tracking-[-0.24px]">
                                     DOB
                                 </span>
                                 <span className="text-[#FF3A3A] text-sm">
@@ -130,7 +130,7 @@ export const UserForm: React.FC = () => {
 
                     <div className="flex flex-col gap-2 mt-5">
                         <label className="flex items-center gap-1">
-                            <span className="text-[15px] text-black tracking-[-0.24px] font-normal">
+                            <span className="text-[15px] text-[#444446] font-normal">
                                 Company Name
                             </span>
                             <span className="text-[#FF3A3A] text-sm">*</span>
@@ -144,7 +144,7 @@ export const UserForm: React.FC = () => {
 
                     <div className="flex flex-col gap-2 mt-5">
                         <label className="flex items-center gap-1">
-                            <span className="text-[15px] text-black tracking-[-0.24px] font-normal">
+                            <span className="text-[15px] text-[#444446] font-normal">
                                 Address
                             </span>
                             <span className="text-[#FF3A3A] text-sm">*</span>
