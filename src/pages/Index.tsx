@@ -22,13 +22,11 @@ const Index = () => {
         <MainLayout>
             <div className="p-8">
                 <div className="flex items-center justify-between mb-8">
-                    <h1 className="text-[28px] leading-[34px] font-medium font-plusJakarta text-[#444446]">
-                        Dashboard
-                    </h1>
+                    <h1 className="page-heading">Dashboard</h1>
 
                     <div className="flex items-center gap-4">
                         <Popover>
-                            <PopoverTrigger asChild> 
+                            <PopoverTrigger asChild>
                                 <Button
                                     variant="outline"
                                     className=" w-[121px] h-[37px] border-1 border-transparent bg-gradient-to-r from-[#0DAFDC] to-[#22E9A2] p-[1px] rounded-full"
@@ -40,7 +38,7 @@ const Index = () => {
                                                 : "12/4/2024"}
                                         </p>
                                     </div>
-                                </Button> 
+                                </Button>
 
                                 {/* <Button
                                     variant="outline"

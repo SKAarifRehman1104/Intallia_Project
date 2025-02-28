@@ -104,5 +104,10 @@
         border-image: linear-gradient(180deg, #0dafdc 0%, #22e9a2 100%);
         border-image-slice: 1;
     }
+    .page-heading {
+        @apply text-[28px] leading-[34px] font-medium font-plusJakarta text-[#444446];
+    }
+
 }
+
 
