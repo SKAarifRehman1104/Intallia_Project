@@ -25,10 +25,12 @@ export const RoleForm: FC = () => {
 
   return (
     <MainLayout>
-      <div className="flex flex-col items-stretch grow shrink-0 basis-0 w-fit mt-[37px] max-md:max-w-full">
-      <h1 className="text-[#444446] text-[28px] font-medium leading-none tracking-[0.36px]">
-        Add New Role
-      </h1>
+      <div className="flex justify-between flex-col items-stretch grow shrink-0 basis-0 w-fit mt-[37px] max-md:max-w-full">
+      <div className="mx-10">
+        <h1 className="page-heading">
+          Add New Role
+        </h1>
+      </div>
 
       <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.02)] bg-white flex items-stretch gap-5 flex-wrap justify-between mt-[30px] px-[45px] py-[31px] rounded-[15px] max-md:max-w-full max-md:px-5">
         <div className="max-md:max-w-full">
@@ -268,7 +270,7 @@ export const RoleForm: FC = () => {
           </div>
         </div>
       </div>
-    </div>  
+    </div>
     </MainLayout>
   );
 };

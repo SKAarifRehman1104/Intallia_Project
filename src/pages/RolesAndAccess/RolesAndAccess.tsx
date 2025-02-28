@@ -31,8 +31,8 @@ const RolesAndAccess = () => {
             <div className="flex min-h-screen bg-background">
                 <main className="flex-1 p-8">
                     <div className="space-y-6">
-                        <div className="flex justify-between items-center">
-                            <h1 className="text-3xl font-bold tracking-tight">
+                        <div className="flex justify-between">
+                            <h1 className="page-heading">
                                 Roles And Access
                             </h1>
                             <ActionButton

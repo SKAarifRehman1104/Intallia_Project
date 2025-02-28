@@ -1,8 +1,5 @@
-
 import { FC, useState } from "react";
-import { Toggle } from "@/components/ui/toggle";
-import { cn } from "@/lib/utils"; // Mock implementation of cn function
-
+import  ToggleSwitch  from "@/components/ui/toggle-switch";
 
 interface AccessControl {
   title: string;
@@ -13,8 +10,6 @@ interface AccessControl {
 
 export const AccessControl: FC<AccessControl> = ({
   title,
-  enabled,
-  onToggle,
   showActions = true,
 }) => {
   const [viewOnly, setViewOnly] = useState(false);
@@ -30,7 +25,8 @@ export const AccessControl: FC<AccessControl> = ({
         <div className="text-base text-[#242426] font-medium tracking-[-0.32px] leading-none">
           {title}
         </div>
-        {/* <Toggle onChange={(event) => onToggle(event.target.checked)} /> */}
+        {/* <Toggle enabled={enabled} onToggle={onToggle} /> */}
+        <ToggleSwitch />
 
 
 
