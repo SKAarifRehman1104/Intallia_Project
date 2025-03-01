@@ -95,6 +95,10 @@
         @apply bg-background text-foreground font-plusJakarta;
     }
 
+    input {
+        @apply hover:border-black;
+    }
+
     .gradient-background {
         background: linear-gradient(180deg, #0dafdc 0%, #22e9a2 100%);
     }
