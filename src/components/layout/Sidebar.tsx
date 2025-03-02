@@ -1,18 +1,15 @@
 import { Link, useLocation } from "react-router-dom";
-import { cn } from "@/lib/utils"
-"Hello"
+import { cn } from "@/lib/utils";
 import {
     LayoutDashboard,
-    Users,
-    UserCog,
+    User,
     BookOpen,
     Package,
     CreditCard,
     LogOut,
-    Building,
 } from "lucide-react";
 
-import userlogo from "@/assets/super_admin.png"
+import userlogo from "@/assets/super_admin.png";
 
 const menuItems = [
     { 
@@ -21,42 +18,50 @@ const menuItems = [
         href: "/" 
     },
     { 
-        icon: Users, 
+        icon: User, 
         label: "Roles & Access", 
         href: "/roles" 
     },
     { 
-        icon: UserCog, 
-        label: "User Management", 
+        icon: User, 
+        label: "User  Management", 
         href: "/users", 
         subroutes: [
             {
-                icon: Building,
+              
                 label: "Company",
                 href: "/company",
                 subroutes: [
                     {
-                        icon: Building,
                         label: "Add Company",
                         href: "/add-company",
                     }
                 ]
             },
             {
-                icon: Users,
+               
                 label: "Users",
                 href: "/users",
                 subroutes: [
                     {
-                        icon: Users,
                         label: "Add User",
                         href: "/add-user",
                     }
                 ]
             },
+            {
+               
+                label: "User  Assignment",
+                href: "/user-assignment",
+                subroutes: [
+                    {
+                        label: "Add User",
+                        href: "/add-user",
+                    }
+                ]
+            }
         ],
     },
-
     { 
         icon: BookOpen, 
         label: "Simulation", 
@@ -91,7 +96,6 @@ export function Sidebar() {
                             (item.subroutes?.some(route => currentPath === route.href || 
                             route.subroutes?.some(subroute => currentPath === subroute.href))));
 
-
                         return (
                             <div key={index}>
                                 <Link
@@ -102,7 +106,7 @@ export function Sidebar() {
                                         isActive && "bg-[linear-gradient(90deg,#0DAFDC_0%,#22E9A2_100%)] text-white"
                                     )}
                                 >
-                                    <item.icon className="h-5 w-5" />
+                                    {item.icon && <item.icon className="h-5 w-5" />}
                                     <span>{item.label}</span>
                                 </Link>
 
@@ -120,14 +124,12 @@ export function Sidebar() {
                                                     to={subroute.href}
                                                     className={cn(
                                                         "flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-700",
-                                                    currentPath !== subroute.href && "hover:bg-gray-50 transition-colors duration-200",
-                                                    (currentPath === subroute.href || 
-                                                     subroute.subroutes?.some(sr => currentPath === sr.href)) && 
-                                                    "text-[#0DAFDC] bg-[#0DAFDC10]"
-
+                                                        currentPath !== subroute.href && "hover:bg-gray-50 transition-colors duration-200",
+                                                        (currentPath === subroute.href || 
+                                                         subroute.subroutes?.some(sr => currentPath === sr.href)) && 
+                                                        "text-[#0DAFDC] bg-[#0DAFDC10]"
                                                     )}
                                                 >
-                                                    <subroute.icon className="w-4 h-4" />
                                                     {subroute.label}
                                                 </Link>
                                             </div>

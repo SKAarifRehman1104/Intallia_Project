@@ -11,6 +11,7 @@ import RolesAndAccess from "./pages/RolesAndAccess/RolesAndAccess";
 import { AddNewUser } from "./components/users/AddNewUser";
 import { AddNewCompany } from "./components/users/AddNewCompany";
 import {RoleForm} from "@/pages/RolesAndAccess/RoleForm";
+import {Simulation} from "./pages/Simulation/Simulation";
 import { AddNewRole } from "@/components/users/AddNewRole";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/roles" element={<RolesAndAccess />} />
           <Route path="/users" element={<UserManagement />} />
           <Route path="/company" element={<CompanyManagement />} />
+          <Route path="/simulation" element={<Simulation />} />
           <Route path="/add-user" element={<AddNewUser />} />
           <Route path="/add-company" element={<AddNewCompany />} />
           <Route path="/add-role" element={<RoleForm/>} />
