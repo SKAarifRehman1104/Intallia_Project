@@ -7,7 +7,7 @@ export const Header: React.FC = () => {
         <div className="flex w-full items-start gap-5 flex-wrap justify-between max-md:max-w-full">
             <div className="flex items-stretch gap-5 w-full">
                 <div className="flex flex-col items-stretch grow shrink-0 basis-0 w-full">
-                    <h1 className="text-[#444446] text-[28px] font-medium leading-none tracking-[0.36px]">
+                    <h1 className="page-heading">
                         Simulation
                     </h1>
                     <div className="flex w-full items-center justify-between mt-7">
