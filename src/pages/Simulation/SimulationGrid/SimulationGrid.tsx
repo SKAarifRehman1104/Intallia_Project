@@ -23,7 +23,7 @@ const chunks: JSX.Element[] = [];
 
   // First chunk will have the AddSimulationCard and 4 simulation cards
   chunks.push(
-    <div key="row-0" className="flex items-start gap-2 flex-wrap mt-5 max-md:max-w-full">
+    <div key="row-0" className="flex items-start gap-[20px] flex-wrap mt-5 max-md:max-w-full">
       <AddSimulationCard />
       {allCards.slice(0, 4).map((simulation, index) => (
         <SimulationCard key={`first-row-${index}`} {...simulation} />
@@ -39,7 +39,7 @@ const chunks: JSX.Element[] = [];
     const rowIndex = Math.floor(i / cardsPerRow) + 1;
 
     chunks.push(
-      <div key={`row-${rowIndex}`} className="flex items-start gap-2 flex-wrap max-md:max-w-full">
+      <div key={`row-${rowIndex}`} className="flex items-start gap-[20px] flex-wrap max-md:max-w-full">
         {rowCards.map((simulation, index) => (
           <SimulationCard key={`row-${rowIndex}-card-${index}`} {...simulation} />
         ))}
@@ -57,7 +57,7 @@ const chunks: JSX.Element[] = [];
   }, [allCards]);
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-[20px]">
       {chunks}
     </div>
   );

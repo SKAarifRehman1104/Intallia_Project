@@ -1,5 +1,6 @@
 
 // import { ActionButton } from "@/components/common/ActionButton";
+import { ActionButton } from "@/components/common/ActionButton";
 import Pagination from "@/components/common/Pagination";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { UserTable } from "@/components/users/UserTable";
@@ -31,16 +32,16 @@ const RolesAndAccess = () => {
             <div className="flex min-h-screen bg-background">
                 <main className="flex-1 p-8">
                     <div className="space-y-6">
-                        <div className="flex justify-between">
+                        <div className="flex justify-between items-center">
                             <h1 className="page-heading">
                                 Roles And Access
                             </h1>
-                            {/* <ActionButton
+                            <ActionButton
                                 variant="primary"
                                 onClick={() => navigate("/add-role")}
                             >
                                 Add New Role
-                            </ActionButton> */}
+                            </ActionButton>
                         </div>
 
                         <UserTableActions onSearch={setSearchQuery} />
