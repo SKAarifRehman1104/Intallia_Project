@@ -37,13 +37,13 @@ export const AccessControl: FC<AccessControl> = ({
           <div 
             className={cn(
               "flex items-center gap-2.5 cursor-pointer", 
-              viewOnly ? "text-[#0DAFDC]" : ""
+              viewOnly ? "text-[#06B2E1]" : ""
             )}
             onClick={() => setViewOnly(!viewOnly)}
           >
             <div className={cn(
               "flex items-center justify-center w-6 h-6 rounded-sm border", 
-              viewOnly ? "bg-[#0DAFDC] border-[#0DAFDC]" : "border-gray-300"
+              viewOnly ? "bg-[#06B2E1] border-[#06B2E1]" : "border-gray-300"
             )}>
               {viewOnly && (
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
@@ -57,13 +57,13 @@ export const AccessControl: FC<AccessControl> = ({
           <div 
             className={cn(
               "flex items-center gap-2.5 whitespace-nowrap cursor-pointer", 
-              canEdit ? "text-[#0DAFDC]" : ""
+              canEdit ? "text-[#06B2E1]" : ""
             )}
             onClick={() => setCanEdit(!canEdit)}
           >
             <div className={cn(
               "flex items-center justify-center w-6 h-6 rounded-sm border", 
-              canEdit ? "bg-[#0DAFDC] border-[#0DAFDC]" : "border-gray-300"
+              canEdit ? "bg-[#06B2E1] border-[#06B2E1]" : "border-gray-300"
             )}>
               {canEdit && (
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
@@ -77,13 +77,13 @@ export const AccessControl: FC<AccessControl> = ({
           <div 
             className={cn(
               "flex items-center gap-2.5 whitespace-nowrap cursor-pointer", 
-              canDelete ? "text-[#0DAFDC]" : ""
+              canDelete ? "text-[#06B2E1]" : ""
             )}
             onClick={() => setCanDelete(!canDelete)}
           >
             <div className={cn(
               "flex items-center justify-center w-6 h-6 rounded-sm border", 
-              canDelete ? "bg-[#0DAFDC] border-[#0DAFDC]" : "border-gray-300"
+              canDelete ? "bg-[#06B2E1] border-[#06B2E1]" : "border-gray-300"
             )}>
               {canDelete && (
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">

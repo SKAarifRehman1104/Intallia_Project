@@ -151,7 +151,7 @@ export const RoleForm: FC = () => {
                                 {/* Role & Access Section */}
                                 <div className="w-full mt-[50px] max-md:max-w-full">
                                     <h2 className="flex w-full items-center gap-2 text-xl font-medium tracking-[0.38px] leading-none max-md:max-w-full">
-                                        <span className="bg-clip-text bg-[linear-gradient(90deg,#0DAFDC_0%,#22E9A2_100%)] text-transparent">
+                                        <span className="bg-clip-text bg-[linear-gradient(90deg,#06B2E1_0%,#22E9A2_100%)] text-transparent">
                                             Role & Access
                                         </span>
                                     </h2>
@@ -295,9 +295,10 @@ export const RoleForm: FC = () => {
                             <SearchBar className="xl:w-[1/5]" />
 
                             <div className="flex w-[202px] max-w-full flex-col items-stretch text-base text-center tracking-[-0.32px] leading-none justify-center mt-[49px] space-y-5 max-md:mt-10">
+                                
                                 <GradientButton
                                     variant="primary"
-                                    className="bg-[#06B2E1] text-white px-8 py-4"
+                                    className="px-8 py-4"
                                 >
                                     Add New Role
                                 </GradientButton>
