@@ -15,13 +15,13 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
   ...props
 }) => {
   const baseStyles =
-    "text-base tracking-[-0.32px] leading-none px-8 py-4 rounded-[48px]";
+    "text-base tracking-[-0.32px] leading-none px-8 py-3 rounded-[48px] text-center ring-1";
 
   const variants = {
-    primary: "bg-[linear-gradient(90deg,#0DAFDC_0%,#22E9A2_100%)] text-black",
-    outline:
-      "border border-[#0DAFDC] bg-clip-text text-transparent bg-[linear-gradient(90deg,#0DAFDC_0%,#22E9A2_100%)]",
-    danger: "border border-[#FF3A3A] text-[#010000]",
+      primary:
+          "tracking-[-0.32px] text-base ring-[#06B2E1] ring-1 border-[#06B2E1] text-white rounded-full bg-[#06B2E1] flex items-center justify-center",
+      outline: "border border-[#06B2E1] ring-[#06B2E1] text-[#06B2E1]",
+      danger: "border border-[#FF3A3A] text-[#010000] ring-[#FF3A3A] text-[#FF3A3A]",
   };
 
   return (

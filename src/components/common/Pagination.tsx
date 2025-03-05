@@ -29,11 +29,11 @@ const Pagination: React.FC<PaginationProps> = ({
         <div className="flex items-center justify-between space-x-2 mt-2">
             <Button
                 variant="ghost"
-                className="gap-2 w-[111px] h-[37px] bg-gradient-to-r from-[#0DAFDC] to-[#22E9A2] p-[2px] rounded-full py-2 pl-2 pr-4"
+                className="gap-2 w-[111px] h-[37px] bg-[#06B2E1] text-white p-[2px] rounded-full py-2 pl-2 pr-4"
                 onClick={handlePrevious}
                 disabled={currentPage === 1}
             >
-                <ChevronLeft className="w-4 h-4" />
+                <ChevronLeft className="w-4 h-4 text-black" />
                 Previous
             </Button>
 
@@ -55,12 +55,12 @@ const Pagination: React.FC<PaginationProps> = ({
 
             <Button
                 variant="ghost"
-                className="gap-2 w-[83px] h-[37px] bg-gradient-to-r from-[#0DAFDC] to-[#22E9A2] p-[2px] rounded-full py-2 pr-2 pl-4"
+                className="gap-2 w-[83px] h-[37px] bg-[#06B2E1] text-white p-[2px] rounded-full py-2 pr-2 pl-4"
                 onClick={handleNext}
                 disabled={currentPage === totalPages}
             >
                 Next
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-4 h-4 text-black" />
             </Button>
         </div>
     );

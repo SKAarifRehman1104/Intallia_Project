@@ -32,7 +32,7 @@ const CompanyManagement = () => {
                 <main className="flex-1 p-8">
                     <div className="space-y-6">
                         <div className="flex justify-between items-center">
-                            <h1 className="page-heading">
+                            <h1 className="page-heading ">
                                 User Management (Company)
                             </h1>
                             <ActionButton

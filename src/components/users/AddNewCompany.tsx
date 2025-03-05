@@ -15,7 +15,7 @@ export const AddNewCompany: React.FC = () => {
                   <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.02)] bg-white flex items-stretch gap-5 flex-wrap justify-between mt-[30px] px-[45px] py-[31px] rounded-[15px]">
                       <UserForm />
 
-                      <aside className="flex flex-col items-stretch font-normal">
+                      <aside className="flex flex-col items-end font-normal">
                           <SearchBar />
 
                           <div className="flex w-[202px] max-w-full flex-col items-stretch text-base text-center tracking-[-0.32px] leading-none justify-center mt-[49px] space-y-5">

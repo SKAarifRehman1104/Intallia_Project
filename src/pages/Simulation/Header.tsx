@@ -2,7 +2,7 @@ import { SearchBar } from "@/components/common/SearchBar";
 import React from "react";
 
 export const Header: React.FC = () => {
-    const buttonStyle = `justify-center items-center border border-[color:var(--Gradient,#0DAFDC)] flex gap-2 pl-4 pr-2 py-2 rounded-[48px] border-solid w-full xl:w-[164px] text-[#06B2E1]`;
+    const buttonStyle = `justify-center items-center border border-[#06B2E1] flex gap-2 pl-4 pr-2 py-2 rounded-[48px] border-[#06B2E1] ring-1 ring-[#06B2E1] w-full xl:w-[164px] text-[#06B2E1]`;
     return (
         <div className="flex w-full items-start gap-5 flex-wrap justify-between max-md:max-w-full">
             <div className="flex items-stretch gap-5 w-full">

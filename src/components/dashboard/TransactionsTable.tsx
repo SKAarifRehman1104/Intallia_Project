@@ -93,21 +93,10 @@ export function TransactionsTable() {
 
                 <Button
                     variant="outline"
-                    className=" w-[128px] text-center h-[37px] border-1 border-transparent bg-gradient-to-r from-[#0DAFDC] to-[#22E9A2] p-[1px]  rounded-full"
+                    className=" text-[#06B2E1] px-2 py-4 font-medium w-32 text-base  ring-[#06B2E1] rounded-full ring-1 border-[#06B2E1] hover:bg-[#06B2E1] hover:text-white"
                 >
-                    <div className="w-full h-full  rounded-full bg-white hover:bg-zinc-100 flex items-center justify-center gap-2  text-[#0DAFDC] , to-[#22E9A2] ">
-                        <p className="text-base bg-gradient-to-r from-[#0DAFDC] to-[#22E9A2] bg-clip-text text-transparent font-normal ">
-                            Export to PDF
-                        </p>
-                    </div>
+                 Export to PDF
                 </Button>
-
-                {/* <Button
-                    variant="outline"
-                    className=" rounded-full text-base bg-gradient-to-r from-blue-300 to-lime-500 bg-clip-text text-transparent"
-                >
-                    Export to PDF
-                </Button> */}
             </div>
 
             <ScrollArea className="h-[400px] p-6">

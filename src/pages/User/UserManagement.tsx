@@ -38,6 +38,7 @@ const UserManagement = () => {
                             <ActionButton
                                 variant="primary"
                                 onClick={() => navigate("/add-user")}
+                                
                             >
                                 Add New User
                             </ActionButton>

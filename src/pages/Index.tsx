@@ -11,7 +11,7 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover";
 import { format } from "date-fns";
-import { DollarSign, UserCheck, UserPlus, Users, UserX, Wallet } from "lucide-react";
+import { Wallet } from "lucide-react";
 import { useState } from "react";
 
 const Index = () => {
@@ -29,25 +29,12 @@ const Index = () => {
                             <PopoverTrigger asChild>
                                 <Button
                                     variant="outline"
-                                    className=" w-[121px] h-[37px] border-1 border-transparent bg-gradient-to-r from-[#0DAFDC] to-[#22E9A2] p-[1px] rounded-full"
-                                >
-                                    <div className="w-full h-full  rounded-full bg-zinc-50 hover:bg-zinc-100 flex items-center justify-center gap-2  text-[#0DAFDC] , to-[#22E9A2] ">
-                                        <p className="text-base bg-gradient-to-r from-[#0DAFDC] to-[#22E9A2] bg-clip-text text-transparent font-normal px-[8px] py-[8px]">
-                                            {endDate
-                                                ? format(endDate, "dd/MM/yyyy")
-                                                : "12/4/2024"}
-                                        </p>
-                                    </div>
-                                </Button>
-
-                                {/* <Button
-                                    variant="outline"
-                                    className="px-2 py-4 font-normal w-32 text-base bg-gradient-to-r from-blue-300 to-lime-500 bg-clip-text text-transparent ring-1 rounded-full"
+                                    className=" text-[#06B2E1] px-2 py-4 font-medium w-32 text-base  ring-[#06B2E1] rounded-full ring-1 border-[#06B2E1] hover:bg-[#06B2E1] hover:text-white"
                                 >
                                     {startDate
                                         ? format(startDate, "dd/MM/yyyy")
                                         : "12/04/2024"}
-                                </Button> */}
+                                </Button>
                             </PopoverTrigger>
                             <PopoverContent className="w-auto p-0">
                                 <Calendar
@@ -67,25 +54,12 @@ const Index = () => {
                             <PopoverTrigger asChild>
                                 <Button
                                     variant="outline"
-                                    className=" w-[121px] h-[37px] border-1 border-transparent bg-gradient-to-r from-[#0DAFDC] to-[#22E9A2] p-[1px] rounded-full"
-                                >
-                                    <div className="w-full h-full  rounded-full bg-zinc-50 hover:bg-zinc-100 flex items-center justify-center gap-2  text-[#0DAFDC] , to-[#22E9A2] ">
-                                        <p className="text-base bg-gradient-to-r from-[#0DAFDC] to-[#22E9A2] bg-clip-text text-transparent font-normal px-[8px] py[8px]">
-                                            {endDate
-                                                ? format(endDate, "dd/MM/yyyy")
-                                                : "12/4/2024"}
-                                        </p>
-                                    </div>
-                                </Button>
-
-                                {/* <Button
-                                    variant="outline"
-                                    className=" text-blue-600 px-2 py-4 font-normal w-32 text-base bg-gradient-to-r from-blue-300 to-lime-500 bg-clip-text text-transparent ring-[217.2 91.2% 59.8%] rounded-full ring-1"
+                                    className=" text-[#06B2E1] px-2 py-4 font-medium w-32 text-base  ring-[#06B2E1] rounded-full ring-1 border-[#06B2E1] hover:bg-[#06B2E1] hover:text-white"
                                 >
                                     {endDate
                                         ? format(endDate, "dd/MM/yyyy")
                                         : "12/4/2024"}
-                                </Button> */}
+                                </Button>
                             </PopoverTrigger>
                             <PopoverContent className="w-auto p-0">
                                 <Calendar
