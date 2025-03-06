@@ -1,8 +1,8 @@
-import { ChevronDown, Download, Filter, Plus, Search } from "lucide-react";
+import { ActionButton } from "@/components/common/ActionButton";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useNavigate } from "react-router-dom";
-import { ActionButton } from "@/components/common/ActionButton";
+import { ChevronDown, Download, Search } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface UserTableActionsProps {
     onSearch: (query: string) => void;
@@ -10,6 +10,7 @@ interface UserTableActionsProps {
 
 export const UserTableActions = ({ onSearch }: UserTableActionsProps) => {
     const navigate = useNavigate();
+    const location = useLocation();
 
     return (
         <div className="flex justify-between">
@@ -38,12 +39,45 @@ export const UserTableActions = ({ onSearch }: UserTableActionsProps) => {
                     <ChevronDown className="w-4 h-4" />
                 </Button>
 
-                {/* <ActionButton
-                    variant="primary"
-                    onClick={() => navigate("/add-role")}
-                >
-                    Add New Role
-                </ActionButton> */}
+                {location.pathname === "/users" && (
+                    <ActionButton
+                        variant="primary"
+                        className="h-9 px-4"
+                        onClick={() => navigate("/add-user")}
+                    >
+                        Add New User
+                    </ActionButton>
+                )}
+
+                {location.pathname === "/company" && (
+                    <ActionButton
+                        variant="primary"
+                        className="h-9 px-4"
+                        onClick={() => navigate("/add-company")}
+                    >
+                        Add New Company
+                    </ActionButton>
+                )}
+
+                {location.pathname === "/roles" && (
+                    <ActionButton
+                        variant="primary"
+                        className="h-9 px-4"
+                        onClick={() => navigate("/add-role")}
+                    >
+                        Add New Role
+                    </ActionButton>
+                )}
+
+                {location.pathname === "/plans" && (
+                    <ActionButton
+                        variant="primary"
+                        className="h-9 px-4"
+                        onClick={() => navigate("/add-plan")}
+                    >
+                        Add New Package
+                    </ActionButton>
+                )}
             </div>
 
             <div className="relative w-[327px] bg-[#E5E5EA] border border-[#E5E5EA] rounded-[8px]">

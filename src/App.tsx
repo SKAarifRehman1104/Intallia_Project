@@ -13,6 +13,7 @@ import { AddNewCompany } from "./components/users/AddNewCompany";
 import {RoleForm} from "@/pages/RolesAndAccess/RoleForm";
 import {Simulation} from "./pages/Simulation/Simulation";
 import { AddNewRole } from "@/components/users/AddNewRole";
+import Plans from "./pages/Plans/Plans";
 
 const queryClient = new QueryClient();
 
@@ -31,7 +32,8 @@ const App = () => (
           <Route path="/simulation" element={<Simulation />} />
           <Route path="/add-user" element={<AddNewUser />} />
           <Route path="/add-company" element={<AddNewCompany />} />
-          <Route path="/add-role" element={<RoleForm/>} />
+          <Route path="/add-role" element={<RoleForm />} />
+          <Route path="/plans" element={<Plans />} />
           <Route path="*" element={<NotFound />} />
 
         </Routes>

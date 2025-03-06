@@ -23,7 +23,7 @@ const chunks: JSX.Element[] = [];
 
   // First chunk will have the AddSimulationCard and 4 simulation cards
   chunks.push(
-    <div key="row-0" className="flex items-start gap-[20px] flex-wrap mt-5 max-md:max-w-full">
+    <div key="row-0" className="flex items-start gap-[1rem] flex-wrap mt-5 max-md:max-w-full">
       <AddSimulationCard />
       {allCards.slice(0, 4).map((simulation, index) => (
         <SimulationCard key={`first-row-${index}`} {...simulation} />
@@ -39,16 +39,28 @@ const chunks: JSX.Element[] = [];
     const rowIndex = Math.floor(i / cardsPerRow) + 1;
 
     chunks.push(
-      <div key={`row-${rowIndex}`} className="flex items-start gap-[20px] flex-wrap max-md:max-w-full">
-        {rowCards.map((simulation, index) => (
-          <SimulationCard key={`row-${rowIndex}-card-${index}`} {...simulation} />
-        ))}
+        <div
+            key={`row-${rowIndex}`}
+            className="flex items-start gap-[1rem] flex-wrap max-md:max-w-full"
+        >
+            {rowCards.map((simulation, index) => (
+                <SimulationCard
+                    key={`row-${rowIndex}-card-${index}`}
+                    {...simulation}
+                />
+            ))}
 
-        {/* Add empty space fillers if needed to maintain 5 cards per row */}
-        {rowCards.length < cardsPerRow && Array(cardsPerRow - rowCards.length).fill(null).map((_, index) => (
-          <div key={`filler-${index}`} className="w-[225px] h-[225px] invisible" />
-        ))}
-      </div>
+            {/* Add empty space fillers if needed to maintain 5 cards per row */}
+            {rowCards.length < cardsPerRow &&
+                Array(cardsPerRow - rowCards.length)
+                    .fill(null)
+                    .map((_, index) => (
+                        <div
+                            key={`filler-${index}`}
+                            className="w-[225px] h-[225px] invisible"
+                        />
+                    ))}
+        </div>
     );
   }
 
@@ -57,7 +69,7 @@ const chunks: JSX.Element[] = [];
   }, [allCards]);
 
   return (
-    <div className="flex flex-col gap-[20px]">
+    <div className="flex flex-col gap-[1rem]">
       {chunks}
     </div>
   );
