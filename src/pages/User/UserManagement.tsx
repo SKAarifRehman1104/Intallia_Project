@@ -35,13 +35,13 @@ const UserManagement = () => {
                             <h1 className="page-heading">
                                 User Management (Users)
                             </h1>
-                            <ActionButton
+                            {/* <ActionButton
                                 variant="primary"
                                 onClick={() => navigate("/add-user")}
                                 
                             >
                                 Add New User
-                            </ActionButton>
+                            </ActionButton> */}
                         </div>
 
                         <UserTableActions onSearch={setSearchQuery} />

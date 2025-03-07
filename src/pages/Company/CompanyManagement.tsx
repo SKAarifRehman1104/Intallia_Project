@@ -35,12 +35,12 @@ const CompanyManagement = () => {
                             <h1 className="page-heading ">
                                 User Management (Company)
                             </h1>
-                            <ActionButton
+                            {/* <ActionButton
                                 variant="primary"
                                 onClick={() => navigate("/add-company")}
                             >
                                 Add New Company
-                            </ActionButton>
+                            </ActionButton> */}
                         </div>
 
                         <UserTableActions onSearch={setSearchQuery} />
