@@ -4,6 +4,7 @@ import { SearchBar } from "@/components/ui/search-bar";
 import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AccessControl } from "./AccessControl";
+import SidebarActions from "@/components/users/SidebarActions";
 
 interface RoleForm {
     name: string;
@@ -23,12 +24,48 @@ export const RoleForm: FC = () => {
         payment: false,
     });
 
+    //sidebar button events
+    const handleAddNewRole = () => {
+        console.log("Add New Role clicked");
+    };
+
+    const handleSaveAndExit = () => {
+        console.log("Save & Exit clicked");
+    };
+
+    const handleSave = () => {
+        console.log("Save clicked");
+    };
+
+    const handleDelete = () => {
+        console.log("Delete clicked");
+    };
+
+    const actions: {
+        variant: "primary" | "outline" | "danger";
+        text: string;
+        onClick?: () => void;
+    }[] = [
+        {
+            variant: "primary",
+            text: "Add New Role",
+            onClick: handleAddNewRole,
+        },
+        {
+            variant: "outline",
+            text: "Save & Exit",
+            onClick: handleSaveAndExit,
+        },
+        { variant: "outline", text: "Save", onClick: handleSave },
+        { variant: "danger", text: "Delete", onClick: handleDelete },
+    ];
+
     return (
         <MainLayout>
             <div className="bg-[#F8F9FA] flex items-start gap-[35px] overflow-hidden flex-wrap p-8">
-                <div className="flex flex-col items-stretch grow shrink-0 basis-0 w-fit mt-[37px]">
+                <div className="flex flex-col items-stretch grow shrink-0 basis-0 w-fit">
                     <h1 className="page-heading">Add New Role</h1>
-                    <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.02)] bg-white flex items-stretch gap-5 flex-wrap justify-between mt-[30px] p-[31px] rounded-[15px]">
+                    <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.02)] bg-white flex items-stretch gap-5 flex-wrap justify-between mt-[30px] p-[31px] rounded-[15px] h-[88vh] sticky top-0 overflow-y-scroll">
                         <div className="max-md:max-w-full xl:w-[70%]">
                             <form className="w-full font-normal max-md:max-w-full">
                                 <div className="flex w-full gap-10 flex-wrap max-md:max-w-full">
@@ -291,7 +328,7 @@ export const RoleForm: FC = () => {
                             </form>
                         </div>
 
-                        <div className="flex flex-col items-stretch font-normal">
+                        {/* <div className="flex flex-col items-stretch font-normal">
                             <SearchBar className="xl:w-[1/5]" />
 
                             <div className="flex w-[202px] max-w-full flex-col items-stretch text-base text-center tracking-[-0.32px] leading-none justify-center mt-[49px] space-y-5 max-md:mt-10">
@@ -318,7 +355,8 @@ export const RoleForm: FC = () => {
                                     Delete
                                 </GradientButton>
                             </div>
-                        </div>
+                        </div> */}
+                        <SidebarActions actions={actions} />
                     </div>
                 </div>
             </div>

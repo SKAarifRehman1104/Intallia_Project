@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 @layer base {
     :root {
@@ -111,6 +110,14 @@
     .page-heading {
         @apply text-[28px] leading-[34px] font-medium font-plusJakarta text-[#444446];
     }
+    ::-webkit-scrollbar {
+        width: 3px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: #cecece;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: #fdfdfd;
+    }
 }
-
-

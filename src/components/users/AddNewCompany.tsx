@@ -4,45 +4,64 @@ import { SearchBar } from "../common/SearchBar";
 import { ActionButton } from "../common/ActionButton";
 import { UserForm } from "./UserForm";
 import { MainLayout } from "../layout/MainLayout";
+import SidebarActions from "./SidebarActions";
 
 export const AddNewCompany: React.FC = () => {
-  return (
-      <MainLayout>
-          <div className="bg-[#F8F9FA] flex items-start gap-[35px] overflow-hidden flex-wrap p-8">
-              <div className="flex flex-col items-stretch grow shrink-0 basis-0 w-fit mt-[37px]">
-                  <h1 className="page-heading">Add New Company</h1>
+    const handleAddNewCompany = () => {
+        console.log("Add New Company clicked");
+    };
 
-                  <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.02)] bg-white flex items-stretch gap-5 flex-wrap justify-between mt-[30px] px-[45px] py-[31px] rounded-[15px]">
-                      <UserForm />
+    const handleAddNewUser = () => {
+        console.log("Add New User clicked");
+    };
 
-                      <aside className="flex flex-col items-end font-normal">
-                          <SearchBar />
+    const handleSaveAndExit = () => {
+        console.log("Save & Exit clicked");
+    };
 
-                          <div className="flex w-[202px] max-w-full flex-col items-stretch text-base text-center tracking-[-0.32px] leading-none justify-center mt-[49px] space-y-5">
-                              <ActionButton variant="primary">
-                                  Download Resume
-                              </ActionButton>
+    const handleSave = () => {
+        console.log("Save clicked");
+    };
 
-                              <ActionButton variant="primary">
-                                  Add New User
-                              </ActionButton>
+    const handleDelete = () => {
+        console.log("Delete clicked");
+    };
 
-                              <ActionButton variant="outline">
-                                  Save & Exit
-                              </ActionButton>
+    const actions: {
+        variant: "primary" | "outline" | "danger";
+        text: string;
+        onClick?: () => void;
+    }[] = [
+        {
+            variant: "primary",
+            text: "Add New Company",
+            onClick: handleAddNewCompany,
+        },
+        {
+            variant: "primary",
+            text: "Add New User",
+            onClick: handleAddNewUser,
+        },
+        {
+            variant: "outline",
+            text: "Save & Exit",
+            onClick: handleSaveAndExit,
+        },
+        { variant: "outline", text: "Save", onClick: handleSave },
+        { variant: "danger", text: "Delete", onClick: handleDelete },
+    ];
+    return (
+        <MainLayout>
+            <div className="bg-[#F8F9FA] flex items-start gap-[35px] overflow-hidden flex-wrap p-8">
+                <div className="flex flex-col items-stretch grow shrink-0 basis-0 w-fit">
+                    <h1 className="page-heading">Add New Company</h1>
 
-                              <ActionButton variant="outline">
-                                  Save
-                              </ActionButton>
-
-                              <ActionButton variant="danger">
-                                  Delete
-                              </ActionButton>
-                          </div>
-                      </aside>
-                  </div>
-              </div>
-          </div>
-      </MainLayout>
-  );
+                    <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.02)] bg-white flex items-stretch gap-5 flex-wrap justify-between mt-[30px] px-[45px] py-[31px] rounded-[15px]  h-[88vh] sticky top-0 overflow-y-scroll">
+                        <UserForm />
+                        <SidebarActions actions={actions} />
+                    </div>
+                </div>
+            </div>
+        </MainLayout>
+    );
 };
