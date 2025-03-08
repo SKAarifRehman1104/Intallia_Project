@@ -5,7 +5,7 @@ import { ExperienceSection } from "./ExperienceSection";
 
 export const UserForm: React.FC = () => {
     return (
-        <div className="flex font-plusJakarta  flex-col gap-5">
+        <div className="flex font-plusJakarta  flex-col gap-5 overflow-y-auto">
             <div className="w-full">
                 <section className="">
                     <h2 className="text-xl font-medium tracking-[0.38px] bg-clip-text bg-[linear-gradient(90deg,#0DAFDC_0%,#22E9A2_100%)] text-transparent ">
