@@ -14,6 +14,7 @@ import {RoleForm} from "@/pages/RolesAndAccess/RoleForm";
 import {Simulation} from "./pages/Simulation/Simulation";
 import { AddNewRole } from "@/components/users/AddNewRole";
 import Plans from "./pages/Plans/Plans";
+import UserAssignment from "./pages/UserAssignment/UserAssignment";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/users" element={<UserManagement />} />
           <Route path="/company" element={<CompanyManagement />} />
           <Route path="/simulation" element={<Simulation />} />
+          <Route path="/user-assignment" element={<UserAssignment />} />
           <Route path="/add-user" element={<AddNewUser />} />
           <Route path="/add-company" element={<AddNewCompany />} />
           <Route path="/add-role" element={<RoleForm />} />
