@@ -33,7 +33,7 @@ const UserAssignment = () => {
                     <div className="space-y-6">
                         <div className="flex justify-between items-center">
                             <h1 className="page-heading">
-                                User Management (Users)
+                                User Assignment
                             </h1>
                             {/* <ActionButton
                                 variant="primary"

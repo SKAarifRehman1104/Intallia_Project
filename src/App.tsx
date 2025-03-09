@@ -15,6 +15,7 @@ import {Simulation} from "./pages/Simulation/Simulation";
 import { AddNewRole } from "@/components/users/AddNewRole";
 import Plans from "./pages/Plans/Plans";
 import UserAssignment from "./pages/UserAssignment/UserAssignment";
+import AddSimulation from "./pages/Simulation/AddSimulation/AddSimulation";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="/users" element={<UserManagement />} />
           <Route path="/company" element={<CompanyManagement />} />
           <Route path="/simulation" element={<Simulation />} />
+          <Route path="/new-simulation" element={<AddSimulation />} />
           <Route path="/user-assignment" element={<UserAssignment />} />
           <Route path="/add-user" element={<AddNewUser />} />
           <Route path="/add-company" element={<AddNewCompany />} />
