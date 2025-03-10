@@ -36,6 +36,10 @@ const App = () => (
           <Route path="/users" element={<UserManagement />} />
           <Route path="/company" element={<CompanyManagement />} />
           <Route path="/simulation" element={<Simulation />} />
+          <Route path="/packages" element={<Packages />} />
+          <Route path="/user-assignment" element={<UserAssignment />} />
+          <Route path="/add-new-user" element={<AddNewUser />} />   
+          <Route path="/new-simulation" element={<AddSimulation />} />
           <Route path="/add-user" element={<AddNewUser />} />
           <Route path="/add-company" element={<AddNewCompany />} />
           <Route path="/add-role" element={<RoleForm />} />
