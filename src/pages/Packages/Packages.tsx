@@ -6,7 +6,7 @@ import { UserTableActions } from "@/components/users/UserTableActions";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Package = () => {
+const Packages = () => {
     const navigate = useNavigate();
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -24,12 +24,6 @@ const Package = () => {
                     <div className="space-y-6">
                         <div className="flex justify-between items-center">
                             <h1 className="page-heading">Package</h1>
-                            {/* <ActionButton
-                                variant="primary"
-                                onClick={() => navigate("/add-package")}
-                            >
-                                Add New Package
-                            </ActionButton> */}
                         </div>
 
                         <UserTableActions onSearch={setSearchQuery} />
@@ -53,4 +47,4 @@ const Package = () => {
     );
 };
 
-export default Package;
+export default Packages;
