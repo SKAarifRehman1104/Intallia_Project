@@ -59,6 +59,16 @@ export const UserTableActions = ({ onSearch }: UserTableActionsProps) => {
                     </ActionButton>
                 )}
 
+                {location.pathname === "/user-assignment" && (
+                    <ActionButton
+                        variant="primary"
+                        className="h-9 px-4"
+                        onClick={() => navigate("/assign-simulation")}
+                    >
+                        Assign Simulation
+                    </ActionButton>
+                )}
+
                 {location.pathname === "/roles" && (
                     <ActionButton
                         variant="primary"
@@ -78,6 +88,8 @@ export const UserTableActions = ({ onSearch }: UserTableActionsProps) => {
                         Add New Package
                     </ActionButton>
                 )}
+
+                
             </div>
 
             <div className="relative w-[327px] bg-[#E5E5EA] border border-[#E5E5EA] rounded-[8px]">
