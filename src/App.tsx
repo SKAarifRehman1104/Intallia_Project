@@ -19,7 +19,7 @@ import { ViewPackage } from "./pages/Packages/ViewPackage";
 import Payments from "./pages/Payments/Payments";
 import UserAssignment from "./pages/UserAssignment/UserAssignment";
 import AddSimulation from "./pages/Simulation/AddSimulation/AddSimulation";
-import { Profile } from "./components/Profile/Profile";
+import Profile from "./components/Profile/Profile";
 
 const queryClient = new QueryClient();
 
