@@ -1,9 +1,23 @@
 import React from "react";
 import SidebarActions from "@/components/users/SidebarActions";
 import { MainLayout } from "@/components/layout/MainLayout";
-import { Table } from "lucide-react";
+import { Image, Upload, Trash } from "lucide-react";
+import { useState } from "react";
 
-export const Profile: React.FC = () => {
+export default function Profile() {
+    const [image, setImage] = useState(null);
+
+    const handleImageChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            setImage(URL.createObjectURL(file));
+        }
+    };
+
+    const handleRemoveImage = () => {
+        setImage(null);
+    };
+
     const handleAddNewPackage = () => {
         console.log("Add New Company clicked");
     };
@@ -50,18 +64,37 @@ export const Profile: React.FC = () => {
                         <div className="flex font-plusJakarta  flex-col gap-5 overflow-y-auto">
                             <div className="w-full">
                                 <section className="">
-                                    <div className="grid grid-cols-1 md:grid-cols-2 pr-20 mt-5 ">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 pr-20 mt-5  ">
                                         <div className="w-[154px] h-[154px] rounded-full bg-[#E5E5EA]">
+                                            {image ? (
+                                                <img
+                                                    src={image}
+                                                    alt="Selected"
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            ) : (
+                                                <Image
+                                                    size={50}
+                                                    className="text-gray-400"
+                                                />
+                                            )}
                                         </div>
-                                        <div className="flex  gap-3 items-center ">
-                                            <button className="bg-[#06B2E1] text-white rounded-full px-4 py-2 ">
+                                        <div className="flex gap-3 items-center ">
+                                            <label className="bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer flex items-center gap-1">
+                                                <Upload size={16} />
                                                 Add Photo
-                                            </button>
+                                                <input
+                                                    type="file"
+                                                    className="hidden"
+                                                    onChange={handleImageChange}
+                                                />
+                                            </label>
                                             <button
-                                                className="ring-1 ring-[#06B2E1] text-[#06B2E1]
-                                        rounded-full px-4 py-2"
+                                                className="bg-red-500 text-white px-4 py-2 rounded-lg flex items-center gap-1"
+                                                onClick={handleRemoveImage}
                                             >
-                                                Remove Photo
+                                                <Trash size={16} />
+                                                Remove
                                             </button>
                                         </div>
                                     </div>
@@ -176,7 +209,7 @@ export const Profile: React.FC = () => {
                                             <input
                                                 type="url"
                                                 placeholder="Enter LinkedIn URL"
-                                                className="rounded border border-[#E5E5EA] bg-white min-h-12 px-4 py-3.5"
+                                                className="rounded border border-[#E5E5EA] bg-white min-h-12 px-4 py-3.5 "
                                             />
                                         </div>
                                     </div>
@@ -190,4 +223,6 @@ export const Profile: React.FC = () => {
             </div>
         </MainLayout>
     );
-};
+}
+
+

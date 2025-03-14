@@ -22,7 +22,7 @@ const Payments = () => {
                 <main className="flex-1 p-8">
                     <div className="space-y-6">
                         <div className="flex justify-between items-center">
-                            <h1 className="page-heading">Package</h1>
+                            <h1 className="page-heading">Payment</h1>
                         </div>
 
                         <UserTableActions onSearch={setSearchQuery} />

@@ -9,6 +9,7 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { MoreVertical } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const payments = [
@@ -349,6 +350,8 @@ export const PaymentTable = ({
     endIndex,
     searchQuery,
 }: PaymentTableProps) => {
+  const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
+      const [selectAll, setSelectAll] = useState(false);
     const filteredUsers = payments.filter((payment) => {
         const searchStr = searchQuery.toLowerCase();
         return (
@@ -358,13 +361,36 @@ export const PaymentTable = ({
         );
     });
 
-    const displayedPayments = filteredUsers.slice(startIndex, endIndex);
+  const displayedPayments = filteredUsers.slice(startIndex, endIndex);
+  const handleSelectAll = () => {
+      if (selectAll) {
+          setSelectedUsers([]);
+      } else {
+          setSelectedUsers(filteredUsers.map((user) => user.id));
+      }
+      setSelectAll(!selectAll);
+  };
+
+  const handleSelectUser = (userId: string) => {
+      if (selectedUsers.includes(userId)) {
+          setSelectedUsers(selectedUsers.filter((id) => id !== userId));
+      } else {
+          setSelectedUsers([...selectedUsers, userId]);
+      }
+  };
 
     return (
         <div className="rounded-md">
             <Table>
                 <TableHeader>
                     <TableRow className="bg-[#F9FAFB]">
+                        <TableHead>
+                            <input
+                                type="checkbox"
+                                checked={selectAll}
+                                onChange={handleSelectAll}
+                            />
+                        </TableHead>
                         <TableHead className="text-sm">User ID</TableHead>
                         <TableHead className="text-sm">Name</TableHead>
                         <TableHead className="text-sm">Email</TableHead>
@@ -380,6 +406,15 @@ export const PaymentTable = ({
                 <TableBody>
                     {displayedPayments.map((payment) => (
                         <TableRow key={payment.id} className="text-sm">
+                            <TableCell className="py-4 text-sm">
+                                <input
+                                    type="checkbox"
+                                    checked={selectedUsers.includes(payment.id)}
+                                    onChange={() =>
+                                        handleSelectUser(payment.id)
+                                    }
+                                />
+                            </TableCell>
                             <TableCell className="py-4 text-sm">
                                 <Link
                                     to={`/plan/${payment.id}`}
