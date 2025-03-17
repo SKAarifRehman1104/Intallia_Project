@@ -50,12 +50,7 @@ const menuItems = [
       {
         label: "User  Assignment",
         href: "/user-assignment",
-        subroutes: [
-          {
-            label: "Add User",
-            href: "/add-user",
-          },
-        ],
+
       },
     ],
   },
@@ -123,7 +118,11 @@ export function Sidebar() {
                         <div
                           className={cn(
                             "absolute left-[-16px] w-[16px] border-l-2 border-b-2 h-[24px] border-gray-200",
-                            currentPath === subroute.href && "border-[#0DAFDC]",
+                            (currentPath === subroute.href ||
+                              subroute.subroutes?.some(
+                                (sr) => currentPath === sr.href,
+                              )) &&
+                              "border-[#0DAFDC]",
                           )}
                         />
                         <Link
