@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { TextField } from "./TextField";
 import { SelectField } from "./SelectField";
@@ -22,16 +21,16 @@ export const SimulationForm = () => {
   };
 
   const softwareOptions = [
-    { value: 'excel', label: 'MS Excel' },
-    { value: 'word', label: 'MS Word' },
-    { value: 'sheets', label: 'Google Sheets' },
-    { value: 'docs', label: 'Google Docs' },
-    { value: 'powerpoint', label: 'MS Powerpoint' },
-    { value: 'slides', label: 'Google Slides' },
+    { value: "excel", label: "MS Excel" },
+    { value: "word", label: "MS Word" },
+    { value: "sheets", label: "Google Sheets" },
+    { value: "docs", label: "Google Docs" },
+    { value: "powerpoint", label: "MS Powerpoint" },
+    { value: "slides", label: "Google Slides" },
   ];
 
   return (
-    <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.04)] bg-white w-full pt-[50px] pb-[27px] px-[37px] rounded-[15px]">
+    <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.04)] bg-white w-[1202px] pt-[50px] pb-[27px] px-[37px] rounded-[15px]">
       <div className="flex items-stretch gap-5 flex-wrap justify-between mr-[26px]">
         <h2 className="text-[#242426] text-[28px] font-medium leading-none tracking-[0.36px] my-auto">
           Simulation Details
@@ -71,7 +70,7 @@ export const SimulationForm = () => {
               Unguided
             </span>
           </div>
-          <button 
+          <button
             type="button"
             className="justify-between items-center border border-[color:var(--grey-grey-04,#444446)] flex gap-[40px_68px] text-[17px] text-[#444446] font-medium text-center tracking-[-0.41px] leading-none pl-4 pr-2 py-2 rounded-[48px] border-solid"
           >
@@ -85,7 +84,10 @@ export const SimulationForm = () => {
         </div>
       </div>
 
-      <form className="flex w-full flex-col items-stretch mt-[38px]" onSubmit={handleSubmit}>
+      <form
+        className="flex w-full flex-col items-stretch mt-[38px]"
+        onSubmit={handleSubmit}
+      >
         <TextField label="Simulation Name" required placeholder="Placeholder" />
 
         <TextField
@@ -121,9 +123,9 @@ export const SimulationForm = () => {
 
         <div className="flex w-full items-center gap-[40px_67px] flex-wrap mt-5">
           <SelectField label="Difficulty Level" required className="flex-1" />
-          <SelectField 
-            label="Select Software" 
-            required 
+          <SelectField
+            label="Select Software"
+            required
             className="flex-1"
             options={softwareOptions}
           />
@@ -136,15 +138,15 @@ export const SimulationForm = () => {
           className="mt-5"
         />
 
-        <RichTextEditorField 
-          label="Description" 
-          required 
+        <RichTextEditorField
+          label="Description"
+          required
           onChange={setDescription}
         />
 
         <button
           type="submit"
-          className="bg-[rgba(6,178,225,1)] gap-2.5 text-xl text-white font-semibold text-center tracking-[0.38px] leading-none mt-5 px-8 py-4 rounded-[48px]"
+          className="bg-[rgba(6,178,225,1)] gap-2.5 text-xl text-white font-semibold  text-start tracking-[0.38px] leading-none mt-5 px-8 py-4 rounded-[48px] w-[113px] h-[57px]"
         >
           Save
         </button>

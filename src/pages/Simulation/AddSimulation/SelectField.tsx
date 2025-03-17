@@ -1,4 +1,3 @@
-
 import { SelectHTMLAttributes } from "react";
 
 interface SelectFieldProps extends SelectHTMLAttributes<HTMLSelectElement> {
@@ -35,7 +34,6 @@ export const SelectField = ({
             </option>
           ))}
         </select>
-
       </div>
     </div>
   );

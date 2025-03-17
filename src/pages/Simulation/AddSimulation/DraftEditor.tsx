@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Editor, EditorState } from 'draft-js';
-import 'draft-js/dist/Draft.css';
+import React, { useState, useEffect } from "react";
+import { Editor, EditorState } from "draft-js";
+import "draft-js/dist/Draft.css";
 
 interface DraftEditorProps {
   label: string;
@@ -9,7 +9,12 @@ interface DraftEditorProps {
   defaultValue?: string;
 }
 
-const DraftEditor: React.FC<DraftEditorProps> = ({ label, required, onChange, defaultValue }) => {
+const DraftEditor: React.FC<DraftEditorProps> = ({
+  label,
+  required,
+  onChange,
+  defaultValue,
+}) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   useEffect(() => {
@@ -24,7 +29,9 @@ const DraftEditor: React.FC<DraftEditorProps> = ({ label, required, onChange, de
         <label className="text-[#444446] text-[15px] leading-none tracking-[-0.24px]">
           {label}
         </label>
-        {required && <span className="text-[#FF3A3A] text-sm leading-none">*</span>}
+        {required && (
+          <span className="text-[#FF3A3A] text-sm leading-none">*</span>
+        )}
       </div>
       <Editor editorState={editorState} onEditorStateChange={setEditorState} />
     </div>

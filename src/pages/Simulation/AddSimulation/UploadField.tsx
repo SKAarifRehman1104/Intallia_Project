@@ -1,4 +1,3 @@
-
 import { ChangeEvent, InputHTMLAttributes, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -22,7 +21,7 @@ export const UploadField = ({
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
-    
+
     if (file) {
       // Check file size (limit to 5MB)
       if (file.size > 5 * 1024 * 1024) {
@@ -35,9 +34,9 @@ export const UploadField = ({
       }
 
       setSelectedFile(file);
-      
+
       // Create preview for image files
-      if (file.type.startsWith('image/')) {
+      if (file.type.startsWith("image/")) {
         const reader = new FileReader();
         reader.onload = () => {
           setPreviewUrl(reader.result as string);
@@ -64,7 +63,7 @@ export const UploadField = ({
           <span className="text-[#FF3A3A] text-sm leading-none">*</span>
         )}
       </div>
-      
+
       <label className="cursor-pointer">
         <div className="items-center rounded border border-[color:var(--grey-grey-00,#E5E5EA)] bg-white flex min-h-12 w-full gap-2 text-base text-[#7C7C80] tracking-[-0.32px] leading-none mt-2 px-4 py-3.5 border-solid hover:bg-gray-50 transition-colors">
           <img
@@ -77,9 +76,9 @@ export const UploadField = ({
           </span>
           {previewUrl && (
             <div className="w-8 h-8 rounded overflow-hidden">
-              <img 
-                src={previewUrl} 
-                alt="Preview" 
+              <img
+                src={previewUrl}
+                alt="Preview"
                 className="w-full h-full object-cover"
               />
             </div>

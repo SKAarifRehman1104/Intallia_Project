@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { SelectField } from "./SelectField";
 import { UploadField } from "./UploadField";
@@ -7,7 +6,13 @@ import { TaskForm } from "./TaskForm";
 import { useToast } from "@/hooks/use-toast";
 import { X, Plus, Save } from "lucide-react";
 
-type SoftwareType = "MS Excel" | "MS Word" | "Google Sheets" | "Google Docs" | "MS Powerpoint" | "Google Slides";
+type SoftwareType =
+  | "MS Excel"
+  | "MS Word"
+  | "Google Sheets"
+  | "Google Docs"
+  | "MS Powerpoint"
+  | "Google Slides";
 
 interface Task {
   id: string;
@@ -45,14 +50,18 @@ export const getInitialTaskCounts = (): TaskCounts => ({
 export const SimulationDetails = () => {
   const { toast } = useToast();
   const [sections, setSections] = useState<SoftwareSection[]>([]);
-  const [selectedSoftware, setSelectedSoftware] = useState<SoftwareType | "">("");
-  const [taskCounts, setTaskCounts] = useState<TaskCounts>(getInitialTaskCounts());
+  const [selectedSoftware, setSelectedSoftware] = useState<SoftwareType | "">(
+    "",
+  );
+  const [taskCounts, setTaskCounts] = useState<TaskCounts>(
+    getInitialTaskCounts(),
+  );
 
   // Effect to dispatch task count updates
   useEffect(() => {
     // Dispatch the event to notify Index component
-    const event = new CustomEvent('simulationTaskCountsUpdated', {
-      detail: taskCounts
+    const event = new CustomEvent("simulationTaskCountsUpdated", {
+      detail: taskCounts,
     });
     window.dispatchEvent(event);
   }, [taskCounts]);
@@ -84,7 +93,7 @@ export const SimulationDetails = () => {
 
     setSections([...sections, newSection]);
     setSelectedSoftware("");
-    
+
     toast({
       title: "New section created",
       description: `A new ${selectedSoftware} section has been created successfully`,
@@ -92,19 +101,20 @@ export const SimulationDetails = () => {
   };
 
   const handleRemoveSection = (id: string) => {
-    const sectionToRemove = sections.find(section => section.id === id);
-    
+    const sectionToRemove = sections.find((section) => section.id === id);
+
     if (sectionToRemove) {
       // Update task counts when removing a section
       const updatedCounts = {
         ...taskCounts,
-        [sectionToRemove.software]: taskCounts[sectionToRemove.software] - sectionToRemove.tasks.length
+        [sectionToRemove.software]:
+          taskCounts[sectionToRemove.software] - sectionToRemove.tasks.length,
       };
       setTaskCounts(updatedCounts);
     }
-    
-    setSections(sections.filter(section => section.id !== id));
-    
+
+    setSections(sections.filter((section) => section.id !== id));
+
     toast({
       title: "Section removed",
       description: "The section has been removed successfully",
@@ -112,27 +122,27 @@ export const SimulationDetails = () => {
   };
 
   const handleAddTask = (sectionId: string, task: Task) => {
-    const sectionIndex = sections.findIndex(s => s.id === sectionId);
-    
+    const sectionIndex = sections.findIndex((s) => s.id === sectionId);
+
     if (sectionIndex !== -1) {
       const updatedSections = [...sections];
       const section = updatedSections[sectionIndex];
-      
+
       // Add task to this section
       updatedSections[sectionIndex] = {
         ...section,
-        tasks: [...section.tasks, task]
+        tasks: [...section.tasks, task],
       };
-      
+
       setSections(updatedSections);
-      
+
       // Update the overall task counts for this software type
       const updatedCounts = {
         ...taskCounts,
-        [section.software]: taskCounts[section.software] + 1
+        [section.software]: taskCounts[section.software] + 1,
       };
       setTaskCounts(updatedCounts);
-      
+
       toast({
         title: "Task added",
         description: `A new task has been added to ${section.software} section`,
@@ -141,10 +151,10 @@ export const SimulationDetails = () => {
   };
 
   return (
-    <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.04)] bg-white flex flex-col items-stretch justify-center mt-10 px-[37px] py-[46px] rounded-[15px]">
+    <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.04)] bg-white flex flex-col items-stretch justify-center mt-10 px-[37px] py-[46px] rounded-[15px] w-[1202px]">
       <div className="flex w-full flex-col">
         <div className="w-[1053px] max-w-full">
-          <h2 className="text-[#242426] text-[28px] font-medium leading-none tracking-[0.36px]">
+          <h2 className="text-[#242426] text-[28px] font-medium leading-none tracking-[0.36px] ">
             Simulation Details
           </h2>
           <p className="text-[#7C7C80] text-[17px] font-normal leading-[22px] tracking-[-0.41px] mt-5">
@@ -155,13 +165,15 @@ export const SimulationDetails = () => {
           </p>
         </div>
 
-        <div className="self-stretch flex w-full items-center gap-[40px_41px] font-normal flex-wrap mt-[30px]">
-          <SelectField 
-            label="Select Software" 
-            required 
+        <div className="self-stretch flex w-[1202px] items-center gap-[40px_41px] font-normal flex-wrap mt-[30px] ml-[400px]">
+          <SelectField
+            label="Select Software"
+            required
             className="flex-1"
             value={selectedSoftware}
-            onChange={(e) => setSelectedSoftware(e.target.value as SoftwareType)}
+            onChange={(e) =>
+              setSelectedSoftware(e.target.value as SoftwareType)
+            }
             options={softwareOptions}
           />
 
@@ -184,7 +196,7 @@ export const SimulationDetails = () => {
 
         <button
           type="button"
-          className="bg-[rgba(6,178,225,1)] gap-2.5 text-xl text-white font-semibold text-center tracking-[0.38px] leading-none mt-[30px] px-8 py-4 rounded-[48px]"
+          className="bg-[rgba(6,178,225,1)] gap-2.5 text-xl text-white font-semibold text-start tracking-[0.38px] leading-none mt-[30px] px-8 py-4 rounded-[48px] w-[215px]"
           onClick={handleCreateSection}
         >
           Create Section
@@ -193,7 +205,10 @@ export const SimulationDetails = () => {
         {sections.length > 0 && (
           <div className="mt-8 space-y-6">
             {sections.map((section) => (
-              <div key={section.id} className="rounded-lg overflow-hidden bg-[#F8F8F8] border border-[#E5E5EA]">
+              <div
+                key={section.id}
+                className="rounded-lg overflow-hidden bg-[#F8F8F8] border border-[#E5E5EA]"
+              >
                 <div className="px-4 py-3 bg-[#EFEFEF] flex justify-between items-center">
                   <h4 className="text-[#242426] text-lg font-medium">
                     {section.software}
@@ -205,23 +220,28 @@ export const SimulationDetails = () => {
                     <X size={20} />
                   </button>
                 </div>
-                
+
                 <div className="p-6">
                   {section.tasks.map((task, index) => (
-                    <div key={task.id} className="bg-white mb-4 p-4 rounded-lg border border-[#E5E5EA]">
+                    <div
+                      key={task.id}
+                      className="bg-white mb-4 p-4 rounded-lg border border-[#E5E5EA]"
+                    >
                       <h5 className="font-medium">Task {index + 1}</h5>
-                      <p className="text-sm text-[#7C7C80] mt-2">{task.description}</p>
+                      <p className="text-sm text-[#7C7C80] mt-2">
+                        {task.description}
+                      </p>
                     </div>
                   ))}
-                  
-                  <TaskForm 
-                    sectionId={section.id} 
+
+                  <TaskForm
+                    sectionId={section.id}
                     software={section.software}
                     taskNumber={section.tasks.length + 1}
                     onAddTask={(task) => handleAddTask(section.id, task)}
                   />
                 </div>
-                
+
                 <div className="px-6 py-4 flex justify-between">
                   <button
                     onClick={() => {
@@ -235,7 +255,7 @@ export const SimulationDetails = () => {
                     <Save size={16} />
                     <span>Save</span>
                   </button>
-                  
+
                   <button
                     onClick={() => {
                       // Add a new section with the same software type
@@ -245,7 +265,7 @@ export const SimulationDetails = () => {
                         tasks: [],
                       };
                       setSections([...sections, newSection]);
-                      
+
                       toast({
                         title: "Section added",
                         description: `A new ${section.software} section has been added`,

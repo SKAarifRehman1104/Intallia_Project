@@ -40,7 +40,9 @@ export const RichTextEditorField = ({
         <label className="text-[#444446] text-[15px] leading-none tracking-[-0.24px]">
           {label}
         </label>
-        {required && <span className="text-[#FF3A3A] text-sm leading-none">*</span>}
+        {required && (
+          <span className="text-[#FF3A3A] text-sm leading-none">*</span>
+        )}
       </div>
       <div className="rte-wrapper">
         <ReactQuill
