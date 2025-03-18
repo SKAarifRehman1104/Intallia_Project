@@ -5,14 +5,14 @@ import { SimulationGrid } from "@/pages/Simulation/SimulationGrid/SimulationGrid
 import { MainLayout } from "@/components/layout/MainLayout";
 
 export const Simulation: React.FC = () => {
-    return (
-        <MainLayout>
-            <div className="p-8">
-                <div className="flex w-full max-md:max-w-full">
-                    <Header />
-                </div>
-                <SimulationGrid />
-            </div>
-        </MainLayout>
-    );
+  return (
+    <MainLayout>
+      <div className="p-8">
+        <div className="flex w-full max-md:max-w-full">
+          <Header />
+        </div>
+        <SimulationGrid />
+      </div>
+    </MainLayout>
+  );
 };

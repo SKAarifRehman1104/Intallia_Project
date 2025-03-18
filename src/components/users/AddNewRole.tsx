@@ -39,14 +39,14 @@ export const AddNewRole: FC<AddNewRole> = ({
               key={label}
               className={cn(
                 "flex items-center gap-2.5 cursor-pointer",
-                state ? "text-[#0DAFDC]" : ""
+                state ? "text-[#0DAFDC]" : "",
               )}
               onClick={() => setState(!state)}
             >
               <div
                 className={cn(
                   "flex items-center justify-center w-6 h-6 rounded-sm border",
-                  state ? "bg-[#0DAFDC] border-[#0DAFDC]" : "border-gray-300"
+                  state ? "bg-[#0DAFDC] border-[#0DAFDC]" : "border-gray-300",
                 )}
               >
                 {state && (

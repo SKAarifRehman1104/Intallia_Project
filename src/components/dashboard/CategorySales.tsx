@@ -1,14 +1,14 @@
-import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
 
 const data = [
-  { name: 'Product 1', value: 30 },
-  { name: 'Product 2', value: 25 },
-  { name: 'Product 3', value: 20 },
-  { name: 'Product 4', value: 15 },
-  { name: 'Product 5', value: 10 },
+  { name: "Product 1", value: 30 },
+  { name: "Product 2", value: 25 },
+  { name: "Product 3", value: 20 },
+  { name: "Product 4", value: 15 },
+  { name: "Product 5", value: 10 },
 ];
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8'];
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884d8"];
 
 export function CategorySales() {
   return (
@@ -28,7 +28,10 @@ export function CategorySales() {
               dataKey="value"
             >
               {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
               ))}
             </Pie>
             <Legend />

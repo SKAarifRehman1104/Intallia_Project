@@ -1,10 +1,11 @@
-
 import { useEffect, useState } from "react";
 import { getInitialTaskCounts, TaskCounts } from "./SimulationDetails";
 
 export const ContentSection = () => {
-  const [taskCounts, setTaskCounts] = useState<TaskCounts>(getInitialTaskCounts());
-  
+  const [taskCounts, setTaskCounts] = useState<TaskCounts>(
+    getInitialTaskCounts(),
+  );
+
   // This effect listens for changes to the taskCounts in local storage
   useEffect(() => {
     // Function to update task counts when custom event is fired
@@ -17,10 +18,10 @@ export const ContentSection = () => {
     };
 
     // Listen for the custom event
-    window.addEventListener('taskCountsUpdated', handleStorageUpdate);
-    
+    window.addEventListener("taskCountsUpdated", handleStorageUpdate);
+
     return () => {
-      window.removeEventListener('taskCountsUpdated', handleStorageUpdate);
+      window.removeEventListener("taskCountsUpdated", handleStorageUpdate);
     };
   }, []);
 
@@ -30,43 +31,45 @@ export const ContentSection = () => {
     .map(([software, count]) => ({
       software,
       count,
-      active: true // All items in the filtered list are active
+      active: true, // All items in the filtered list are active
     }));
 
   // If no tasks have counts greater than zero, show a message
   if (softwareItems.length === 0) {
     return (
-      <div className="flex flex-col items-stretch">
-        <h2 className="text-[#242426] text-[28px] font-medium leading-none tracking-[0.36px]">
+      <div className="flex flex-col">
+        <h2 className="text-[#242426] text-[28px] font-medium leading-none tracking-[0.36px] font-plusJakarta">
           Content
         </h2>
-        <div className="mt-[50px] text-[#AEAEB2] text-xl font-medium">
-          No active tasks available. Add tasks to see them here.
-        </div>
+        {/* <div className="mt-[50px] text-[#AEAEB2] text-xl font-medium">
+                  No active tasks available. Add tasks to see them here.
+              </div> */}
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col items-stretch">
-      <h2 className="text-[#242426] text-[28px] font-medium leading-none tracking-[0.36px]">
+    <div className="flex flex-col items-stretch ">
+      <h2 className="text-[#242426] text-[28px] font-medium leading-none tracking-[0.36px]  ">
         Content
       </h2>
-      <div className="flex items-stretch gap-3 mt-[50px]">
+      <div className="flex items-stretch gap-3 mt-[50px] ">
         <div>
           {softwareItems.map((item, index) => (
-            <div 
+            <div
               key={item.software}
-              className={`flex shrink-0 h-[57px] ${index > 0 ? 'mt-7' : ''} bg-[rgba(6,178,225,0.1)]`}
+              className={`flex shrink-0 h-[57px] ${
+                index > 0 ? "mt-7" : ""
+              } bg-[rgba(6,178,225,0.1)]`}
             />
           ))}
         </div>
-        <div className="flex flex-col items-stretch text-xl font-medium tracking-[0.38px] leading-none">
+        <div className="flex flex-col items-stretch text-xl font-medium tracking-[0.38px] leading-none ">
           {softwareItems.map((item, index) => (
             <div key={item.software}>
-              <div className={index > 0 ? 'mt-[27px]' : ''}>
+              <div className={index > 0 ? "mt-[27px]" : ""}>
                 <div className="bg-clip-text bg-[linear-gradient(90deg,#06B2E1_0%,#09CE88_100%)]">
-                  {item.count} {item.count === 1 ? 'Task' : 'Tasks'}
+                  {item.count} {item.count === 1 ? "Task" : "Tasks"}
                 </div>
                 <div className="bg-clip-text bg-[linear-gradient(90deg,#06B2E1_0%,#09CE88_100%)] mt-2">
                   {item.software}

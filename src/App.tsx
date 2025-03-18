@@ -38,7 +38,7 @@ const App = () => (
           <Route path="/simulation" element={<Simulation />} />
           <Route path="/packages" element={<Packages />} />
           <Route path="/user-assignment" element={<UserAssignment />} />
-          <Route path="/add-new-user" element={<AddNewUser />} />   
+          <Route path="/add-new-user" element={<AddNewUser />} />
           <Route path="/new-simulation" element={<AddSimulation />} />
           <Route path="/add-user" element={<AddNewUser />} />
           <Route path="/add-company" element={<AddNewCompany />} />

@@ -1,4 +1,3 @@
-
 import { InputHTMLAttributes } from "react";
 
 interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -7,7 +6,12 @@ interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
 }
 
-export const TextField = ({ label, required, className = "", ...props }: TextFieldProps) => {
+export const TextField = ({
+  label,
+  required,
+  className = "",
+  ...props
+}: TextFieldProps) => {
   return (
     <div className={`flex flex-col items-stretch ${className}`}>
       <div className="flex items-center gap-1">
