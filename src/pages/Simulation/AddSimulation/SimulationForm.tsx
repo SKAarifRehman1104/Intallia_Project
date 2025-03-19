@@ -30,8 +30,8 @@ export const SimulationForm = () => {
   ];
 
   return (
-    <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.04)] bg-white w-[1202px] pt-[50px] pb-[27px] px-[37px] rounded-[15px]">
-      <div className="flex items-stretch gap-5 flex-wrap justify-between mr-[26px]">
+    <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.04)] bg-white w-full pt-[50px] pb-[27px] px-[37px] rounded-[15px] ">
+      <div className="flex items-stretch gap-5 flex-wrap justify-between mr-[26px] ">
         <h2 className="text-[#242426] text-[28px] font-medium leading-none tracking-[0.36px] my-auto">
           Simulation Details
         </h2>

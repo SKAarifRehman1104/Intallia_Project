@@ -102,6 +102,9 @@
     background: linear-gradient(180deg, #0dafdc 0%, #22e9a2 100%);
   }
 
+  .text-gradient{
+    color: linear-gradient(180deg, #0dafdc 0%, #22e9a2 100%)
+  }
   .gradient-border {
     @apply border-2 border-solid rounded-full ring-1;
     border-image: linear-gradient(180deg, #0dafdc 0%, #22e9a2 100%);
@@ -113,6 +116,7 @@
   ::-webkit-scrollbar {
     width: 3px;
   }
+
   ::-webkit-scrollbar-thumb {
     background-color: #cecece;
   }

@@ -50,7 +50,6 @@ const menuItems = [
       {
         label: "User  Assignment",
         href: "/user-assignment",
-
       },
     ],
   },
@@ -58,11 +57,24 @@ const menuItems = [
     icon: BookOpen,
     label: "Simulation",
     href: "/simulation",
+    subroutes: [
+      {
+        label: "Add Simulation",
+        href: "/new-simulation",
+      },
+    ],
   },
+
   {
     icon: Package,
     label: "Plans & Package",
     href: "/plans",
+    subroutes: [
+      {
+        label: "Add Plans",
+        href: "/add-plan",
+      },
+    ],
   },
   {
     icon: CreditCard,
@@ -117,7 +129,7 @@ export function Sidebar() {
                       <div key={idx} className="relative">
                         <div
                           className={cn(
-                            "absolute left-[-16px] w-[16px] border-l-2 border-b-2 h-[24px] border-gray-200",
+                            "absolute left-[-16px] w-[16px] border-l-2 border-b-2 h-[24px] border-gray-300",
                             (currentPath === subroute.href ||
                               subroute.subroutes?.some(
                                 (sr) => currentPath === sr.href,
