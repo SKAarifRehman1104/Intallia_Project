@@ -59,7 +59,7 @@ const menuItems = [
     href: "/simulation",
     subroutes: [
       {
-        label: "Add Simulation",
+        label: "",
         href: "/new-simulation",
       },
     ],
@@ -71,7 +71,7 @@ const menuItems = [
     href: "/plans",
     subroutes: [
       {
-        label: "Add Plans",
+        label: "",
         href: "/add-plan",
       },
     ],
@@ -125,35 +125,38 @@ export function Sidebar() {
 
                 {isActive && item.subroutes && (
                   <div className="mt-2 ml-8 space-y-2">
-                    {item.subroutes.map((subroute, idx) => (
-                      <div key={idx} className="relative">
-                        <div
-                          className={cn(
-                            "absolute left-[-16px] w-[16px] border-l-2 border-b-2 h-[24px] border-gray-300",
-                            (currentPath === subroute.href ||
-                              subroute.subroutes?.some(
-                                (sr) => currentPath === sr.href,
-                              )) &&
-                              "border-[#0DAFDC]",
-                          )}
-                        />
-                        <Link
-                          to={subroute.href}
-                          className={cn(
-                            "flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-700",
-                            currentPath !== subroute.href &&
-                              "hover:bg-gray-50 transition-colors duration-200",
-                            (currentPath === subroute.href ||
-                              subroute.subroutes?.some(
-                                (sr) => currentPath === sr.href,
-                              )) &&
-                              "text-[#0DAFDC] bg-[#0DAFDC10]",
-                          )}
-                        >
-                          {subroute.label}
-                        </Link>
-                      </div>
-                    ))}
+                    {item.subroutes.map(
+                      (subroute, idx) =>
+                        subroute.label && (
+                          <div key={idx} className="relative">
+                            <div
+                              className={cn(
+                                "absolute left-[-16px] w-[16px] border-l-2 border-b-2 h-[24px] border-gray-300",
+                                (currentPath === subroute.href ||
+                                  subroute.subroutes?.some(
+                                    (sr) => currentPath === sr.href,
+                                  )) &&
+                                  "border-[#0DAFDC]",
+                              )}
+                            />
+                            <Link
+                              to={subroute.href}
+                              className={cn(
+                                "flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-700",
+                                currentPath !== subroute.href &&
+                                  "hover:bg-gray-50 transition-colors duration-200",
+                                (currentPath === subroute.href ||
+                                  subroute.subroutes?.some(
+                                    (sr) => currentPath === sr.href,
+                                  )) &&
+                                  "text-[#0DAFDC] bg-[#0DAFDC10]",
+                              )}
+                            >
+                              {subroute.label}
+                            </Link>
+                          </div>
+                        ),
+                    )}
                   </div>
                 )}
               </div>
