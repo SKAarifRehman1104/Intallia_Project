@@ -151,9 +151,9 @@ export const SimulationDetails = () => {
   };
 
   return (
-    <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.04)] bg-white flex flex-col items-stretch justify-center mt-10 px-[37px] py-[46px] rounded-[15px] w-[1202px]">
+    <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.04)] bg-white w-full flex flex-col items-stretch justify-center mt-10 px-[37px] py-[46px] rounded-[15px]">
       <div className="flex w-full flex-col">
-        <div className="w-[1053px] max-w-full">
+        <div className="w-full">
           <h2 className="text-[#242426] text-[28px] font-medium leading-none tracking-[0.36px] ">
             Simulation Details
           </h2>
@@ -165,7 +165,7 @@ export const SimulationDetails = () => {
           </p>
         </div>
 
-        <div className="self-stretch flex w-[1202px] items-center gap-[40px_41px] font-normal flex-wrap mt-[30px] ml-[400px]">
+        <div className="self-stretch flex items-center gap-[40px_41px] font-normal flex-wrap mt-[30px] ml-[400px]">
           <SelectField
             label="Select Software"
             required
