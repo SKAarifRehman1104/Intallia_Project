@@ -44,9 +44,9 @@ const AddSimulation = () => {
 
   return (
     <MainLayout>
-      <div className="bg-[#F8F9FA] flex items-start gap-[35px] overflow-hidden flex-wrap p-8">
+      <div className="bg-[#F8F9FA] flex items-start gap-[35px] overflow-hidden flex-wrap p-8 ">
         <div className="grow shrink-0 basis-0 w-fit max-md:max-w-full">
-          <div className="flex w-full items-stretch  flex-wrap justify-between max-md:max-w-full">
+          <div className="flex items-stretch flex-wrap justify-between w-full">
             <h1 className="page-heading">Create New Simulation</h1>
 
             <div className="flex gap-1.5 flex-wrap max-md:max-w-full">
@@ -57,7 +57,7 @@ const AddSimulation = () => {
                 <button className="border self-stretch my-auto px-4 py-2 rounded-[48px] border-[rgba(6,178,225,1)] border-solid">
                   Save & Exit
                 </button>
-                <button className="border self-stretch whitespace-nowrap my-auto px-4 py-2 rounded-[48px] border-[rgba(6,178,225,1)] border-solid">
+                <button className="border self-stretch whitespace-nowrap my-auto px-4 py-2 rounded-[48px] border-[rgb(6,178,225)] border-solid">
                   Save
                 </button>
                 <button className="border border-[color:var(--alerts-red,#FF3A3A)] self-stretch text-[#FF3A3A] whitespace-nowrap my-auto px-4 py-2 rounded-[48px] border-solid">
@@ -82,12 +82,12 @@ const AddSimulation = () => {
             </div>
           </div>
 
-          <div className="flex w-full max-md:flex-wrap justify-between mt-16 max-md:max-w-full max-md:mt-10">
+          <div className="flex w-full max-md:flex-wrap justify-between mt-16 max-md:mt-10">
             <div className="w-full lg:w-1/4">
               <ContentSection />
             </div>
 
-            <div className="mt-1.5 w-full lg:w-3/4">
+            <div className="mt-1.5  lg:w-3/4  ">
               <SimulationForm />
               <SimulationDetails />
             </div>

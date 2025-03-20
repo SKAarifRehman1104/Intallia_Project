@@ -13,9 +13,9 @@ export const AddSimulationCard: React.FC = () => {
       onClick={handleClick}
       className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.04)] bg-white flex flex-col items-center justify-center text-[22px] text-[#242426] font-medium tracking-[0.36px] leading-[28px] w-[225px] h-[260px] px-3 py-4 rounded-[15px]"
     >
-      <div className="bg-[linear-gradient(90deg,#0DAFDC_0%,#22E9A2_100%)] flex w-[100px] shrink-0 h-[100px] rounded-[2500px]">
+      <div className="bg-[#06B2E1] flex w-[100px] shrink-0 h-[100px] rounded-[2500px]">
         <svg
-          className="m-auto"
+          className="m-auto text-[#444446] "
           width="40"
           height="40"
           viewBox="0 0 24 24"

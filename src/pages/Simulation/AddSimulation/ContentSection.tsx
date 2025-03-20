@@ -54,6 +54,7 @@ export const ContentSection = () => {
         Content
       </h2>
       <div className="flex items-stretch gap-3 mt-[50px] ">
+
         <div>
           {softwareItems.map((item, index) => (
             <div
