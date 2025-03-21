@@ -66,7 +66,7 @@ export const RoleForm: FC = () => {
         <div className="flex flex-col items-stretch grow shrink-0 basis-0 w-fit">
           <h1 className="page-heading">Add New Role</h1>
           <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.02)] bg-white flex items-stretch gap-5 flex-wrap justify-between mt-[30px] p-[31px] rounded-[15px] h-[88vh] sticky top-0 overflow-y-scroll">
-            <div className="max-md:max-w-full xl:w-[70%]">
+            <div className="max-md:max-w-full xl:w-[69%]">
               <form className="w-full font-normal max-md:max-w-full">
                 <div className="flex w-full gap-10 flex-wrap max-md:max-w-full">
                   <div className="flex min-w-60 flex-col items-stretch flex-1 shrink basis-[0%] max-md:max-w-full">
@@ -304,7 +304,7 @@ export const RoleForm: FC = () => {
                             <SearchBar className="xl:w-[1/5]" />
 
                             <div className="flex w-[202px] max-w-full flex-col items-stretch text-base text-center tracking-[-0.32px] leading-none justify-center mt-[49px] space-y-5 max-md:mt-10">
-                                
+
                                 <GradientButton
                                     variant="primary"
                                     className="px-8 py-4"

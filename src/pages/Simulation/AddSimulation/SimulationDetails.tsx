@@ -151,7 +151,7 @@ export const SimulationDetails = () => {
   };
 
   return (
-    <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.04)] bg-white w-full flex flex-col items-stretch justify-center mt-10 px-[37px] py-[46px] rounded-[15px]">
+    <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.04)] bg-white w-[90%] flex flex-col items-stretch justify-center mt-10 px-[37px] py-[46px] rounded-[15px]">
       <div className="flex w-full flex-col">
         <div className="w-full">
           <h2 className="text-[#242426] text-[28px] font-medium leading-none tracking-[0.36px] ">
@@ -165,11 +165,11 @@ export const SimulationDetails = () => {
           </p>
         </div>
 
-        <div className="self-stretch flex items-center gap-[40px_41px] font-normal flex-wrap mt-[30px] ml-[400px]">
+        <div className="self-stretch flex items-center gap-[40px_41px] font-normal flex-wrap mt-[30px]  ">
           <SelectField
             label="Select Software"
             required
-            className="flex-1"
+            className="flex-1 w-[250px]"
             value={selectedSoftware}
             onChange={(e) =>
               setSelectedSoftware(e.target.value as SoftwareType)
@@ -183,6 +183,7 @@ export const SimulationDetails = () => {
             icon="https://cdn.builder.io/api/v1/image/assets/d6885eedf052436eac8c331fe6a68cb8/1c304427fca5f42895e6397e016eaaa454443eed82724c05d714aaa887b33e39?placeholderIfAbsent=true"
             placeholder="Upload"
             accept=".pdf,.doc,.docx,.xls,.xlsx"
+            className="w-[247px]"
           />
 
           <UploadField
@@ -191,6 +192,7 @@ export const SimulationDetails = () => {
             icon="https://cdn.builder.io/api/v1/image/assets/d6885eedf052436eac8c331fe6a68cb8/35e4a924501edc645cf40e324b54fd6d577032055217641815c1e0737c31f635?placeholderIfAbsent=true"
             placeholder="Upload JSON"
             accept=".json"
+            className="w-[247px]"
           />
         </div>
 
@@ -228,7 +230,7 @@ export const SimulationDetails = () => {
                       className="bg-white mb-4 p-4 rounded-lg border border-[#E5E5EA]"
                     >
                       <h5 className="font-medium">Task {index + 1}</h5>
-                      <p className="text-sm text-[#7C7C80] mt-2">
+                      <p className="text-sm text-[#7C7C80] mt-2 ">
                         {task.description}
                       </p>
                     </div>

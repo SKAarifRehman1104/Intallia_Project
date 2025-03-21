@@ -6,6 +6,7 @@ interface UploadFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   required?: boolean;
   icon: string;
   placeholder?: string;
+  className?: string;
 }
 
 export const UploadField = ({
@@ -13,6 +14,7 @@ export const UploadField = ({
   required,
   icon,
   placeholder = "Upload",
+  className,
   ...props
 }: UploadFieldProps) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -54,7 +56,7 @@ export const UploadField = ({
   };
 
   return (
-    <div className="flex flex-col items-stretch">
+    <div className={`flex flex-col items-stretch ${className}`}>
       <div className="flex items-center gap-1">
         <label className="text-[#444446] text-[15px] leading-none tracking-[-0.24px]">
           {label}

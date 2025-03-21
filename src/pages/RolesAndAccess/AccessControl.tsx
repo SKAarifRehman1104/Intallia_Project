@@ -21,7 +21,7 @@ export const AccessControl: FC<AccessControl> = ({
   return (
     <div className="justify-between items-center border border-[#E5E5EA] flex w-full gap-5 px-4 py-2 rounded-[5px] border-solid">
       <div className="flex items-center justify-between w-[375px] max-w-full">
-        <div className="text-base text-[#242426] font-medium tracking-[-0.32px] leading-none">
+        <div className="text-sm text-[#242426] font-normal tracking-[-0.32px] leading-none">
           {title}
         </div>
         {/* <Toggle enabled={enabled} onToggle={onToggle} /> */}
@@ -39,7 +39,7 @@ export const AccessControl: FC<AccessControl> = ({
           >
             <div
               className={cn(
-                "flex items-center justify-center w-6 h-6 rounded-sm border",
+                "flex items-center  justify-center w-6 h-6 rounded-sm border",
                 viewOnly ? "bg-[#06B2E1] border-[#06B2E1]" : "border-gray-300",
               )}
             >
@@ -58,7 +58,7 @@ export const AccessControl: FC<AccessControl> = ({
                 </svg>
               )}
             </div>
-            <div>View Only</div>
+            <div className="text-sm">View Only</div>
           </div>
 
           <div
@@ -89,7 +89,7 @@ export const AccessControl: FC<AccessControl> = ({
                 </svg>
               )}
             </div>
-            <div>Edit</div>
+            <div className="text-sm ">Edit</div>
           </div>
 
           <div
@@ -120,7 +120,7 @@ export const AccessControl: FC<AccessControl> = ({
                 </svg>
               )}
             </div>
-            <div>Delete</div>
+            <div className="text-sm">Delete</div>
           </div>
         </div>
       )}
