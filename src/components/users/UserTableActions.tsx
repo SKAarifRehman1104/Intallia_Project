@@ -2,13 +2,17 @@ import { ActionButton } from "@/components/common/ActionButton";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ChevronDown, Download, Search } from "lucide-react";
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+import AssignSimulationForm from "@/pages/Simulation/AssignSimulation/AssignSimulationForm";
 
 interface UserTableActionsProps {
   onSearch: (query: string) => void;
 }
 
 export const UserTableActions = ({ onSearch }: UserTableActionsProps) => {
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -59,7 +63,7 @@ export const UserTableActions = ({ onSearch }: UserTableActionsProps) => {
           </ActionButton>
         )}
 
-        {location.pathname === "/user-assignment" && (
+        {/* {location.pathname === "/user-assignment" && (
           <ActionButton
             variant="primary"
             className="h-9 px-4"
@@ -67,7 +71,26 @@ export const UserTableActions = ({ onSearch }: UserTableActionsProps) => {
           >
             Assign Simulation
           </ActionButton>
+        )} */}
+
+        {location.pathname === "/user-assignment" && (
+          <Dialog open={isOpen} onOpenChange={setIsOpen}>
+            <DialogTrigger asChild>
+              <ActionButton
+                variant="primary"
+                className="h-9 px-4"
+                onClick={() => setIsOpen(true)}
+              >
+                Assign Simulation
+              </ActionButton>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[800px] p-0 border-none bg-transparent shadow-none">
+              <AssignSimulationForm onClose={() => setIsOpen(false)} />
+            </DialogContent>
+          </Dialog>
         )}
+
+
 
         {location.pathname === "/roles" && (
           <ActionButton
