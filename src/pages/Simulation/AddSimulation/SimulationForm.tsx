@@ -30,7 +30,7 @@ export const SimulationForm = () => {
   ];
 
   return (
-    <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.04)] bg-white w-full pt-[50px] pb-[27px] px-[37px] rounded-[15px] ">
+    <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.04)] bg-white w-[90%] pt-[50px] pb-[27px] px-[37px] rounded-[15px] ">
       <div className="flex items-stretch gap-5 flex-wrap justify-between mr-[26px] ">
         <h2 className="text-[#242426] text-[28px] font-medium leading-none tracking-[0.36px] my-auto">
           Simulation Details
@@ -104,6 +104,7 @@ export const SimulationForm = () => {
             icon="https://cdn.builder.io/api/v1/image/assets/d6885eedf052436eac8c331fe6a68cb8/4f4c37bf79ac39c63cfd3f17512a0d4b2cc7f5dd8775a1f5e2820849e33251f4?placeholderIfAbsent=true"
             placeholder="Upload Image"
             accept="image/*"
+            className="w-[258px]"
           />
           <UploadField
             label="CTA Image"
@@ -111,6 +112,7 @@ export const SimulationForm = () => {
             icon="https://cdn.builder.io/api/v1/image/assets/d6885eedf052436eac8c331fe6a68cb8/09e525f7fd5c650a63b5a7eb7cf1817612637b63dbbb02ff315c1de45ce98861?placeholderIfAbsent=true"
             placeholder="Upload Image"
             accept="image/*"
+            className="w-[258px]"
           />
           <UploadField
             label="Card Image"
@@ -118,15 +120,21 @@ export const SimulationForm = () => {
             icon="https://cdn.builder.io/api/v1/image/assets/d6885eedf052436eac8c331fe6a68cb8/bed87d6a4dc002519dad27c2456b96bf200e2c334181b0911b2f0b69d2941a8f?placeholderIfAbsent=true"
             placeholder="Upload Image"
             accept="image/*"
+            className="w-[256px]"
           />
         </div>
 
         <div className="flex w-full items-center gap-[40px_67px] flex-wrap mt-5">
-          <SelectField label="Difficulty Level" required className="flex-1" />
+          <SelectField
+            label="Difficulty Level"
+            required
+            className="flex-1 w-[362px]"
+          />
+
           <SelectField
             label="Select Software"
             required
-            className="flex-1"
+            className="flex-1 w-[362px]"
             options={softwareOptions}
           />
         </div>
@@ -135,7 +143,7 @@ export const SimulationForm = () => {
           label="Tags"
           required
           defaultValue="English, Communication"
-          className="mt-5"
+          className="mt-5 "
         />
 
         <RichTextEditorField
