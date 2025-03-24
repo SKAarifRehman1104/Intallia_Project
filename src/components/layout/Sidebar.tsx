@@ -168,7 +168,9 @@ export function Sidebar() {
       <div className="absolute bottom-8 w-full px-6">
         <div className="flex items-center gap-3 px-3 py-4 border-t border-sidebar-border">
           <div className="w-10 h-10 rounded-full bg-sidebar-accent overflow-hidden">
-            <img src={userlogo} alt="Sample Image" className="w-full" />
+            <Link to="/profile">
+              <img src={userlogo} alt="Sample Image" className="w-full" />
+            </Link>
           </div>
           <div>
             <p className="font-medium text-sidebar-foreground">John Watson</p>
