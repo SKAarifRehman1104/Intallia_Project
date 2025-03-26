@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { FaRegEnvelope } from "react-icons/fa6";
 import { cn } from "@/lib/utils";
 import {
   LayoutDashboard,
@@ -75,6 +76,11 @@ const menuItems = [
         href: "/add-plan",
       },
     ],
+  },
+  {
+    icon: FaRegEnvelope,
+    label: "invitations",
+    href: "/invitations",
   },
   {
     icon: CreditCard,

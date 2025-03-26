@@ -16,6 +16,7 @@ import { AddNewRole } from "@/components/users/AddNewRole";
 import Packages from "./pages/Packages/Packages";
 import { AddNewPackage } from "./pages/Packages/AddNewPackage";
 import { ViewPackage } from "./pages/Packages/ViewPackage";
+import { Invitations } from "./components/Invitations/Invitations";
 import Payments from "./pages/Payments/Payments";
 import UserAssignment from "./pages/UserAssignment/UserAssignment";
 import AddSimulation from "./pages/Simulation/AddSimulation/AddSimulation";
@@ -48,6 +49,7 @@ const App = () => (
           <Route path="/plan/:id" element={<ViewPackage />} />
           <Route path="/payments" element={<Payments />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/invitations" element={<Invitations />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
