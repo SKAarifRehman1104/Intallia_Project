@@ -133,7 +133,6 @@ const InvitationsTable = ({
                 onChange={handleSelectAll}
               />
             </TableHead>
-            {/* <TableHead className="text-sm ">User ID</TableHead> */}
             <TableHead className="text-sm font-plusJakarta">User Id</TableHead>
             <TableHead className="text-sm">Candidate Name</TableHead>
             <TableHead className="text-sm">Simulation Assigned</TableHead>
@@ -190,7 +189,6 @@ const InvitationsTable = ({
                       </Button>
                     </TooltipTrigger>
                     <TooltipContent
-
                       side="right"
                       className="w-[175.61px] h-[110px] border-[#D1D1D6] mt-20"
                     >
@@ -201,13 +199,12 @@ const InvitationsTable = ({
                       ? "bg-[#ECFDF3] text-[#23C16B]"
                       : "bg-[#FEF3F2] text-[#FF3A3A]"
                   } */}
-                       <div className="w-[164px] h-[86px] top-[228px] left-[1648.08px]">
+                      <div className="w-[164px] h-[86px] top-[228px] left-[1648.08px]">
                         <p className=" leading-[18px] font-plusJakarta  text-[#444446] pt-3 pb-2">
                           View
                         </p>
-                        <hr/>
+                        <hr />
                         <p className=" leading-[18px] font-plusJakarta  text-[#444446] tracking-[-0.08px] font-medium py-2">
-
                           View score board
                         </p>
                         <hr />
