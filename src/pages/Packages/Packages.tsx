@@ -5,6 +5,7 @@ import { UserTable } from "@/components/users/UserTable";
 import { UserTableActions } from "@/components/users/UserTableActions";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { users } from "@/data/users";
 
 const Packages = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Packages = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const usersPerPage = 8;
-  const totalPages = 10;
+  const totalPages = Math.ceil(users.length / usersPerPage); // Ensure correct pagination
 
   const startIndex = (currentPage - 1) * usersPerPage;
   const endIndex = startIndex + usersPerPage;

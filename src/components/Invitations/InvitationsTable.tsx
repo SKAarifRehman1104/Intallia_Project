@@ -151,21 +151,12 @@ const InvitationsTable = ({
                   onChange={() => handleSelectPlan(plan.id)}
                 />
               </TableCell>
-              {/* <TableCell className="py-4 text-sm">
-                                <Link
-                                    to={`/plan/${plan.id}`}
-                                    className="text-blue-600"
-                                >
-                                    {plan.id}
-                                </Link>
-                            </TableCell> */}
+
               <TableCell className="py-2 text-sm">{plan.packageName}</TableCell>
               <TableCell className="py-2 text-sm">{plan.validity}</TableCell>
               <TableCell className="py-2 text-sm">{plan.price}</TableCell>
               <TableCell className="py-2 text-sm">{plan.activeUsers}</TableCell>
-              {/* <TableCell className="py-4 text-blue-600 text-sm">
-                                {plan.status}
-                            </TableCell> */}
+
               <TableCell className="py-4 text-sm">
                 <Badge
                   variant={"secondary"}
@@ -178,8 +169,7 @@ const InvitationsTable = ({
                   {plan.status}
                 </Badge>
               </TableCell>
-              {/* <TableCell className="py-4 text-sm flex items-center gap-1"> */}
-              {/* <div className="  rounded-full flex items-center gap-1"> */}
+
               <TableCell className="py-4 text-sm flex items-center gap-1">
                 <TooltipProvider>
                   <Tooltip>
@@ -192,13 +182,6 @@ const InvitationsTable = ({
                       side="right"
                       className="w-[175.61px] h-[110px] border-[#D1D1D6] mt-20"
                     >
-                      {/* <Badge
-                  variant={"secondary"}
-                  className={
-                    plan.status === "Simulation Attended"
-                      ? "bg-[#ECFDF3] text-[#23C16B]"
-                      : "bg-[#FEF3F2] text-[#FF3A3A]"
-                  } */}
                       <div className="w-[164px] h-[86px] top-[228px] left-[1648.08px]">
                         <p className=" leading-[18px] font-plusJakarta  text-[#444446] pt-3 pb-2">
                           View
@@ -213,11 +196,8 @@ const InvitationsTable = ({
                         </p>
                       </div>
                     </TooltipContent>
-                    {/* </TableCell> */}
                   </Tooltip>
                 </TooltipProvider>
-                {/* {plan.invoice}
-                </div> */}
               </TableCell>
             </TableRow>
           ))}
