@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { users } from "@/data/users";
 
+
 const Packages = () => {
   const navigate = useNavigate();
 
@@ -24,7 +25,7 @@ const Packages = () => {
         <main className="flex-1 p-8">
           <div className="space-y-6">
             <div className="flex justify-between items-center">
-              <h1 className="page-heading">Package</h1>
+              <h1 className="page-heading">Packages</h1>
             </div>
 
             <UserTableActions onSearch={setSearchQuery} />
