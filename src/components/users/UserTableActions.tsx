@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 import AssignSimulationForm from "@/pages/Simulation/AssignSimulation/AssignSimulationForm";
-
+// import { users } from "@/data/users";
 interface UserTableActionsProps {
   onSearch: (query: string) => void;
 }

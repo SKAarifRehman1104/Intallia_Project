@@ -5,6 +5,7 @@ import { UserTable } from "@/components/users/UserTable";
 import { UserTableActions } from "@/components/users/UserTableActions";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { users } from "@/data/users";
 
 const UserManagement = () => {
   const navigate = useNavigate();
@@ -12,18 +13,10 @@ const UserManagement = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const usersPerPage = 8;
-  const totalPages = 10;
-
-  // const handlePrevious = () => {
-  //   setCurrentPage((prev) => Math.max(1, prev - 1));
-  // };
-
-  // const handleNext = () => {
-  //   setCurrentPage((prev) => Math.min(totalPages, prev + 1));
-  // };
+  const totalPages = Math.ceil(users.length / usersPerPage); // Ensure correct pagination
 
   const startIndex = (currentPage - 1) * usersPerPage;
-  const endIndex = startIndex + usersPerPage;
+  const endIndex = Math.min(startIndex + usersPerPage);
 
   return (
     <MainLayout>
@@ -32,13 +25,6 @@ const UserManagement = () => {
           <div className="space-y-6">
             <div className="flex justify-between items-center">
               <h1 className="page-heading">User Management (Users)</h1>
-              {/* <ActionButton
-                                variant="primary"
-                                onClick={() => navigate("/add-user")}
-                                
-                            >
-                                Add New User
-                            </ActionButton> */}
             </div>
 
             <UserTableActions onSearch={setSearchQuery} />
@@ -49,45 +35,6 @@ const UserManagement = () => {
                 searchQuery={searchQuery}
               />
 
-              {/* <div className="flex items-center justify-center space-x-2">
-                          <Button
-                              variant="outline"
-                              className="gap-2 .pre-button"
-                              onClick={handlePrevious}
-                              disabled={currentPage === 1}
-                          >
-                              Previous
-                          </Button>
-
-                          {[1, 2, 3, "...", 8, 9, 10].map((page, i) => (
-                              <Button
-                                  key={i}
-                                  variant={
-                                      page === currentPage
-                                          ? "default"
-                                          : "outline"
-                                  }
-                                  className="w-10 h-10 p-0"
-                                  onClick={() => {
-                                      if (typeof page === "number") {
-                                          setCurrentPage(page);
-                                      }
-                                  }}
-                                  disabled={typeof page !== "number"}
-                              >
-                                  {page}
-                              </Button>
-                          ))}
-
-                          <Button
-                              variant="outline"
-                              className="gap-2"
-                              onClick={handleNext}
-                              disabled={currentPage === totalPages}
-                          >
-                              <div className=""> Next</div>
-                          </Button>
-                      </div> */}
               <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}
