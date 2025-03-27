@@ -90,8 +90,6 @@ export const UserTableActions = ({ onSearch }: UserTableActionsProps) => {
           </Dialog>
         )}
 
-
-
         {location.pathname === "/roles" && (
           <ActionButton
             variant="primary"
@@ -102,11 +100,11 @@ export const UserTableActions = ({ onSearch }: UserTableActionsProps) => {
           </ActionButton>
         )}
 
-        {location.pathname === "/plans" && (
+        {location.pathname === "/packages" && (
           <ActionButton
             variant="primary"
             className="h-9 px-4"
-            onClick={() => navigate("/add-plan")}
+            onClick={() => navigate("/packages")}
           >
             Add New Package
           </ActionButton>

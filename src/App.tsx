@@ -13,7 +13,10 @@ import { AddNewCompany } from "./components/users/AddNewCompany";
 import { RoleForm } from "@/pages/RolesAndAccess/RoleForm";
 import { Simulation } from "./pages/Simulation/Simulation";
 import { AddNewRole } from "@/components/users/AddNewRole";
-import Packages from "./pages/Packages/Packages";
+import Packages from "@/pages/Packages/Packages";
+import Plans from "@/pages/Packages/Plans";
+
+import { DataScience } from "./pages/Packages/DataScience";
 import { AddNewPackage } from "./pages/Packages/AddNewPackage";
 import { ViewPackage } from "./pages/Packages/ViewPackage";
 import { Invitations } from "./components/Invitations/Invitations";
@@ -44,9 +47,10 @@ const App = () => (
           <Route path="/add-user" element={<AddNewUser />} />
           <Route path="/add-company" element={<AddNewCompany />} />
           <Route path="/add-role" element={<RoleForm />} />
-          <Route path="/plans" element={<Packages />} />
-          <Route path="/add-plan" element={<AddNewPackage />} />
-          <Route path="/plan/:id" element={<ViewPackage />} />
+          <Route path="/plans" element={<Plans />} />
+          <Route path="/packages" element={<Packages />} />
+          <Route path="/add-package" element={<AddNewPackage />} />
+          <Route path="/package/:id" element={<ViewPackage />} />
           <Route path="/payments" element={<Payments />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/invitations" element={<Invitations />} />
