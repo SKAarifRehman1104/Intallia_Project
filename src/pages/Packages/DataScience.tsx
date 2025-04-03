@@ -2,7 +2,7 @@ import React from "react";
 import SidebarActions from "@/components/users/SidebarActions";
 import { MainLayout } from "@/components/layout/MainLayout";
 
-export const AddNewPackage: React.FC = () => {
+export const DataScience: React.FC = () => {
   const handleAddNewPackage = () => {
     console.log("Add New Company clicked");
   };
@@ -41,7 +41,7 @@ export const AddNewPackage: React.FC = () => {
     <MainLayout>
       <div className="bg-[#F8F9FA] flex items-start gap-[35px] overflow-hidden flex-wrap p-8">
         <div className="flex flex-col items-stretch grow shrink-0 basis-0 w-fit">
-          <h1 className="page-heading">Add New Package</h1>
+          <h1 className="page-heading">Data Science</h1>
 
           <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.02)] bg-white flex items-stretch gap-5 flex-wrap justify-between mt-[30px] px-[45px] py-[31px] rounded-[15px]  h-[88vh] sticky top-0 overflow-y-scroll">
             <div className="flex font-plusJakarta  flex-col gap-5 overflow-y-auto">

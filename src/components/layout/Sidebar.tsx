@@ -72,11 +72,28 @@ const menuItems = [
     href: "/plans",
     subroutes: [
       {
-        label: "",
-        href: "/add-plan",
+        label: "Plans",
+        href: "/plans",
+      },
+      {
+        label: "Package",
+        href: "/packages",
       },
     ],
   },
+
+  // {
+  //   icon: "",
+  //   label: "",
+  //   href: "/plans",
+  //   subroutes: [
+  //     {
+  //       label: "plans",
+  //       href: "/plan",
+  //     },
+  //   ],
+  // },
+
   {
     icon: FaRegEnvelope,
     label: "invitations",

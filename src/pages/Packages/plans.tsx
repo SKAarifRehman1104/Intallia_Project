@@ -7,21 +7,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { users } from "@/data/users";
 
-const CompanyManagement = () => {
+
+const Plans = () => {
   const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const usersPerPage = 8;
-  const totalPages = Math.ceil(users.length / usersPerPage);
-
-  //   const handlePrevious = () => {
-  //     setCurrentPage((prev) => Math.max(1, prev - 1));
-  //   };
-
-  //   const handleNext = () => {
-  //     setCurrentPage((prev) => Math.min(totalPages, prev + 1));
-  //   };
+  const totalPages = Math.ceil(users.length / usersPerPage); // Ensure correct pagination
 
   const startIndex = (currentPage - 1) * usersPerPage;
   const endIndex = startIndex + usersPerPage;
@@ -32,7 +25,7 @@ const CompanyManagement = () => {
         <main className="flex-1 p-8">
           <div className="space-y-6">
             <div className="flex justify-between items-center">
-              <h1 className="page-heading ">User Management (Company)</h1>
+              <h1 className="page-heading">Plans</h1>
             </div>
 
             <UserTableActions onSearch={setSearchQuery} />
@@ -42,6 +35,7 @@ const CompanyManagement = () => {
                 endIndex={endIndex}
                 searchQuery={searchQuery}
               />
+
               <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}
@@ -55,4 +49,4 @@ const CompanyManagement = () => {
   );
 };
 
-export default CompanyManagement;
+export default Plans;
