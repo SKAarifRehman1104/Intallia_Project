@@ -104,6 +104,11 @@ const menuItems = [
     label: "Payments",
     href: "/payments",
   },
+  {
+    icon: CreditCard,
+    label: "Skill Matrix",
+    href: "/skill-matrix",
+  },
 ];
 
 export function Sidebar() {

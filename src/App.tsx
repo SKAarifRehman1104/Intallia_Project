@@ -14,7 +14,7 @@ import { RoleForm } from "@/pages/RolesAndAccess/RoleForm";
 import { Simulation } from "./pages/Simulation/Simulation";
 import { AddNewRole } from "@/components/users/AddNewRole";
 import Packages from "@/pages/Packages/Packages";
-import Plans from "@/pages/Packages/Plans";
+import Plans from "@/pages/Packages/plans";
 
 import { DataScience } from "./pages/Packages/DataScience";
 import { AddNewPackage } from "./pages/Packages/AddNewPackage";
@@ -24,6 +24,7 @@ import Payments from "./pages/Payments/Payments";
 import UserAssignment from "./pages/UserAssignment/UserAssignment";
 import AddSimulation from "./pages/Simulation/AddSimulation/AddSimulation";
 import Profile from "./components/Profile/Profile";
+import SkillMatrix from "./pages/SkillMatrix/SkillMatrix";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +53,7 @@ const App = () => (
           <Route path="/add-package" element={<AddNewPackage />} />
           <Route path="/package/:id" element={<ViewPackage />} />
           <Route path="/payments" element={<Payments />} />
+          <Route path="/skill-matrix" element={<SkillMatrix />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/invitations" element={<Invitations />} />
           <Route path="*" element={<NotFound />} />
