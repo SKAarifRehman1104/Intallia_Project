@@ -31,10 +31,10 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
           type="text"
           value={searchValue}
           placeholder="Search skills or candidates"
-          className="pl-10 pr-10 py-2 w-full rounded-lg border border-[#E5E5EA] bg-white text-[15px]"
+          className="pl-10 pr-10 py-5 w-full rounded-lg border border-[#E5E5EA] bg-white text-[15px]"
           onChange={handleChange}
         />
-        <button 
+        <button
           type="submit"
           className="absolute inset-y-0 right-0 flex items-center pr-3 text-sm font-medium text-blue-500 hover:text-blue-700"
         >

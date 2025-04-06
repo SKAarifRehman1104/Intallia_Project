@@ -20,9 +20,9 @@ const Packages = () => {
   const endIndex = startIndex + usersPerPage;
 
   return (
-    <MainLayout>
+    <MainLayout  className="p-8">
       <div className="flex min-h-screen bg-background">
-        <main className="flex-1 p-8">
+        <main className="flex-1 ">
           <div className="space-y-6">
             <div className="flex justify-between items-center">
               <h1 className="page-heading">Packages</h1>

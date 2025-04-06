@@ -24,14 +24,13 @@ const candidatesData = [
   { name: "Candidate B", skills: defaultSkills },
   { name: "Candidate C", skills: defaultSkills },
   { name: "Candidate D", skills: defaultSkills },
-  { name: "Candidate E", skills: defaultSkills },
-  { name: "Candidate F", skills: defaultSkills },
-  { name: "Candidate G", skills: defaultSkills },
-  { name: "Candidate H", skills: defaultSkills.slice(0, 9) },
+  { name: "Candidate A", skills: defaultSkills },
+  { name: "Candidate B", skills: defaultSkills },
+  { name: "Candidate C", skills: defaultSkills },
+  { name: "Candidate D", skills: defaultSkills.slice(0, 9) },
 ];
 
 const SkillMatrix = () => {
-
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = (value: string) => {
@@ -42,75 +41,82 @@ const SkillMatrix = () => {
   const filteredCandidates = useMemo(() => {
     if (!searchQuery.trim()) return candidatesData;
 
-    return candidatesData.filter(candidate => {
+    return candidatesData.filter((candidate) => {
       // Check if name matches
       if (candidate.name.toLowerCase().includes(searchQuery.toLowerCase())) {
         return true;
       }
 
       // Check if any skill name matches
-      return candidate.skills.some(skill =>
-        skill.name.toLowerCase().includes(searchQuery.toLowerCase())
+      return candidate.skills.some((skill) =>
+        skill.name.toLowerCase().includes(searchQuery.toLowerCase()),
       );
     });
   }, [searchQuery]);
 
-
   return (
     <MainLayout>
-      <h1 className="text-[#444446] text-[28px] font-medium leading-none tracking-[0.36px]">
-        Skill Matrix
-      </h1>
+      <div className="flex min-h-screen bg-background">
+        <main className="flex-1 p-8">
+          <div className="space-y-6">
+            <div className="flex justify-between items-center">
+              <h1 className="page-heading">Skill Matrix</h1>
+            </div>
 
-      <div className="flex w-full gap-5 flex-wrap justify-between mt-[30px] max-md:max-w-full">
-        <div className="flex items-stretch gap-3.5 text-[17px] font-medium text-center tracking-[-0.41px] leading-none flex-wrap max-md:max-w-full">
-          <FilterButton
-            text="Download PDF"
-            icon="https://cdn.builder.io/api/v1/image/assets/d6885eedf052436eac8c331fe6a68cb8/b8cc731d2f8ae47e26e6f8f049e9634298b2407c?placeholderIfAbsent=true"
-          />
-          <FilterButton
-            text="Export To Excel"
-            icon="https://cdn.builder.io/api/v1/image/assets/d6885eedf052436eac8c331fe6a68cb8/5d00ff1bc077944bbd10cd8c4044e6f4225d082a?placeholderIfAbsent=true"
-          />
-          <FilterButton
-            text="Filter By"
-            icon="https://cdn.builder.io/api/v1/image/assets/d6885eedf052436eac8c331fe6a68cb8/810454ad8ea04a3bcb5bb799216e910c359d5640?placeholderIfAbsent=true"
-            variant="secondary"
-          />
-          <FilterButton
-            text="Choose Simulation"
-            icon="https://cdn.builder.io/api/v1/image/assets/d6885eedf052436eac8c331fe6a68cb8/810454ad8ea04a3bcb5bb799216e910c359d5640?placeholderIfAbsent=true"
-            variant="secondary"
-          />
-        </div>
+            <div className="flex w-full gap-5 flex-wrap justify-between  max-md:max-w-full  ">
+              <div className=" flex items-stretch gap-3.5 text-[17px] font-medium text-center tracking-[-0.41px] leading-none flex-wrap max-md:max-w-full   ">
+                <FilterButton
+                  text="Download PDF"
+                  icon="https://cdn.builder.io/api/v1/image/assets/d6885eedf052436eac8c331fe6a68cb8/b8cc731d2f8ae47e26e6f8f049e9634298b2407c?placeholderIfAbsent=true"
+                />
 
-        <SearchBar onSearch={handleSearch} />
+                <FilterButton
+                  text="Export To Excel"
+                  icon="https://cdn.builder.io/api/v1/image/assets/d6885eedf052436eac8c331fe6a68cb8/5d00ff1bc077944bbd10cd8c4044e6f4225d082a?placeholderIfAbsent=true"
+                />
+                <FilterButton
+                  text="Filter By"
+                  icon="https://cdn.builder.io/api/v1/image/assets/d6885eedf052436eac8c331fe6a68cb8/810454ad8ea04a3bcb5bb799216e910c359d5640?placeholderIfAbsent=true"
+                  variant="secondary"
+                />
+                <FilterButton
+                  text="Choose Simulation"
+                  icon="https://cdn.builder.io/api/v1/image/assets/d6885eedf052436eac8c331fe6a68cb8/810454ad8ea04a3bcb5bb799216e910c359d5640?placeholderIfAbsent=true"
+                  variant="secondary"
+                />
+              </div>
+
+              <SearchBar onSearch={handleSearch} />
+            </div>
+
+            <div className="flex w-full justify-between items-center gap-5 bg-white mt-[26px] px-12 rounded-lg py-[19px] max-md:max-w-full ">
+              <h2 className="text-[#242426] text-[28px] font-medium leading-none tracking-[0.36px] w-full">
+                All Skill Matrix {searchQuery && `- Search: "${searchQuery}"`}
+              </h2>
+              <SkillLevelLegend />
+            </div>
+            {filteredCandidates.length > 0 ? (
+              <div className="flex items-center gap-[40px_30px] flex-wrap  max-md:max-w-full ">
+                {filteredCandidates.map((candidate, index) => (
+                  <SkillCard
+                    key={index}
+                    candidateName={candidate.name}
+                    skills={candidate.skills}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="mt-8 text-center py-10 bg-gray-50 rounded-lg ">
+                <p className="text-gray-500 text-lg">
+                  No results found for "{searchQuery}"
+                </p>
+              </div>
+            )}
+          </div>
+        </main>
       </div>
-
-      <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.04)] bg-white flex w-full items-stretch gap-5 flex-wrap justify-between mt-[26px] px-12 py-[19px] rounded-[15px] max-md:max-w-full max-md:px-5">
-        <h2 className="text-[#242426] text-[28px] font-medium leading-none tracking-[0.36px] my-auto">
-          All Skill Matrix {searchQuery && `- Search: "${searchQuery}"`}
-        </h2>
-        <SkillLevelLegend />
-      </div>
-
-      {filteredCandidates.length > 0 ? (
-        <div className="flex items-center gap-[40px_46px] flex-wrap mt-8 max-md:max-w-full">
-          {filteredCandidates.map((candidate, index) => (
-            <SkillCard
-              key={index}
-              candidateName={candidate.name}
-              skills={candidate.skills}
-            />
-          ))}
-        </div>
-      ) : (
-        <div className="mt-8 text-center py-10 bg-gray-50 rounded-lg">
-          <p className="text-gray-500 text-lg">No results found for "{searchQuery}"</p>
-        </div>
-      )}
     </MainLayout>
-  )
-}
+  );
+};
 
 export default SkillMatrix
