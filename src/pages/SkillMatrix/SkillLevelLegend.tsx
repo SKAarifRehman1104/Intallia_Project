@@ -3,7 +3,7 @@ import React from "react";
 
 export const SkillLevelLegend = () => {
   return (
-    <div className="flex items-center gap-5 flex-wrap justify-between w-full">
+    <div className="flex items-center gap-5 flex-wrap justify-between w-full max-md:max-w-full ">
       <div className="flex flex-col w-full max-w-[600px]">
         <div className="flex justify-between text-[17px] text-[#444446] font-normal mb-2">
           <span>Basic</span>
