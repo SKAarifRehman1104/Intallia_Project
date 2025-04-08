@@ -94,7 +94,7 @@ export const UserTable = ({
                 <Badge
                   variant={"secondary"}
                   className={
-                    user.type === "Paid User"
+                    user.type === "Paid"
                       ? "bg-[#ECFDF3] text-[#23C16B]"
                       : "bg-[#FEF3F2] text-[#FF3A3A]"
                   }

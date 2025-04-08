@@ -4,6 +4,7 @@ import { UserTableActions } from "@/components/users/UserTableActions";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InvitationsTable from "./InvitationsTable";
+import { PInvitations } from "@/data/invitations"; // Import invitations data
 
 export const Invitations = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ export const Invitations = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const usersPerPage = 8;
-  const totalPages = 10;
+  const totalPages = Math.ceil(PInvitations.length / usersPerPage); // Ensure correct pagination
 
   const startIndex = (currentPage - 1) * usersPerPage;
   const endIndex = startIndex + usersPerPage;

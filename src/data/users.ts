@@ -1,6 +1,6 @@
 import { User, Transaction } from "@/types/user";
 
-export const payments: User[]= [
+export const payments: User[] = [
   {
     id: "#Admin21458",
     name: "Sarah Davis",
@@ -8,7 +8,7 @@ export const payments: User[]= [
     date: "24/2/2025",
     packageCategory: "Premium",
     amount: "$604.50",
-    type: "Free User",
+    type: "Paid",
   },
   {
     id: "#Admin21459",
@@ -17,7 +17,7 @@ export const payments: User[]= [
     date: "30/11/2024",
     packageCategory: "Basic",
     amount: "$863.83",
-    type: "Free User",
+    type: "Failed",
   },
   {
     id: "#Admin21460",
@@ -26,7 +26,7 @@ export const payments: User[]= [
     date: "8/2/2025",
     packageCategory: "Basic",
     amount: "$959.79",
-    type: "Free User",
+    type: "Paid",
   },
   {
     id: "#Admin21461",
@@ -35,7 +35,7 @@ export const payments: User[]= [
     date: "14/1/2025",
     packageCategory: "Standard",
     amount: "$259.56",
-    type: "Free User",
+    type: "Failed",
   },
   {
     id: "#Admin21462",
@@ -44,7 +44,7 @@ export const payments: User[]= [
     date: "26/11/2024",
     packageCategory: "Basic",
     amount: "$985.47",
-    type: "Paid User",
+    type: "Paid",
   },
   {
     id: "#Admin21463",
@@ -53,7 +53,7 @@ export const payments: User[]= [
     date: "20/11/2024",
     packageCategory: "Premium",
     amount: "$535.18",
-    type: "Paid User",
+    type: "Failed",
   },
   {
     id: "#Admin21464",
@@ -62,7 +62,7 @@ export const payments: User[]= [
     date: "4/1/2025",
     packageCategory: "Premium",
     amount: "$4.14",
-    type: "Paid User",
+    type: "Paid",
   },
   {
     id: "#Admin21465",
@@ -71,7 +71,7 @@ export const payments: User[]= [
     date: "14/1/2025",
     packageCategory: "Standard",
     amount: "$493.04",
-    type: "Free User",
+    type: "Paid",
   },
   {
     id: "#Admin21466",
@@ -80,7 +80,7 @@ export const payments: User[]= [
     date: "13/1/2025",
     packageCategory: "Standard",
     amount: "$550.05",
-    type: "Paid User",
+    type: "Paid",
   },
   {
     id: "#Admin21467",
@@ -89,7 +89,7 @@ export const payments: User[]= [
     date: "22/1/2025",
     packageCategory: "Basic",
     amount: "$489.77",
-    type: "Free User",
+    type: "Free",
   },
   {
     id: "#Admin21468",
@@ -98,7 +98,7 @@ export const payments: User[]= [
     date: "19/11/2024",
     packageCategory: "Basic",
     amount: "$34.47",
-    type: "Paid User",
+    type: "Paid",
   },
   {
     id: "#Admin21469",
@@ -107,7 +107,7 @@ export const payments: User[]= [
     date: "2/12/2024",
     packageCategory: "Premium",
     amount: "$63.69",
-    type: "Free User",
+    type: "Free",
   },
   {
     id: "#Admin21470",
@@ -116,7 +116,7 @@ export const payments: User[]= [
     date: "5/2/2025",
     packageCategory: "Standard",
     amount: "$904.28",
-    type: "Paid User",
+    type: "Paid",
   },
   {
     id: "#Admin21471",
@@ -125,7 +125,7 @@ export const payments: User[]= [
     date: "26/12/2024",
     packageCategory: "Basic",
     amount: "$170.22",
-    type: "Free User",
+    type: "Free",
   },
   {
     id: "#Admin21472",
@@ -134,7 +134,7 @@ export const payments: User[]= [
     date: "27/2/2025",
     packageCategory: "Basic",
     amount: "$787.41",
-    type: "Paid User",
+    type: "Paid",
   },
   {
     id: "#Admin21473",
@@ -143,7 +143,7 @@ export const payments: User[]= [
     date: "23/11/2024",
     packageCategory: "Premium",
     amount: "$786.18",
-    type: "Paid User",
+    type: "Paid",
   },
   {
     id: "#Admin21474",
@@ -152,7 +152,7 @@ export const payments: User[]= [
     date: "11/12/2024",
     packageCategory: "Standard",
     amount: "$741.12",
-    type: "Paid User",
+    type: "Paid",
   },
   {
     id: "#Admin21475",
@@ -161,7 +161,7 @@ export const payments: User[]= [
     date: "5/2/2025",
     packageCategory: "Standard",
     amount: "$571.08",
-    type: "Paid User",
+    type: "Paid",
   },
   {
     id: "#Admin21476",
@@ -170,7 +170,7 @@ export const payments: User[]= [
     date: "2/1/2025",
     packageCategory: "Premium",
     amount: "$723.10",
-    type: "Paid User",
+    type: "Paid",
   },
   {
     id: "#Admin21477",
@@ -179,7 +179,7 @@ export const payments: User[]= [
     date: "23/11/2024",
     packageCategory: "Standard",
     amount: "$887.79",
-    type: "Free User",
+    type: "Free",
   },
   {
     id: "#Admin21478",
@@ -188,7 +188,7 @@ export const payments: User[]= [
     date: "6/3/2025",
     packageCategory: "Premium",
     amount: "$34.60",
-    type: "Free User",
+    type: "Free",
   },
   {
     id: "#Admin21479",
@@ -197,7 +197,7 @@ export const payments: User[]= [
     date: "17/11/2024",
     packageCategory: "Premium",
     amount: "$183.75",
-    type: "Free User",
+    type: "Free",
   },
   {
     id: "#Admin21480",
@@ -206,7 +206,7 @@ export const payments: User[]= [
     date: "29/12/2024",
     packageCategory: "Basic",
     amount: "$671.99",
-    type: "Paid User",
+    type: "Paid",
   },
   {
     id: "#Admin21481",
@@ -215,7 +215,7 @@ export const payments: User[]= [
     date: "3/2/2025",
     packageCategory: "Basic",
     amount: "$289.20",
-    type: "Free User",
+    type: "Free",
   },
   {
     id: "#Admin21482",
@@ -224,7 +224,7 @@ export const payments: User[]= [
     date: "12/2/2025",
     packageCategory: "Premium",
     amount: "$588.03",
-    type: "Free User",
+    type: "Free",
   },
   {
     id: "#Admin21483",
@@ -233,7 +233,7 @@ export const payments: User[]= [
     date: "25/2/2025",
     packageCategory: "Premium",
     amount: "$844.25",
-    type: "Free User",
+    type: "Free",
   },
   {
     id: "#Admin21484",
@@ -242,7 +242,7 @@ export const payments: User[]= [
     date: "7/12/2024",
     packageCategory: "Premium",
     amount: "$528.01",
-    type: "Free User",
+    type: "Free",
   },
   {
     id: "#Admin21485",
@@ -251,7 +251,7 @@ export const payments: User[]= [
     date: "24/11/2024",
     packageCategory: "Premium",
     amount: "$754.12",
-    type: "Paid User",
+    type: "Paid",
   },
   {
     id: "#Admin21486",
@@ -260,7 +260,7 @@ export const payments: User[]= [
     date: "30/11/2024",
     packageCategory: "Premium",
     amount: "$159.20",
-    type: "Free User",
+    type: "Free",
   },
   {
     id: "#Admin21487",
@@ -269,7 +269,7 @@ export const payments: User[]= [
     date: "3/1/2025",
     packageCategory: "Premium",
     amount: "$308.09",
-    type: "Free User",
+    type: "Free",
   },
   {
     id: "#Admin21488",
@@ -278,7 +278,7 @@ export const payments: User[]= [
     date: "14/2/2025",
     packageCategory: "Basic",
     amount: "$737.85",
-    type: "Free User",
+    type: "Free",
   },
   {
     id: "#Admin21489",
@@ -287,7 +287,7 @@ export const payments: User[]= [
     date: "26/11/2024",
     packageCategory: "Basic",
     amount: "$625.43",
-    type: "Free User",
+    type: "Free",
   },
   {
     id: "#Admin21490",
@@ -296,7 +296,7 @@ export const payments: User[]= [
     date: "14/11/2024",
     packageCategory: "Standard",
     amount: "$813.14",
-    type: "Free User",
+    type: "Free",
   },
   {
     id: "#Admin21491",
@@ -305,7 +305,7 @@ export const payments: User[]= [
     date: "20/1/2025",
     packageCategory: "Premium",
     amount: "$29.28",
-    type: "Paid User",
+    type: "Paid",
   },
   {
     id: "#Admin21551",
@@ -314,7 +314,7 @@ export const payments: User[]= [
     date: "1/2/2025",
     packageCategory: "Basic",
     amount: "$198.07",
-    type: "Paid User",
+    type: "Paid",
   },
   {
     id: "#Admin21557",
@@ -323,14 +323,13 @@ export const payments: User[]= [
     date: "25/2/2025",
     packageCategory: "Basic",
     amount: "$318.36",
-    type: "Free User",
+    type: "Free",
   },
 ];
 
-
 export const getUserTransaction = (userId: string): Transaction => {
   // Find the user with the matching ID
-  const user = payments.find(u => u.id === userId);
+  const user = payments.find((u) => u.id === userId);
 
   if (!user) {
     // Fallback data if user not found
@@ -365,7 +364,7 @@ export const users = [
     name: "Olivia Rhye",
     email: "OliviaRhye@gmail.com",
     phone: "+91 96245 45896",
-    type: "Paid User",
+    type: "Paid",
     linkedin: "https:profilename/linkedin.com",
   },
   {
@@ -373,7 +372,7 @@ export const users = [
     name: "Phoenix Baker",
     email: "phoenix.baker@gmail.com",
     phone: "+91 98765 43210",
-    type: "Free User",
+    type: "Free",
     linkedin: "https:phoenix/linkedin.com",
   },
   {
@@ -381,7 +380,7 @@ export const users = [
     name: "Lana Steiner",
     email: "lana.steiner@gmail.com",
     phone: "+91 87654 32109",
-    type: "Paid User",
+    type: "Paid",
     linkedin: "https:lana/linkedin.com",
   },
   {
@@ -389,7 +388,7 @@ export const users = [
     name: "Demi Wilkinson",
     email: "demi.wilkinson@gmail.com",
     phone: "+91 76543 21098",
-    type: "Free User",
+    type: "Free",
     linkedin: "https:demi/linkedin.com",
   },
   {
@@ -397,7 +396,7 @@ export const users = [
     name: "Candice Wu",
     email: "candice.wu@gmail.com",
     phone: "+91 65432 10987",
-    type: "Paid User",
+    type: "Paid",
     linkedin: "https:candice/linkedin.com",
   },
   {
@@ -405,7 +404,7 @@ export const users = [
     name: "John Smith",
     email: "john.smith@gmail.com",
     phone: "+91 54321 09876",
-    type: "Paid User",
+    type: "Paid",
     linkedin: "https:john/linkedin.com",
   },
   {
@@ -413,7 +412,7 @@ export const users = [
     name: "Emma Johnson",
     email: "emma.johnson@gmail.com",
     phone: "+91 43210 98765",
-    type: "Free User",
+    type: "Free",
     linkedin: "https:emma/linkedin.com",
   },
   {
@@ -421,7 +420,7 @@ export const users = [
     name: "Michael Brown",
     email: "michael.brown@gmail.com",
     phone: "+91 32109 87654",
-    type: "Paid User",
+    type: "Paid",
     linkedin: "https:michael/linkedin.com",
   },
   {
@@ -429,7 +428,7 @@ export const users = [
     name: "Sarah Davis",
     email: "sarah.davis@gmail.com",
     phone: "+91 21098 76543",
-    type: "Free User",
+    type: "Free",
     linkedin: "https:sarah/linkedin.com",
   },
   {
@@ -437,7 +436,7 @@ export const users = [
     name: "James Wilson",
     email: "james.wilson@gmail.com",
     phone: "+91 10987 65432",
-    type: "Paid User",
+    type: "Paid",
     linkedin: "https:james/linkedin.com",
   },
 ];

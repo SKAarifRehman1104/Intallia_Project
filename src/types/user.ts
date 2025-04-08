@@ -16,9 +16,8 @@ export interface Payment {
   date: string;
   packageCategory: string;
   amount: number; // Assuming it's a number, change if needed
-  type: "Paid User" | "Free User"; // Add more types if necessary
+  type: "Paid" | "Free"; // Add more types if necessary
 }
-
 
 export interface Transaction {
   userName: string;
@@ -29,4 +28,14 @@ export interface Transaction {
   coupon: string;
   date: string;
   status: string;
+}
+
+export interface Invitation {
+  id: string;
+  packageName: string;
+  validity: string;
+  price: string;
+  activeUsers: string;
+  status: string;
+  invoice: string;
 }
