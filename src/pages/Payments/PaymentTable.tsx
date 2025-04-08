@@ -7,6 +7,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { MoreVertical } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { getUserTransaction } from "@/data/users";
 import { Transaction, Payment } from "@/types/user";
@@ -63,9 +65,10 @@ export const PaymentTable = ({
     <div className="rounded-md">
       <Table>
         <TableHeader>
-          <TableRow className="bg-[#F9FAFB]">
-            <TableHead>
+          <TableRow className="bg-[#F9FAFB]  ">
+            <TableHead className="py-4 font-plusJakarta ">
               <input
+                // Add margin to the checkbox
                 type="checkbox"
                 checked={selectAll}
                 onChange={handleSelectAll}
@@ -78,6 +81,7 @@ export const PaymentTable = ({
             <TableHead className="text-sm">Package Category</TableHead>
             <TableHead className="text-sm">Amount</TableHead>
             <TableHead className="text-sm">Status</TableHead>
+            <TableHead className="text-sm">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -86,6 +90,7 @@ export const PaymentTable = ({
               <TableRow key={user.id} className="hover:bg-gray-50">
                 <TableCell>
                   <input
+                    className="h-10"
                     type="checkbox"
                     checked={selectedUsers.includes(user.id)}
                     onChange={() => handleSelectUser(user.id)}
@@ -107,14 +112,19 @@ export const PaymentTable = ({
                 <TableCell>
                   <span
                     className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                      user.type === "Paid User"
-                        ? "bg-green-100 text-green-800"
-                        : "bg-gray-100 text-gray-800"
+                      user.type === "Paid"
+                        ? "bg-[#ECFDF3] text-[#23C16B]"
+                        : "bg-[#FEF3F2] text-[#FF3A3A]"
                     }`}
                   >
                     {user.type}
                   </span>
                 </TableCell>
+                <div className="flex justify-center items-center">
+                  <Button variant="ghost" size="icon">
+                    <MoreVertical className="w-4 h-4 mt-8" />
+                  </Button>
+                </div>
               </TableRow>
             ))
           ) : (
