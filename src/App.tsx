@@ -24,6 +24,7 @@ import Payments from "./pages/Payments/Payments";
 import UserAssignment from "./pages/UserAssignment/UserAssignment";
 import AddSimulation from "./pages/Simulation/AddSimulation/AddSimulation";
 import Profile from "./components/Profile/Profile";
+import ViewSkillMatrix from "./pages/SkillMatrix/ViewSkillMatrix/ViewSkillMatrix.tsx";
 import SkillMatrix from "./pages/SkillMatrix/SkillMatrix";
 
 const queryClient = new QueryClient();
@@ -54,6 +55,7 @@ const App = () => (
           <Route path="/package/:id" element={<ViewPackage />} />
           <Route path="/payments" element={<Payments />} />
           <Route path="/skill-matrix" element={<SkillMatrix />} />
+          <Route path="/views-kill-matrix" element={<ViewSkillMatrix />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/invitations" element={<Invitations />} />
           <Route path="*" element={<NotFound />} />

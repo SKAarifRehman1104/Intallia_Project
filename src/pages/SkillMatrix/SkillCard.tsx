@@ -10,11 +10,13 @@ interface Skill {
 interface SkillCardProps {
   candidateName: string;
   skills: Skill[];
+  className?: string;
 }
 
 export const SkillCard: React.FC<SkillCardProps> = ({
   candidateName,
   skills,
+  className,
 }) => {
   // Function to determine progress value based on skill level
   const getProgressValue = (level?: string) => {
@@ -55,8 +57,10 @@ export const SkillCard: React.FC<SkillCardProps> = ({
   };
 
   return (
-    <div className="items-center shadow-[0px_2.634px_4.139px_0px_rgba(0,0,0,0.04)] bg-white self-stretch flex min-w-60 min-h-[429px] gap-2.5 w-[320px] px-3.5 py-[19px] rounded-[11.289px]">
-      <div className="self-stretch min-w-60 w-[340px]">
+    <div
+      className={`items - center shadow-[0px_2.634px_4.139px_0px_rgba(0, 0, 0, 0.04)]bg - white self - stretch flex gap - 2.5 px - 3.5 py - [19px] rounded - [11.289px] ${className}`}
+    >
+      <div className="self-stretch w-[100%]">
         <div className="text-[#242426] text-base font-medium leading-none tracking-[-0.32px]">
           {candidateName}
         </div>
@@ -64,11 +68,13 @@ export const SkillCard: React.FC<SkillCardProps> = ({
           {skills.map((skill, index) => (
             <div
               key={index}
-              className={`self-stretch w-full ${index > 0 ? "mt-[15px]" : ""}`}
+              className={`flex justify-between items-center w-full ${
+                index > 0 ? "mt-[15px]" : ""
+              }`}
             >
               <div
                 className={`${
-                  skill.name.includes("\n") ? "h-[29px]" : "h-3.5"
+                  skill.name.includes("\n") ? " w-[34%] h-[29px]" : "h-3.5"
                 } whitespace-nowrap mb-2`}
               >
                 {skill.name.split("\n").map((line, i) => (
@@ -80,7 +86,7 @@ export const SkillCard: React.FC<SkillCardProps> = ({
               </div>
               <Progress
                 value={getProgressValue(skill.level)}
-                className="h-2 bg-gray-100"
+                className="h-2 bg-gray-100 w-[64%]"
                 indicatorClassName={getProgressColor(skill.level)}
               />
             </div>
