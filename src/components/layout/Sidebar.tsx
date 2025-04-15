@@ -11,20 +11,27 @@ import {
 } from "lucide-react";
 
 import userlogo from "@/assets/super_admin.png";
+import dashbordIcon from "@/assets/Dashbord-icon.svg";
+import account from "@/assets/account.svg";
+import simulation from "@/assets/Simulation-.svg";
+import planspackage from "@/assets/Plans & Package.svg";
+import skillmatrix from "@/assets/SkillMatrix.svg";
+import currencyDollar from "@/assets/CurrencyDollar.svg";
+import invitations from "@/assets/Invitations-.svg";
 
 const menuItems = [
   {
-    icon: LayoutDashboard,
+    img: dashbordIcon,
     label: "Dashboard",
     href: "/",
   },
   {
-    icon: User,
+    img: account,
     label: "Roles & Access",
     href: "/roles",
   },
   {
-    icon: User,
+    img: account,
     label: "User  Management",
     href: "/users",
     subroutes: [
@@ -55,7 +62,7 @@ const menuItems = [
     ],
   },
   {
-    icon: BookOpen,
+    img: simulation,
     label: "Simulation",
     href: "/simulation",
     subroutes: [
@@ -65,9 +72,13 @@ const menuItems = [
       },
     ],
   },
-
   {
-    icon: Package,
+    img: skillmatrix,
+    label: "Skill Matrix",
+    href: "/skill-matrix",
+  },
+  {
+    img: planspackage,
     label: "Plans & Package",
     href: "/plans",
     subroutes: [
@@ -82,32 +93,15 @@ const menuItems = [
     ],
   },
 
-  // {
-  //   icon: "",
-  //   label: "",
-  //   href: "/plans",
-  //   subroutes: [
-  //     {
-  //       label: "plans",
-  //       href: "/plan",
-  //     },
-  //   ],
-  // },
-
   {
-    icon: FaRegEnvelope,
+    img: invitations,
     label: "invitations",
     href: "/invitations",
   },
   {
-    icon: CreditCard,
+    img: currencyDollar,
     label: "Payments",
     href: "/payments",
-  },
-  {
-    icon: CreditCard,
-    label: "Skill Matrix",
-    href: "/skill-matrix",
   },
 ];
 
@@ -147,7 +141,7 @@ export function Sidebar() {
                       "bg-[linear-gradient(90deg,#0DAFDC_0%,#22E9A2_100%)] text-white",
                   )}
                 >
-                  {item.icon && <item.icon className="h-5 w-5" />}
+                  {item?.img && <img src={item?.img} className="h-5 w-5" />}
                   <span>{item.label}</span>
                 </Link>
 

@@ -31,7 +31,7 @@
   "editor.autoSurround": "languageDefined",
   "editor.snippetSuggestions": "top",
   "editor.smoothScrolling": true,
-  "files.autoSave": "onFocusChange",
+  "files.autoSave": "afterDelay",
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
   "files.associations": {

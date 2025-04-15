@@ -96,12 +96,15 @@ const SkillMatrix = () => {
               <SkillLevelLegend />
             </div>
             {filteredCandidates.length > 0 ? (
-              <div className="flex items-center gap-[40px_30px] flex-wrap  max-md:max-w-full ">
+              <div className="grid grid-cols-12 gap-4">
                 {filteredCandidates.map((candidate, index) => (
                   <SkillCard
                     key={index}
                     candidateName={candidate.name}
                     skills={candidate.skills}
+                    className={
+                      "col-span-12 md:col-span-3 bg-white py-[18px] px-[14px] m-2"
+                    }
                   />
                 ))}
               </div>
