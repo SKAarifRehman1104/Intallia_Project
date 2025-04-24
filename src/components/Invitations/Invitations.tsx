@@ -19,7 +19,7 @@ export const Invitations = () => {
 
   return (
     <MainLayout>
-      <div className="flex min-h-screen bg-background">
+      <div className="flex min-h-screen bg-background ">
         <main className="flex-1 p-8">
           <div className="space-y-6">
             <div className="flex justify-between items-center">

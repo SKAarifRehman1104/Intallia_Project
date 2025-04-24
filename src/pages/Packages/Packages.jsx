@@ -1,4 +1,4 @@
-import { ActionButton } from "@/components/common/ActionButton";
+// import { ActionButton } from "@/components/common/ActionButton";
 import Pagination from "@/components/common/Pagination";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { UserTable } from "@/components/users/UserTable";
@@ -22,7 +22,7 @@ const Packages = () => {
   return (
     <MainLayout  className="p-8">
       <div className="flex min-h-screen bg-background">
-        <main className="flex-1 ">
+        <main className="flex-1 p-8">
           <div className="space-y-6">
             <div className="flex justify-between items-center">
               <h1 className="page-heading">Packages</h1>

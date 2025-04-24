@@ -25,7 +25,7 @@ const data = [
 export function SalesChart() {
   return (
     <div className="bg-white p-6 rounded-lg border border-border">
-      <h2 className="font-medium mb-6 font-plusJakarta text-[22px] leading-[28px]">
+      <h2 className="font-medium mb-6 font-plusJakarta text-[22px] leading-[28px] ">
         Sales Details
       </h2>
       <div className="h-[300px]">
