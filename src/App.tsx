@@ -26,6 +26,9 @@ import AddSimulation from "./pages/Simulation/AddSimulation/AddSimulation";
 import Profile from "./components/Profile/Profile";
 import ViewSkillMatrix from "./pages/SkillMatrix/ViewSkillMatrix/ViewSkillMatrix.tsx";
 import SkillMatrix from "./pages/SkillMatrix/SkillMatrix";
+import Login from "@/pages/auth/SignUp/Signup.tsx";
+import Verify from "@/pages/auth/SignUp/OtpVerification.tsx";
+import Singup from "@/pages/auth/SignUp/Signup.tsx";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +46,8 @@ const App = () => (
           <Route path="/company" element={<CompanyManagement />} />
           <Route path="/simulation" element={<Simulation />} />
           <Route path="/packages" element={<Packages />} />
+          <Route path="/add-package" element={<AddNewPackage />} />
+          <Route path="/datascience" element={<DataScience />} />
           <Route path="/user-assignment" element={<UserAssignment />} />
           <Route path="/add-new-user" element={<AddNewUser />} />
           <Route path="/new-simulation" element={<AddSimulation />} />
@@ -51,13 +56,15 @@ const App = () => (
           <Route path="/add-role" element={<RoleForm />} />
           <Route path="/plans" element={<Plans />} />
           <Route path="/packages" element={<Packages />} />
-          <Route path="/add-package" element={<AddNewPackage />} />
+          <Route path="/signup" element={<Singup />} />
+
           <Route path="/package/:id" element={<ViewPackage />} />
           <Route path="/payments" element={<Payments />} />
           <Route path="/skill-matrix" element={<SkillMatrix />} />
           <Route path="/views-kill-matrix" element={<ViewSkillMatrix />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/invitations" element={<Invitations />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
