@@ -12,7 +12,7 @@ const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884d8"];
 
 export function CategorySales() {
   return (
-    <div className="bg-white p-6 rounded-lg border border-border">
+    <div className="bg-white p-6 sm:p-6 rounded-lg border border-border  max-w-md mx-auto sm:w-full ">
       <h2 className="text-lg font-semibold mb-6">Category Sales</h2>
       <div className="h-[300px]">
         <ResponsiveContainer width="100%" height="100%">

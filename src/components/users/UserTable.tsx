@@ -67,13 +67,13 @@ export const UserTable = ({
                 onChange={handleSelectAll}
               />
             </TableHead>
-            <TableHead className="text-sm">User ID</TableHead>
-            <TableHead className="text-sm">Name</TableHead>
-            <TableHead className="text-sm">Email</TableHead>
-            <TableHead className="text-sm">Phone Number</TableHead>
-            <TableHead className="text-sm">User Type</TableHead>
-            <TableHead className="text-sm">Linkedin URL</TableHead>
-            <TableHead className="text-sm">Action</TableHead>
+            <TableHead className="text-sm sm:text-sm">User ID</TableHead>
+            <TableHead className="text-sm sm:text-sm">Name</TableHead>
+            <TableHead className="text-sm sm:text-sm">Email</TableHead>
+            <TableHead className="text-sm sm:text-sm">Phone Number</TableHead>
+            <TableHead className="text-sm sm:text-sm">User Type</TableHead>
+            <TableHead className="text-sm sm:text-sm">Linkedin URL</TableHead>
+            <TableHead className="text-sm sm:text-sm">Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -102,7 +102,7 @@ export const UserTable = ({
                   {user.type}
                 </Badge>
               </TableCell>
-              <TableCell className="py-4 text-blue-600 text-sm">
+              <TableCell className="py-4 text-blue-600 text-sm ">
                 {user.linkedin}
               </TableCell>
               <TableCell className="py-4">
