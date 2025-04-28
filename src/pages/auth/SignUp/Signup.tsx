@@ -3,9 +3,11 @@ import SignupForm from './SignupForm';
 import SignupImg from "@/assets/Hired-bro 1.svg";
 import { useState } from 'react';
 import OtpVerification from './OtpVerification';
+import { useToast } from "@/components/ui/use-toast"
 
 const Singup = () => {
   const [isShowV, setIsShowV] = useState(false);
+
   return (
     <div>
       <div className="container">

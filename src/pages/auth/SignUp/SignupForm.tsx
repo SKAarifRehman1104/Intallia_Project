@@ -1,84 +1,151 @@
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 import Image from "@/assets/india-flag-icon 1.svg";
-import { Link } from "react-router-dom";
 
-const SignupForm = ({onSubmit}) => {
+const signupSchema = z
+  .object({
+    fullName: z.string().min(1, "Full Name is required"),
+    email: z.string().email("Invalid email address"),
+    contactNumber: z
+      .string()
+      .regex(/^\d{10}$/, "Contact Number must be 10 digits"),
+    password: z.string().min(6, "Password must be at least 6 characters"),
+    confirmPassword: z
+      .string()
+      .min(6, "Confirm Password must be at least 6 characters"),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
 
+type SignupFormValues = z.infer<typeof signupSchema>;
+
+const SignupForm = ({
+  onSubmit,
+}: {
+  onSubmit: (data: SignupFormValues) => void;
+}) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignupFormValues>({
+    resolver: zodResolver(signupSchema),
+  });
 
   return (
     <div className="w-full md:w-1/2 pt-[6%] flex justify-center bg-[#FFFFFF]">
       <div className="max-w-md w-full">
         <h2 className="text-3xl font-bold mb-2">Sign Up</h2>
-        <p className="text-gray-500 mb-6 font-plusJakarta">
+        <p className="text-gray-500 mb-6">
           Hello! Let’s get started and sharpen your skills with some
           expert-level quizzes!
         </p>
 
-        <form className="space-y-4" onSubmit={onSubmit}>
+        <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
+          {/* Full Name */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <Label htmlFor="fullName">
               Full Name<span className="text-red-500">*</span>
-            </label>
-            <input
+            </Label>
+            <Input
+              id="fullName"
               type="text"
               placeholder="Enter Name"
-              className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              {...register("fullName")}
             />
+            {errors.fullName && (
+              <p className="text-red-500 text-sm">{errors.fullName.message}</p>
+            )}
           </div>
+
+          {/* Email */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <Label htmlFor="email">
               Email<span className="text-red-500">*</span>
-            </label>
-            <input
+            </Label>
+            <Input
+              id="email"
               type="email"
               placeholder="Enter Email"
-              className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              {...register("email")}
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm">{errors.email.message}</p>
+            )}
           </div>
+
+          {/* Contact Number */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <Label htmlFor="contactNumber">
               Contact Number<span className="text-red-500">*</span>
-            </label>
+            </Label>
             <div className="flex items-center border border-gray-300 rounded-md px-3 py-2">
               <span className="mr-2 flex gap-2">
-                <img src={Image} alt="" /> +91
+                <img src={Image} alt="India Flag" /> +91
               </span>
-              <input
+              <Input
+                id="contactNumber"
                 type="text"
-                placeholder="1234 5678"
-                className="flex-1 focus:outline-none"
+                placeholder="1234567890"
+                className="flex-1 border-none focus:ring-0"
+                {...register("contactNumber")}
               />
             </div>
+            {errors.contactNumber && (
+              <p className="text-red-500 text-sm">
+                {errors.contactNumber.message}
+              </p>
+            )}
           </div>
+
+          {/* Password */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <Label htmlFor="password">
               Password<span className="text-red-500">*</span>
-            </label>
-            <input
+            </Label>
+            <Input
+              id="password"
               type="password"
               placeholder="*******"
-              className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              {...register("password")}
             />
+            {errors.password && (
+              <p className="text-red-500 text-sm">{errors.password.message}</p>
+            )}
           </div>
 
+          {/* Confirm Password */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <Label htmlFor="confirmPassword">
               Confirm Password<span className="text-red-500">*</span>
-            </label>
-            <input
+            </Label>
+            <Input
+              id="confirmPassword"
               type="password"
               placeholder="*******"
-              className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              {...register("confirmPassword")}
             />
+            {errors.confirmPassword && (
+              <p className="text-red-500 text-sm">
+                {errors.confirmPassword.message}
+              </p>
+            )}
           </div>
 
-          <div className="flex justify-center md:justify-end items-center"
-          >
-            <button
+          {/* Sign Up Button */}
+          <div className="flex justify-center md:justify-end items-center">
+            <Button
               type="submit"
-              className="w-[300px] h-[50px] py-2 text-center text-white rounded-md bg-gradient-to-r from-cyan-400 to-green-500 hover:opacity-90 transition mt-5 "
+              className="w-[300px] h-[50px] py-2 text-center text-white rounded-md bg-gradient-to-r from-cyan-400 to-green-500 hover:opacity-90 transition mt-5"
             >
               Sign Up
-            </button>
+            </Button>
           </div>
         </form>
       </div>
