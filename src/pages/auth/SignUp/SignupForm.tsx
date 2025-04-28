@@ -39,10 +39,10 @@ const SignupForm = ({
   });
 
   return (
-    <div className="w-full md:w-1/2 flex justify-center items-center bg-[#FFFFFF]">
+    <div className="w-full md:w-1/2 flex justify-center bg-[#FFFFFF] py-[3%] h-[89vh] overflow-y-scroll ">
       <div className="max-w-md w-full">
-        <h2 className="text-3xl font-bold mb-2">Sign Up</h2>
-        <p className="text-gray-500 mb-6">
+        <h2 className="text-3xl font-bold mb-1">Sign Up</h2>
+        <p className="text-gray-500 mb-2 text-sm">
           Hello! Let’s get started and sharpen your skills with some
           expert-level quizzes!
         </p>
@@ -51,7 +51,7 @@ const SignupForm = ({
           {/* Full Name */}
           <div>
             <Label htmlFor="fullName">
-              Full Name<span className="text-red-500">*</span>
+              Full Name<span className="text-red-500 text-sm">*</span>
             </Label>
             <Input
               id="fullName"
@@ -142,7 +142,7 @@ const SignupForm = ({
           <div className="flex justify-center md:justify-end items-center">
             <Button
               type="submit"
-              className="w-[300px] h-[50px] py-2 text-center text-white rounded-md bg-gradient-to-r from-cyan-400 to-green-500 hover:opacity-90 transition mt-5"
+              className="w-[300px] h-[50px] py-2 text-center text-white rounded-md bg-gradient-to-r from-cyan-400 to-green-500 hover:opacity-90 transition "
             >
               Sign Up
             </Button>
