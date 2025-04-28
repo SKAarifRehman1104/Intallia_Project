@@ -25,17 +25,21 @@ const Singup = () => {
           </div>
         </div>
       </div>
-      <div className="w-full flex justify-center h-[93.3svh] p-5 md:p-0 bg-white">
+      <div className="w-full flex justify-center h-[90svh] p-5 md:p-0 bg-red">
         <div className="hidden md:w-1/2 bg-[rgb(242,244,247)] md:flex items-center justify-center flex-col gap-5">
           <img src={SignupImg} alt="signup" />
           <h2 className="font-semibold text-5xl leading-[41px] text-center ">
             Explore. Practice. Get Hired!
           </h2>
         </div>
-        {!isShowV && <SignupForm onSubmit={(e) => {
-          console.log(e)
-          setIsShowV(true)
-        }} />}
+        {!isShowV && (
+          <SignupForm
+            onSubmit={(e) => {
+              console.log(e);
+              setIsShowV(true);
+            }}
+          />
+        )}
         {isShowV && <OtpVerification />}
       </div>
     </div>

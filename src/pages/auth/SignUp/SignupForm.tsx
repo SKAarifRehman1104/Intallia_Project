@@ -39,7 +39,7 @@ const SignupForm = ({
   });
 
   return (
-    <div className="w-full md:w-1/2 pt-[6%] flex justify-center bg-[#FFFFFF]">
+    <div className="w-full md:w-1/2 flex justify-center items-center bg-[#FFFFFF]">
       <div className="max-w-md w-full">
         <h2 className="text-3xl font-bold mb-2">Sign Up</h2>
         <p className="text-gray-500 mb-6">
