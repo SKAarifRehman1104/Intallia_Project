@@ -1,0 +1,131 @@
+/* ========== Colors ========== */
+:root {
+  /* Greys */
+  --grey-00: #E5E5EA;
+  --grey-01: #D1D1D6;
+  --grey-02: #AEAEB2;
+  --grey-03: #7C7C80;
+  --grey-04: #444446;
+  --black-primary: #242426;
+
+  /* Primary and Alert Colors */
+  --primary-blue: #04B8FC;
+  --alert-red: #FF3A3A;
+  --alert-yellow: #FFB323;
+  --alert-green: #23C168;
+
+  /* Basic Colors */
+  --white: #ffffff;
+  --light-grey: #F2F2F7;
+
+  /* Blue Palette */
+  --blue-50: #d5f2fa;
+  --blue-100: #ace5f5;
+  --blue-200: #82d8f0;
+  --blue-300: #58cbe9;
+  --blue-400: #2ebde6;
+  --blue-500: #12b0e6;
+  --blue-600: #0594bb;
+  --blue-700: #047396;
+  --blue-800: #023f70;
+  --blue-900: #011025;
+}
+
+/* ========== Typography ========== */
+:root {
+  --font-primary: 'Plus Jakarta Sans', sans-serif;
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Font Sizes and Line Heights */
+  --font-caption2-size: 10px;
+  --font-caption1-size: 12px;
+  --font-footnote-size: 13px;
+  --font-subheadline-size: 15px;
+  --font-callout-size: 16px;
+  --font-headline-size: 17px;
+  --font-title3-size: 20px;
+  --font-title2-size: 22px;
+  --font-title1-size: 28px;
+  --font-largeTitle-size: 34px;
+
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.4;
+  --line-height-relaxed: 1.5;
+}
+
+/* ========== Example Classes (Optional) ========== */
+
+/* Text Styles */
+.text-caption2 {
+  font-family: var(--font-primary);
+  font-size: var(--font-caption2-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-tight);
+}
+
+.text-caption1 {
+  font-family: var(--font-primary);
+  font-size: var(--font-caption1-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-tight);
+}
+
+.text-footnote {
+  font-family: var(--font-primary);
+  font-size: var(--font-footnote-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-tight);
+}
+
+.text-subheadline {
+  font-family: var(--font-primary);
+  font-size: var(--font-subheadline-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+}
+
+.text-callout {
+  font-family: var(--font-primary);
+  font-size: var(--font-callout-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+}
+
+.text-headline {
+  font-family: var(--font-primary);
+  font-size: var(--font-headline-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+}
+
+.text-title3 {
+  font-family: var(--font-primary);
+  font-size: var(--font-title3-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-relaxed);
+}
+
+.text-title2 {
+  font-family: var(--font-primary);
+  font-size: var(--font-title2-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-relaxed);
+}
+
+.text-title1 {
+  font-family: var(--font-primary);
+  font-size: var(--font-title1-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-relaxed);
+}
+
+.text-largeTitle {
+  font-family: var(--font-primary);
+  font-size: var(--font-largeTitle-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-relaxed);
+}
