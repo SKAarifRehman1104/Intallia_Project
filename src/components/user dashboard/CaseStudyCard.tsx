@@ -1,15 +1,15 @@
-
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import "@/design-system.css";
 
 interface CaseStudyCardProps {
   icon: string;
   title: string;
   tools: string;
   backgroundImage: string;
-  waveImage: string;
+  // waveImage: string;
 }
 
 export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
@@ -19,25 +19,15 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
   backgroundImage,
 }) => {
   return (
-    <article className="relative h-full group">
-      {/* Main card with rounded corners */}
-      <div 
-        className="bg-white shadow-sm hover:shadow-md transition-shadow h-full overflow-hidden rounded-[20px]"
-      >
-        {/* Arrow icon in top right corner */}
-        <div className="absolute top-0 right-0 z-10">
-          <div 
-            className="bg-[#1D1D1F] p-3 flex items-center justify-center"
-            style={{
-              width: "48px",
-              height: "48px",
-              borderRadius: "0 20px 0 12px",
-            }}
-          >
-            <ArrowUpRight className="text-white w-6 h-6" />
-          </div>
+    <article className="relative h-full mr-2">
+      <div className="absolute top-0 right-0 z-10">
+        <div
+          className="bg-[#1D1D1F] p-3 flex items-center justify-center rounded-lg w-[48px] h-[48px]"
+        >
+          <ArrowUpRight className="text-white w-6 h-6" />
         </div>
-        
+      </div>
+      <div className="inverted-radius  rounded-lg overflow-hidden h-full relative">
         <div className="flex flex-col h-full">
           {/* Content area */}
           <div className="flex flex-col p-6 pb-4 flex-grow">
@@ -47,17 +37,13 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
                 Non - Attempted
               </div>
             </div>
-            
+
             <h3 className="text-[#1D1D1F] text-xl font-semibold leading-tight mb-3 line-clamp-2">
               {title}
             </h3>
-            <p className="text-gray-500 text-sm mb-6">
-              {tools}
-            </p>
+            <p className="text-gray-500 text-sm mb-6">{tools}</p>
             <div className="mt-auto">
-              <Button className="bg-[#1D1D1F] hover:bg-black text-white rounded-md py-2 px-5 text-sm font-medium">
-                Start Now!
-              </Button>
+              <Button className=".btn">Start Now!</Button>
             </div>
           </div>
 

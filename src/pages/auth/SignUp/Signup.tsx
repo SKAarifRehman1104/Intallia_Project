@@ -9,7 +9,7 @@ const Singup = () => {
   const [isShowV, setIsShowV] = useState(false);
 
   return (
-    <div>
+    <div className="h-screen">
       <div className="container">
         <div className="flex justify-between items-center h-[72px]">
           <div className="">
@@ -25,8 +25,8 @@ const Singup = () => {
           </div>
         </div>
       </div>
-      <div className="w-full flex justify-center h-[90svh] p-5 md:p-0 bg-red">
-        <div className="hidden md:w-1/2 bg-[rgb(242,244,247)] md:flex items-center justify-center flex-col gap-5">
+      <div className="w-full flex justify-center p-5 md:p-0">
+        <div className="hidden md:w-1/2 bg-[rgb(242,244,247)] md:flex items-center justify-center flex-col gap-5 sticky top-0 h-[90vh]">
           <img src={SignupImg} alt="signup" />
           <h2 className="font-semibold text-5xl leading-[41px] text-center ">
             Explore. Practice. Get Hired!
