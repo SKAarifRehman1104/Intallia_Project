@@ -30,7 +30,6 @@ import Login from "@/pages/auth/SignUp/Signup.tsx";
 import Verify from "@/pages/auth/SignUp/OtpVerification.tsx";
 import Singup from "@/pages/auth/SignUp/Signup.tsx";
 import UserDetails from "./pages/UserDetails/UserDetails.tsx";
-import Education from "./pages/UserDetails/Education.tsx";
 import { UserDashboard } from "./pages/UserDashboard/UserDashboard.tsx";
 import UserPreferences from "./pages/UserPreferences/UserPreferences.tsx";
 
@@ -71,7 +70,6 @@ const App = () => (
           <Route path="/user-details" element={<UserDetails/>} />
           <Route path="/user-dashboard" element={<UserDashboard />} />
           <Route path="/preferences" element={<UserPreferences />} />
-          <Route path="/education" element={<Education />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

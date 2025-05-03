@@ -8,7 +8,7 @@ const UserPreferencesNav = (props: Props) => {
   const navigate = useNavigate();
 
   const handleGoToDashboard = () => {
-    navigate('/dashboard');
+    navigate('/user-dashboard');
   };
 
   return (
