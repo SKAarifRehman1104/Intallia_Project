@@ -93,6 +93,7 @@ export default {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         plusJakarta: ["Plus Jakarta Sans", "sans-serif"],
+        silkscreen: ['Silkscreen', 'cursive']
       },
     },
   },
