@@ -2,7 +2,8 @@ import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import "@/design-system.css";
+import "@/index.css";
+
 
 interface CaseStudyCardProps {
   icon: string;
