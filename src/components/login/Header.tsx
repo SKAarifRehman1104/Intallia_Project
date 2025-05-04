@@ -1,4 +1,5 @@
 import React from "react";
+import profileImg from "@/assets/headerIcon.svg";
 
 export const Header: React.FC = () => {
   return (
