@@ -91,7 +91,7 @@ export const TopicCard: React.FC<TopicCardProps> = ({
           WebkitBackdropFilter: "blur(3px)",
         }}
       >
-        <div className="mb-4">
+        <div className="mb-4 h-32">
           <br />
           <h3
             className={`text-2xl font-extrabold mb-1 ${
@@ -120,7 +120,7 @@ export const TopicCard: React.FC<TopicCardProps> = ({
           ))}
         </div>
 
-        <div className="flex flex-wrap gap-2 mt-auto">
+        <div className="flex flex-wrap gap-4 mt-auto">
           {topic.infoItems.map((item, index) => (
             <InfoItem
               key={index}

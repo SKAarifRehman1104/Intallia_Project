@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import Image from "@/assets/india-flag-icon 1.svg";
+import Image from "@/assets/indiaflag.svg";
 
 const signupSchema = z
   .object({

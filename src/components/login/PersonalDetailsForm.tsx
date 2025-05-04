@@ -1,4 +1,8 @@
+import { ChevronDown } from "lucide-react";
 import React from "react";
+import india from "@/assets/indiaflag.svg"
+
+
 
 export const PersonalDetailsForm: React.FC = () => {
   return (
@@ -46,16 +50,13 @@ export const PersonalDetailsForm: React.FC = () => {
               <div className="flex items-center rounded-md border border-gray-300 bg-teal-50 px-3">
                 <div className="flex items-center gap-2 pr-8 border-r border-gray-300">
                   <img
-                    src="https://cdn.builder.io/api/v1/image/assets/d6885eedf052436eac8c331fe6a68cb8/802a18abc481ac10a756b41f96ce276dd14b5f72?placeholderIfAbsent=true"
-                    alt="Country flag"
+                    src={india}
                     className="w-4 h-auto"
                   />
                   <span className="text-gray-700 font-normal">+91</span>
-                  <img
-                    src="https://cdn.builder.io/api/v1/image/assets/d6885eedf052436eac8c331fe6a68cb8/48d9b805a8d6bad8be5dc6ce7ccaf8fe1322b21c?placeholderIfAbsent=true"
-                    alt="Dropdown"
-                    className="w-3 h-auto"
-                  />
+
+                    <ChevronDown size={30}/>
+
                 </div>
                 <input
                   id="phoneNumber"

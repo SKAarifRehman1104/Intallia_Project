@@ -2,9 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import arrowIcon from '@/assets/arrow-up-right.svg'; // ✅ Import the image
 
-type Props = {};
 
-const UserPreferencesNav = (props: Props) => {
+const UserPreferencesNav = () => {
   const navigate = useNavigate();
 
   const handleGoToDashboard = () => {

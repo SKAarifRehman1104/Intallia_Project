@@ -6,6 +6,8 @@ import { PersonalDetailsForm } from "@/components/login/PersonalDetailsForm";
 import { ResumeUpload } from "@/components/login/ResumeUpload";
 import { EducationForm } from "@/components/login/EducationForm";
 import { CustomButton } from "@/components/login/CustomButton";
+import skipIcon from "@/assets/skip.svg";
+import nextIcon from "@/assets/next.svg";
 
 const UserDetails: React.FC = () => {
   const [step, setStep] = useState(1);
@@ -51,7 +53,7 @@ const UserDetails: React.FC = () => {
                   <div className="flex w-full justify-end gap-4 max-md:justify-start max-md:gap-3">
                     <CustomButton
                       variant="secondary"
-                      icon="https://cdn.builder.io/api/v1/image/assets/d6885eedf052436eac8c331fe6a68cb8/4588e5d855995251e91d3138e1d529d4344bc5cf?placeholderIfAbsent=true"
+                      icon={skipIcon}
                       onClick={handleSkip}
                     >
                       Skip
@@ -59,7 +61,7 @@ const UserDetails: React.FC = () => {
 
                     <CustomButton
                       variant="primary"
-                      icon="https://cdn.builder.io/api/v1/image/assets/d6885eedf052436eac8c331fe6a68cb8/516b62a891fdb1da75f19b4b1a830decfdfabf5b?placeholderIfAbsent=true"
+                      icon={nextIcon}
                       onClick={handleNext}
                     >
                       Next
