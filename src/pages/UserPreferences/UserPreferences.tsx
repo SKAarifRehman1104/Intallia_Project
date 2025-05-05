@@ -1,6 +1,6 @@
 import React from "react";
 import { TopicCard } from "@/components/Preferences/TopicCard/TopicCard";
-import { Guitar as Hospital, LayoutGrid } from "lucide-react";
+import { Factory as Hospital, BookMarked as LayoutGrid } from "lucide-react";
 import { BadgeType } from "@/components/Preferences/TopicCard/types"; // Enum import
 import { Header } from "@/components/login/Header";
 import UserPreferencesNav from "./UserPreferencesNav";
@@ -26,8 +26,7 @@ function UserPreferences() {
       id: "2",
       title: "Product Management",
       verticalLabel: "PROD",
-      description:
-        "Investors love product thinkers",
+      description: "Investors love product thinkers",
       badges: [
         { type: BadgeType.Demand, label: "High Demand" },
         { type: BadgeType.Hot, label: "Hot Topic" },
@@ -129,6 +128,66 @@ function UserPreferences() {
         { icon: LayoutGrid, label: "100+ Simulations" },
       ],
     },
+    {
+      id: "9",
+      title: "Operations Management",
+      verticalLabel: "OPS",
+      description: "Great for showcasing efficiency, process thinking.",
+      badges: [
+        { type: BadgeType.Demand, label: "High Demand" },
+        { type: BadgeType.Hot, label: "Hot Topic" },
+        { type: BadgeType.Favorite, label: "Industry Favorite" },
+      ],
+      infoItems: [
+        { icon: Hospital, label: "Healthcare" },
+        { icon: LayoutGrid, label: "100+ Simulations" },
+      ],
+    },
+    {
+      id: "10",
+      title: "Business Development",
+      verticalLabel: "BDEV",
+      description: "Sales drive growth, favorite role of investors",
+      badges: [
+        { type: BadgeType.Demand, label: "High Demand" },
+        { type: BadgeType.Hot, label: "Hot Topic" },
+        { type: BadgeType.Favorite, label: "Industry Favorite" },
+      ],
+      infoItems: [
+        { icon: Hospital, label: "Healthcare" },
+        { icon: LayoutGrid, label: "100+ Simulations" },
+      ],
+    },
+    {
+      id: "11",
+      title: "Data Science",
+      verticalLabel: "DATA",
+      description: "High demand across industries",
+      badges: [
+        { type: BadgeType.Demand, label: "High Demand" },
+        { type: BadgeType.Hot, label: "Hot Topic" },
+        { type: BadgeType.Favorite, label: "Industry Favorite" },
+      ],
+      infoItems: [
+        { icon: Hospital, label: "Healthcare" },
+        { icon: LayoutGrid, label: "100+ Simulations" },
+      ],
+    },
+    {
+      id: "12",
+      title: "Financial Analyst",
+      verticalLabel: "FIN",
+      description: "Essential for decision-making in any funded business.",
+      badges: [
+        { type: BadgeType.Demand, label: "High Demand" },
+        { type: BadgeType.Hot, label: "Hot Topic" },
+        { type: BadgeType.Favorite, label: "Industry Favorite" },
+      ],
+      infoItems: [
+        { icon: Hospital, label: "Healthcare" },
+        { icon: LayoutGrid, label: "100+ Simulations" },
+      ],
+    },
   ];
 
   const [selectedTopics, setSelectedTopics] = React.useState<string[]>([]);
@@ -143,24 +202,23 @@ function UserPreferences() {
 
   return (
     <>
-      <Header/>
-      <div className="min-h-screen bg-gray-100 p-6 md:p-12">
-        <UserPreferencesNav/>
-      <div className="max-w-7xl mx-auto">
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {topics.map((topic) => (
-            <div key={topic.id} className="h-full">
-              <TopicCard
-                topic={topic}
-                selected={selectedTopics.includes(topic.id)}
-                onClick={() => handleTopicToggle(topic.id)}
-              />
-            </div>
-          ))}
+      <Header />
+      <div className="min-h-screen bg-white p-6 md:p-12">
+        <UserPreferencesNav />
+        <div className="max-w-7xl mx-auto ">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 bg-zinc">
+            {topics.map((topic) => (
+              <div key={topic.id} className="h-full ">
+                <TopicCard
+                  topic={topic}
+                  selected={selectedTopics.includes(topic.id)}
+                  onClick={() => handleTopicToggle(topic.id)}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 }
