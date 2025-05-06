@@ -11,7 +11,7 @@ interface TopicCardProps {
   selected?: boolean;
 }
 
-export const TopicCard: React.FC<TopicCardProps> = ({
+const TopicCard: React.FC<TopicCardProps> = ({
   topic,
   onClick,
   selected = false,
@@ -134,3 +134,5 @@ export const TopicCard: React.FC<TopicCardProps> = ({
     </div>
   );
 };
+
+export default React.memo(TopicCard);
