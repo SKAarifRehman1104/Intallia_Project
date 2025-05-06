@@ -28,6 +28,9 @@ const AddSimulation = lazy(() => import("./pages/Simulation/AddSimulation/AddSim
 const Profile = lazy(() => import("./components/Profile/Profile"));
 const ViewSkillMatrix = lazy(() => import("./pages/SkillMatrix/ViewSkillMatrix/ViewSkillMatrix"));
 const SkillMatrix = lazy(() => import("./pages/SkillMatrix/SkillMatrix"));
+const SkillMatrixView = lazy(
+  () => import("./pages/SkillMatrix/SkillMatrixView"),
+);
 const Signup = lazy(() => import("@/pages/auth/SignUp/Signup"));
 const UserDetails = lazy(() => import("./pages/UserDetails/UserDetails"));
 const UserDashboard = lazy(() =>
@@ -35,8 +38,12 @@ const UserDashboard = lazy(() =>
     default: module.UserDashboard,
   })),
 );
-const CaseStudyDetail = lazy(() => import("./components/user dashboard/CaseStudyDetail"));
-const UserPreferences = lazy(() => import("./pages/UserPreferences/UserPreferences"));
+const CaseStudyDetail = lazy(
+  () => import("./components/user dashboard/CaseStudyDetail"),
+);
+const UserPreferences = lazy(
+  () => import("./pages/UserPreferences/UserPreferences"),
+);
 
 // Query Client Configuration
 const queryClient = new QueryClient({
@@ -49,7 +56,7 @@ const queryClient = new QueryClient({
 });
 
 const router = createBrowserRouter([
-  { path: "/", element: <Index />, errorElement: <NotFound />},
+  { path: "/", element: <Index />, errorElement: <NotFound /> },
   { path: "/roles", element: <RolesAndAccess /> },
   { path: "/users", element: <UserManagement /> },
   { path: "/company", element: <CompanyManagement /> },
@@ -68,6 +75,7 @@ const router = createBrowserRouter([
   { path: "/payments", element: <Payments /> },
   { path: "/skill-matrix", element: <SkillMatrix /> },
   { path: "/view-skill-matrix", element: <ViewSkillMatrix /> },
+  { path: "/skill-matrix-view", element: <SkillMatrixView /> },
   { path: "/profile", element: <Profile /> },
   { path: "/invitations", element: <Invitations /> },
   { path: "/user-details", element: <UserDetails /> },
