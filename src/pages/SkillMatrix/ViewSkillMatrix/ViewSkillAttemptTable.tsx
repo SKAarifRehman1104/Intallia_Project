@@ -30,7 +30,7 @@ const ViewSkillAttemptTable = () => {
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto mt-4 ">
+      <div className="overflow-x-auto mt-4 md:w-full">
         <table className="min-w-full w-full table-auto">
           <thead className="text-left bg-gray-50 text-gray-600 border-2 border-gray-100 w-full">
             <tr className="w-full">

@@ -28,8 +28,9 @@ const AddSimulation = lazy(() => import("./pages/Simulation/AddSimulation/AddSim
 const Profile = lazy(() => import("./components/Profile/Profile"));
 const ViewSkillMatrix = lazy(() => import("./pages/SkillMatrix/ViewSkillMatrix/ViewSkillMatrix"));
 const SkillMatrix = lazy(() => import("./pages/SkillMatrix/SkillMatrix"));
-const SkillMatrixView = lazy(
-  () => import("./pages/SkillMatrix/SkillMatrixView"),
+const SkillMatrixView = lazy(() => import("./pages/SkillMatrix/SkillMatrixView"),);
+const Score = lazy(
+  () => import("./pages/SkillMatrix/ViewSkillMatrix/Score"),
 );
 const Signup = lazy(() => import("@/pages/auth/SignUp/Signup"));
 const UserDetails = lazy(() => import("./pages/UserDetails/UserDetails"));
@@ -76,6 +77,7 @@ const router = createBrowserRouter([
   { path: "/skill-matrix", element: <SkillMatrix /> },
   { path: "/view-skill-matrix", element: <ViewSkillMatrix /> },
   { path: "/skill-matrix-view", element: <SkillMatrixView /> },
+  { path: "/score", element: <Score/> },
   { path: "/profile", element: <Profile /> },
   { path: "/invitations", element: <Invitations /> },
   { path: "/user-details", element: <UserDetails /> },
