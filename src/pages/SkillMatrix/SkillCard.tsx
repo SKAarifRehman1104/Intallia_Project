@@ -39,7 +39,7 @@ export const SkillCard: React.FC<SkillCardProps> = ({
   const getProgressColor = (level?: string) => {
     switch (level) {
       case "basic":
-        return "bg-[rgba(5,154,243,1)]";
+        return "bg-[rgba(5,154,243,1)] ";
       case "intermediate":
         return "bg-[rgba(20,196,199,1)]";
       case "advanced":
@@ -61,14 +61,14 @@ export const SkillCard: React.FC<SkillCardProps> = ({
       className={`items - center shadow-[0px_2.634px_4.139px_0px_rgba(0, 0, 0, 0.04)]bg - white self - stretch flex gap - 2.5 px - 3.5 py - [19px] rounded - [11.289px] ${className}`}
     >
       <div className="self-stretch w-[100%]">
-        <div className="text-[#242426] text-base font-medium leading-none tracking-[-0.32px]">
+        <div className="text-[#242426] text-base font-medium leading-none tracking-[-0.32px] ">
           {candidateName}
         </div>
-        <div className="w-full text-xs text-[#7C7C80] font-normal leading-none mt-5">
+        <div className="w-full text-xs text-[#7C7C80] font-normal leading-none mt-5 ">
           {skills.map((skill, index) => (
             <div
               key={index}
-              className={`flex justify-between items-center w-full ${
+              className={`flex justify-between items-center w-full  ${
                 index > 0 ? "mt-[15px]" : ""
               }`}
             >
