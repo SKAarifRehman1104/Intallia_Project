@@ -45,6 +45,10 @@ const CaseStudyDetail = lazy(
 const UserPreferences = lazy(
   () => import("./pages/UserPreferences/UserPreferences"),
 );
+const InnerPage = lazy(
+  () => import("@/pages/InnerPage/InnerPage"),
+);
+
 
 // Query Client Configuration
 const queryClient = new QueryClient({
@@ -84,6 +88,7 @@ const router = createBrowserRouter([
   { path: "/user-dashboard", element: <UserDashboard /> },
   { path: "/case-study-detail", element: <CaseStudyDetail /> },
   { path: "/preferences", element: <UserPreferences /> },
+  { path: "/inner-page", element: <InnerPage /> },
   { path: "*", element: <NotFound /> },
 ]);
 
