@@ -114,7 +114,6 @@
   font-size: var(--font-title2-size);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-relaxed);
-
 }
 
 .text-title1 {
@@ -122,7 +121,47 @@
   font-size: var(--font-title1-size);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-relaxed);
+}
+.card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
 
+.inverted-radius {
+  --radius: 11px;
+  --size: 11px;
+  --offset-x: 38px;
+  --offset-y: 38px;
+  aspect-ratio: 1;
+  z-index: 1;
+  background: linear-gradient(to bottom, #fff, transparent);
+  border-radius: var(--radius);
+
+  /* Mask for inverted corners */
+  --_mask-main:
+    /calc(2 * var(--radius)) calc(2 * var(--radius))
+    radial-gradient(#000 70%, #0000 72%);
+  --_mask-corner:
+    conic-gradient(at calc(100% - var(--radius)) var(--radius), #0000 25%, #000 0);
+  --_distance: calc(var(--size) + var(--radius));
+  mask:
+    calc(100% - var(--_distance) - var(--offset-x)) 0 var(--_mask-main),
+    100% calc(var(--_distance) + var(--offset-y)) var(--_mask-main),
+    radial-gradient(var(--size) at 100% 0, #0000 99%, #000 calc(100% + 1px))
+      calc(-1 * var(--radius) - var(--offset-x)) calc(var(--radius) + var(--offset-y)),
+    var(--_mask-corner) calc(-1 * var(--_distance) - var(--offset-x)) 0,
+    var(--_mask-corner) 0 calc(var(--_distance) + var(--offset-y));
+  mask-repeat: no-repeat;
+
+  /* Visual border effect */
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.55),
+    0 2px 8px rgba(0, 0, 0, 0.62);
 }
 
 
+article:hover .cfs,
+article:hover button {
+  background: linear-gradient(180deg, #0dafdc 0%, #22e9a2 100%);
+}

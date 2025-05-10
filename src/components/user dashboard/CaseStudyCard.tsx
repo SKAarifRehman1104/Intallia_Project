@@ -2,15 +2,15 @@ import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import "@/index.css";
-
+import "@/design-system.css";
+import { useNavigate, Link } from "react-router-dom";
 
 interface CaseStudyCardProps {
   icon: string;
   title: string;
   tools: string;
   backgroundImage: string;
-  // waveImage: string;
+  id: string | number;
 }
 
 export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
@@ -18,15 +18,19 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
   title,
   tools,
   backgroundImage,
+  id,
 }) => {
+  const navigate = useNavigate();
+
   return (
     <article className="relative h-full mr-2">
-      <div className="absolute top-0 right-0 z-10">
-        <div
-          className="bg-[#1D1D1F] p-3 flex items-center justify-center rounded-lg w-[48px] h-[48px]"
+      <div className="absolute top-0 right-0 z-10 ">
+        <Link
+          to={`/user-details/${id}`}
+          className="bg-[#1D1D1F] p-3 flex items-center justify-center rounded-lg w-[48px] h-[48px] cfs"
         >
           <ArrowUpRight className="text-white w-6 h-6" />
-        </div>
+        </Link>
       </div>
       <div className="inverted-radius  rounded-lg overflow-hidden h-full relative">
         <div className="flex flex-col h-full">
@@ -44,7 +48,12 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
             </h3>
             <p className="text-gray-500 text-sm mb-6">{tools}</p>
             <div className="mt-auto">
-              <Button className=".btn">Start Now!</Button>
+              <Button
+                className="btn"
+                onClick={() => navigate(`/user-details/${id}`)}
+              >
+                Start Now!
+              </Button>
             </div>
           </div>
 

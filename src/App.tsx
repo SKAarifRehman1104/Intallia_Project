@@ -84,7 +84,7 @@ const router = createBrowserRouter([
   { path: "/score", element: <Score/> },
   { path: "/profile", element: <Profile /> },
   { path: "/invitations", element: <Invitations /> },
-  { path: "/user-details", element: <UserDetails /> },
+  { path: "/user-details/:id", element: <UserDetails /> },
   { path: "/user-dashboard", element: <UserDashboard /> },
   { path: "/case-study-detail", element: <CaseStudyDetail /> },
   { path: "/preferences", element: <UserPreferences /> },
