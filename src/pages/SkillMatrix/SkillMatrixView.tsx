@@ -24,7 +24,7 @@ const SkillMatrixView = () => {
     <div>
       <Header />
       <div className="w-full rounded-xl my-2  bg-white mx-auto ">
-        <h1 className="text-center text-5xl font-normal leading-[10rem] pl-[12%]">
+        <h1 className="text-center text-5xl font-normal leading-[10rem] pl-[12%] text[#404145]">
           Skill Matrix
         </h1>
         <div className=" w-full flex pr-[100px] rounded-xl flex-wrap">
@@ -133,7 +133,6 @@ const SkillMatrixView = () => {
               <SkillCard candidateName={""} skills={skills} />
             </div>
           </div>
-         
         </div>
       </div>
     </div>
