@@ -1,11 +1,11 @@
 import { ActionButton } from "@/components/common/ActionButton";
 import Pagination from "@/components/common/Pagination";
 import { MainLayout } from "@/components/layout/MainLayout";
-import { UserTable } from "@/components/users/UserTable";
 import { UserTableActions } from "@/components/users/UserTableActions";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { users } from "@/data/users";
+import { CompanyTable } from "@/components/users/CompanyTable";
 
 const CompanyManagement = () => {
   const navigate = useNavigate();
@@ -37,7 +37,7 @@ const CompanyManagement = () => {
 
             <UserTableActions onSearch={setSearchQuery} />
             <div className="bg-white p-6 rounded-lg">
-              <UserTable
+              <CompanyTable
                 startIndex={startIndex}
                 endIndex={endIndex}
                 searchQuery={searchQuery}

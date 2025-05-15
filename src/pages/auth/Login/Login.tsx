@@ -15,10 +15,10 @@ const Login = () => {
             <img src={myImage} alt="Example" />
           </div>
           <div className="flex gap-2 items-center">
-            <button className="ring-1 rounded-lg py-1 px-3 ring-[#242426]">
+            <button  className="rounded-lg bg-[#242426] py-2 px-3 text-[#FFFFFF] leading-[21px]">
               Login
             </button>
-            <button className="rounded-lg bg-[#242426] py-2 px-3 text-[#FFFFFF] leading-[21px]">
+            <button className="ring-1 rounded-lg py-1 px-3 ring-[#242426]">
               Singup
             </button>
           </div>
