@@ -43,11 +43,11 @@ export const UserTableActions = ({ onSearch }: UserTableActionsProps) => {
           <ChevronDown className="w-4 h-4" />
         </Button>
 
-        {location.pathname === "/users" && (
+        {location.pathname === "/user" && (
           <ActionButton
             variant="primary"
             className="h-9 px-4"
-            onClick={() => navigate("/add-user")}
+            onClick={() => navigate("/add-new-user")}
           >
             Add New User
           </ActionButton>

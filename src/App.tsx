@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Login from "./pages/auth/Login/Login";
 
 // Lazy-loaded components
 const Index = lazy(() => import("./pages/Index"));
@@ -63,9 +64,10 @@ const queryClient = new QueryClient({
 const router = createBrowserRouter([
   { path: "/", element: <Index />, errorElement: <NotFound /> },
   { path: "/roles", element: <RolesAndAccess /> },
-  { path: "/users", element: <UserManagement /> },
+  { path: "/user", element: <UserManagement /> },
   { path: "/company", element: <CompanyManagement /> },
   { path: "/simulation", element: <Simulation /> },
+  { path: "/plan-&-package", element: <Plans /> },
   { path: "/packages", element: <Packages /> },
   { path: "/add-package", element: <AddNewPackage /> },
   { path: "/datascience", element: <DataScience /> },
@@ -74,8 +76,9 @@ const router = createBrowserRouter([
   { path: "/new-simulation", element: <AddSimulation /> },
   { path: "/add-company", element: <AddNewCompany /> },
   { path: "/add-role", element: <RoleForm /> },
-  { path: "/plans", element: <Plans /> },
+  { path: "/plan", element: <Plans /> },
   { path: "/signup", element: <Signup /> },
+  { path: "/login", element: <Login /> },
   { path: "/package/:id", element: <ViewPackage /> },
   { path: "/payments", element: <Payments /> },
   { path: "/skill-matrix", element: <SkillMatrix /> },
@@ -84,6 +87,7 @@ const router = createBrowserRouter([
   { path: "/score", element: <Score/> },
   { path: "/profile", element: <Profile /> },
   { path: "/invitations", element: <Invitations /> },
+  { path: "/user-details", element: <UserDetails /> },
   { path: "/user-details/:id", element: <UserDetails /> },
   { path: "/user-dashboard", element: <UserDashboard /> },
   { path: "/case-study-detail", element: <CaseStudyDetail /> },
