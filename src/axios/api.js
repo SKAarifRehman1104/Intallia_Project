@@ -1,42 +1,82 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,  // your base URL from env
-  headers: { 'Content-Type': 'application/json' },
+  baseURL: import.meta.env.VITE_API_URL,
+  headers: {
+    "Content-Type": "application/json",
+    // Add any other default headers here if needed
+  },
+  timeout: 10000, // Optional: set a timeout for requests (in ms)
+  withCredentials: false, // Set to true if you need to send cookies
 });
 
-// Auth example (if needed)
-export const Login = async (payload) => await api.post('/login', payload);
+//auth
+export const login = async (payload) => await api.post("/Login", payload);
+//export const signup = async (payload) => await api.post('', payload);
+export const logOut = async (payload) => await api.post("LogOut", payload);
 
-// Company APIs
-// fetchCompanyList expects plain JSON payload object
-export const fetchCompanyList = async (payload) =>
-  await api.post("/GETLookupData", payload);
+//Screen
+// export const getScreen = async (payload) => {
+//   const response = await fetch(
+//     `${import.meta.env.VITE_API_URL}/GETLookupData`,
+//     {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify(payload),
+//     },
+//   );
+//   if (!response.ok) {
+//     throw new Error("Network response was not ok");
+//   }
+//   return response.json();
+// };
 
-// deleteCompany expects payload with JSON stringified inside "JSON" property
+export const getScreen = async (payload) => {
+  const response = await axios.post(
+    `${import.meta.env.VITE_API_URL}/GETLookupData`,
+    payload,
+    {
+      headers: { "Content-Type": "application/json" },
+    },
+  );
+  console.log(response);
+  return await response.data;
+};
+
+//company api
+export const getCompanyById = async (payload) =>
+  await api.post("/GetCompany", payload);
+export const addCompany = async (payload) =>
+  await api.post("/AddCompany", payload);
+export const updateCompany = async (payload) =>
+  await api.post("/UpdateCompany", payload);
 export const deleteCompany = async (payload) =>
   await api.post("/DeleteCompany", payload);
 
-// Axios interceptors to attach token and handle 401 globally
-api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
+// // Axios interceptor to attach token to every request
+// api.interceptors.request.use(
+//   (config) => {
+//     const token = localStorage.getItem("token");
+//     if (token) {
+//       // Ensure headers exist and set Authorization
+//       config.headers = config.headers || {};
+//       config.headers['Authorization'] = `Bearer ${token}`;
+//     }
+//     return config;
+//   },
+//   (error) => Promise.reject(error)
+// );
 
 api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
-      window.location.href = '/login';  // redirect on auth failure
+      // Handle unauthorized response, e.g., logout or redirect
+      // Example: localStorage.removeItem('token');
+      window.location.href = "/login";
     }
     return Promise.reject(error);
-  }
+  },
 );
 
 export default api;

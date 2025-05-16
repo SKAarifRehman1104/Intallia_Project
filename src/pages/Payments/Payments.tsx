@@ -4,7 +4,7 @@ import { UserTableActions } from "@/components/users/UserTableActions";
 import { useState } from "react";
 import { PaymentTable } from "./PaymentTable";
 import { payments } from "@/data/users"; // Import payments data
-import { Payment } from "@/types/user"; // Import Payment type
+import { Payment } from "@/types"; // Import Payment type
 
 const Payments = () => {
   const [currentPage, setCurrentPage] = useState(1);

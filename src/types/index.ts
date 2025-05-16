@@ -39,3 +39,21 @@ export interface Invitation {
   status: string;
   invoice: string;
 }
+
+export interface Company {
+  CompanyId: string;
+  CompanyName: string;
+  ContactPersonName: string;
+  Website: string;
+  PhoneNumber: string;
+  Email: string;
+  Address: string;
+  City: string;
+  State: string;
+  Country: string;
+  Status: string;
+  CreateBy: Date;
+  CreateDate: Date;
+  ModifyBy: string;
+  ModifyDate: Date;
+}

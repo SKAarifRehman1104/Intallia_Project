@@ -4,7 +4,7 @@ import { Header } from "./Header";
 import { SimulationGrid } from "@/pages/Simulation/SimulationGrid/SimulationGrid";
 import { MainLayout } from "@/components/layout/MainLayout";
 
-export const Simulation: React.FC = () => {
+const Simulation: React.FC = () => {
   return (
     <MainLayout>
       <div className="p-8">
@@ -16,3 +16,5 @@ export const Simulation: React.FC = () => {
     </MainLayout>
   );
 };
+
+export default Simulation;

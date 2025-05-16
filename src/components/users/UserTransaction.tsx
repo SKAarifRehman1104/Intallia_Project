@@ -1,7 +1,7 @@
 
 
 import React from "react";
-import { Transaction } from "@/types/user";
+import { Transaction } from "@/types";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 

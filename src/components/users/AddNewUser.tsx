@@ -67,47 +67,6 @@ export const AddNewUser: React.FC = () => {
 
           <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.02)] bg-white flex items-stretch gap-5 flex-wrap justify-between mt-[30px] px-[45px] py-[31px] rounded-[15px] h-[88vh] sticky top-0 overflow-y-scroll">
             <UserForm />
-
-            {/* <aside className="flex flex-col font-normal items-end">
-                            <SearchBar />
-
-                            <div className="flex w-[202px] max-w-full flex-col items-stretch text-base text-center tracking-[-0.32px] leading-none justify-center mt-[49px] space-y-5">
-                                <ActionButton
-                                    variant="primary"
-                                    className="text-white "
-                                >
-                                    Download Resume
-                                </ActionButton>
-
-                                <ActionButton
-                                    variant="primary"
-                                    className="text-white  font-plusJakarta "
-                                >
-                                    Add New User
-                                </ActionButton>
-
-                                <ActionButton
-                                    variant="outline"
-                                    className="font-semibold font-plusJakarta "
-                                >
-                                    Save & Exit
-                                </ActionButton>
-
-                                <ActionButton
-                                    variant="outline"
-                                    className="font-semibold font-plusJakarta"
-                                >
-                                    Save
-                                </ActionButton>
-
-                                <ActionButton
-                                    variant="danger"
-                                    className="text-[#FF3A3A] px-8 py-4 font-semibold font-plusJakarta "
-                                >
-                                    Delete
-                                </ActionButton>
-                            </div>
-                        </aside> */}
             <SidebarActions actions={actions} />
           </div>
         </div>

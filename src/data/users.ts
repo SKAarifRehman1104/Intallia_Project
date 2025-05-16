@@ -1,4 +1,4 @@
-import { User, Transaction } from "@/types/user";
+import { User, Transaction } from "@/types";
 
 export const payments: User[] = [
   {

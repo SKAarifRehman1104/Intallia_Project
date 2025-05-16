@@ -1,30 +1,61 @@
 import { ActionButton } from "@/components/common/ActionButton";
 import Pagination from "@/components/common/Pagination";
 import { MainLayout } from "@/components/layout/MainLayout";
+import { CTable } from "@/pages/Company/CTable";
 import { UserTableActions } from "@/components/users/UserTableActions";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { users } from "@/data/users";
-import { CompanyTable } from "@/components/users/CompanyTable";
+import { useQuery } from "@tanstack/react-query";
+import { getScreen } from "@/axios/api.js";
+import { Company } from "@/types";
 
 const CompanyManagement = () => {
   const navigate = useNavigate();
-
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
-  const usersPerPage = 8;
-  const totalPages = Math.ceil(users.length / usersPerPage);
 
-  //   const handlePrevious = () => {
-  //     setCurrentPage((prev) => Math.max(1, prev - 1));
-  //   };
+  // Use React Query for fetching companies
+  const {
+    data: companies = [],
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["companies"],
+    queryFn: async () =>
+      await getScreen({
+        ScreenName: "CompanyMaster",
+        LookUpKey: "GetList",
+        Filter1: "",
+        Filter2: "",
+        Filter3: "",
+        Filter4: "",
+        Filter5: "",
+      }),
+    retry: 2,
+  });
 
-  //   const handleNext = () => {
-  //     setCurrentPage((prev) => Math.min(totalPages, prev + 1));
-  //   };
+  const rowPerPage = 8;
+  const totalPages = Math.ceil(companies.length / rowPerPage);
+  const startIndex = (currentPage - 1) * rowPerPage;
+  const endIndex = startIndex + rowPerPage;
 
-  const startIndex = (currentPage - 1) * usersPerPage;
-  const endIndex = startIndex + usersPerPage;
+  // Filter companies by search query
+  const filteredCompanies = companies?.LookupData?.filter(
+    (company: Company) => {
+      const searchStr = searchQuery.toLowerCase();
+      return (
+        company.CompanyId?.toLowerCase().includes(searchStr) ||
+        company.CompanyName?.toLowerCase().includes(searchStr) ||
+        company.Email?.toLowerCase().includes(searchStr) ||
+        company.PhoneNumber?.toLowerCase().includes(searchStr)
+      );
+    },
+  );
+  const displayedCompanies: Company[] = filteredCompanies?.slice(
+    startIndex,
+    endIndex,
+  );
+  console.log(displayedCompanies);
 
   return (
     <MainLayout>
@@ -32,21 +63,27 @@ const CompanyManagement = () => {
         <main className="flex-1 p-8">
           <div className="space-y-6">
             <div className="flex justify-between items-center">
-              <h1 className="page-heading ">User Management (Company)</h1>
+              <h1 className="page-heading">User Management (Company)</h1>
             </div>
-
             <UserTableActions onSearch={setSearchQuery} />
             <div className="bg-white p-6 rounded-lg">
-              <CompanyTable
-                startIndex={startIndex}
-                endIndex={endIndex}
-                searchQuery={searchQuery}
-              />
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={setCurrentPage}
-              />
+              {isLoading && <div>Loading...</div>}
+              {isError && <div>Error loading companies.</div>}
+              {!isLoading && !isError && (
+                <>
+                  <CTable
+                    startIndex={startIndex}
+                    endIndex={endIndex}
+                    searchQuery={searchQuery}
+                    companies={displayedCompanies}
+                  />
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={setCurrentPage}
+                  />
+                </>
+              )}
             </div>
           </div>
         </main>

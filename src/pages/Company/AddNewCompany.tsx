@@ -1,10 +1,10 @@
 import React from "react";
 
-import { SearchBar } from "../common/SearchBar";
-import { ActionButton } from "../common/ActionButton";
-import { UserForm } from "./UserForm";
-import { MainLayout } from "../layout/MainLayout";
-import SidebarActions from "./SidebarActions";
+import { SearchBar } from "../../components/common/SearchBar";
+import { ActionButton } from "../../components/common/ActionButton";
+import CompanyForm from "./CompanyForm";
+import { MainLayout } from "../../components/layout/MainLayout";
+import SidebarActions from "../../components/users/SidebarActions";
 
 export const AddNewCompany: React.FC = () => {
   const handleAddNewCompany = () => {
@@ -57,7 +57,7 @@ export const AddNewCompany: React.FC = () => {
           <h1 className="page-heading">Add New Company</h1>
 
           <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.02)] bg-white flex items-stretch gap-5 flex-wrap justify-between mt-[30px] px-[45px] py-[31px] rounded-[15px]  h-[88vh] sticky top-0 overflow-y-scroll">
-            <UserForm />
+            <CompanyForm />
             <SidebarActions actions={actions} />
           </div>
         </div>
