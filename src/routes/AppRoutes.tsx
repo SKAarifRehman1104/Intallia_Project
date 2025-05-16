@@ -15,56 +15,49 @@ const CompanyManagement = lazy(
 const RolesAndAccess = lazy(
   () => import("@/pages/RolesAndAccess/RolesAndAccess"),
 );
+
 const AddNewUser = lazy(() =>
-  import("@/components/users/AddNewUser").then((m) => ({
-    default: m.AddNewUser,
+  import("@/components/users/AddNewUser").then((module) => ({
+    default: module.AddNewUser,
   })),
 );
 const AddNewCompany = lazy(() =>
-  import("@/components/users/AddNewCompany").then((m) => ({
-    default: m.AddNewCompany,
+  import("@/pages/Company/AddNewCompany").then((module) => ({
+    default: module.AddNewCompany,
   })),
 );
 const RoleForm = lazy(() =>
-  import("@/pages/RolesAndAccess/RoleForm").then((m) => ({
-    default: m.RoleForm,
-  })),
-);
-const AddNewRole = lazy(() =>
-  import("@/components/users/AddNewRole").then((m) => ({
-    default: m.AddNewRole,
+  import("@/pages/RolesAndAccess/RoleForm").then((module) => ({
+    default: module.RoleForm,
   })),
 );
 
-const Simulation = lazy(() =>
-  import("@/pages/Simulation/Simulation").then((m) => ({
-    default: m.Simulation,
-  })),
-);
+const Simulation = lazy(() => import("@/pages/Simulation/Simulation"));
 const AddSimulation = lazy(
   () => import("@/pages/Simulation/AddSimulation/AddSimulation"),
 );
+
 const Packages = lazy(() => import("@/pages/Packages/Packages"));
 const AddNewPackage = lazy(() =>
-  import("@/pages/Packages/AddNewPackage").then((m) => ({
-    default: m.AddNewPackage,
+  import("@/pages/Packages/AddNewPackage").then((module) => ({
+    default: module.AddNewPackage,
   })),
 );
 const ViewPackage = lazy(() =>
-  import("@/pages/Packages/ViewPackage").then((m) => ({
-    default: m.ViewPackage,
+  import("@/pages/Packages/ViewPackage").then((module) => ({
+    default: module.ViewPackage,
   })),
 );
 const DataScience = lazy(() =>
-  import("@/pages/Packages/DataScience").then((m) => ({
-    default: m.DataScience,
+  import("@/pages/Packages/DataScience").then((module) => ({
+    default: module.DataScience,
   })),
 );
 const Plans = lazy(() => import("@/pages/Packages/plans"));
 
 const Invitations = lazy(() =>
-  import("@/components/Invitations/Invitations").then((m) => ({
-    default: m.Invitations,
+  import("@/components/Invitations/Invitations").then((module) => ({
+    default: module.Invitations,
   })),
 );
 const Payments = lazy(() => import("@/pages/Payments/Payments"));
@@ -72,6 +65,7 @@ const UserAssignment = lazy(
   () => import("@/pages/UserAssignment/UserAssignment"),
 );
 const Profile = lazy(() => import("@/components/Profile/Profile"));
+
 const ViewSkillMatrix = lazy(
   () => import("@/pages/SkillMatrix/ViewSkillMatrix/ViewSkillMatrix"),
 );
@@ -83,8 +77,8 @@ const Score = lazy(() => import("@/pages/SkillMatrix/ViewSkillMatrix/Score"));
 
 const UserDetails = lazy(() => import("@/pages/UserDetails/UserDetails"));
 const UserDashboard = lazy(() =>
-  import("@/pages/UserDashboard/UserDashboard").then((m) => ({
-    default: m.UserDashboard,
+  import("@/pages/UserDashboard/UserDashboard").then((module) => ({
+    default: module.UserDashboard,
   })),
 );
 const CaseStudyDetail = lazy(
@@ -175,7 +169,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/add-new-user",
+    path: "/add-user",
     element: (
       <PrivateRoute>
         <AddNewUser />

@@ -1,4 +1,4 @@
-import { Invitation } from "@/types/user";
+import { Invitation } from "@/types";
 
 export const PInvitations: Invitation[] = [
   {

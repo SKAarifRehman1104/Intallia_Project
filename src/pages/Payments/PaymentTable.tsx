@@ -11,7 +11,7 @@ import { MoreVertical } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { getUserTransaction } from "@/data/users";
-import { Transaction, Payment } from "@/types/user";
+import { Transaction, Payment } from "@/types";
 import { UserTransaction } from "@/components/users/UserTransaction";
 interface PaymentTableProps {
   startIndex: number;

@@ -11,8 +11,8 @@ import PrivateRoute from "@/routes/PrivateRoute";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      retry: 2, // Retry failed queries twice
-      staleTime: 1000 * 60 * 5, // Cache data for 5 minutes
+      retry: 2,
+      staleTime: 5 * 60 * 1000, // 5 minutes in milliseconds
     },
   },
 });
