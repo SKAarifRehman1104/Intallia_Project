@@ -1,26 +1,30 @@
-// import { ActionButton } from "@/components/common/ActionButton";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import Pagination from "@/components/common/Pagination";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { UserTable } from "@/components/users/UserTable";
 import { UserTableActions } from "@/components/users/UserTableActions";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
+// ❗ Replace or remove this dummy data import if `users` is no longer used
 import { users } from "@/data/users";
 
-
-const Packages = () => {
+const Packages: React.FC = () => {
   const navigate = useNavigate();
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
   const usersPerPage = 8;
-  const totalPages = Math.ceil(users.length / usersPerPage); // Ensure correct pagination
+
+  // NOTE: If you're fetching companies from an API, don't use users.length for total pages
+  const totalPages = Math.ceil(users.length / usersPerPage);
 
   const startIndex = (currentPage - 1) * usersPerPage;
   const endIndex = startIndex + usersPerPage;
 
   return (
-    <MainLayout  className="p-8">
+    <MainLayout className="p-8">
       <div className="flex min-h-screen bg-background">
         <main className="flex-1 p-8">
           <div className="space-y-6">
@@ -29,7 +33,8 @@ const Packages = () => {
             </div>
 
             <UserTableActions onSearch={setSearchQuery} />
-            <div className="bg-white p-6 rounded-lg">
+
+            <div className="bg-white p-6 rounded-lg shadow">
               <UserTable
                 startIndex={startIndex}
                 endIndex={endIndex}

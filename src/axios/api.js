@@ -1,13 +1,23 @@
-// src/api/axiosInstance.js
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: import.meta.env.VITE_API_URL,  // your base URL from env
   headers: { 'Content-Type': 'application/json' },
 });
 
-export const get = async() => await api.get('/login');
+// Auth example (if needed)
+export const Login = async (payload) => await api.post('/login', payload);
 
+// Company APIs
+// fetchCompanyList expects plain JSON payload object
+export const fetchCompanyList = async (payload) =>
+  await api.post("/GETLookupData", payload);
+
+// deleteCompany expects payload with JSON stringified inside "JSON" property
+export const deleteCompany = async (payload) =>
+  await api.post("/DeleteCompany", payload);
+
+// Axios interceptors to attach token and handle 401 globally
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
@@ -23,9 +33,7 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
-      // Handle unauthorized response, e.g., logout or redirect
-      // Example: localStorage.removeItem('token');
-       window.location.href = '/login';
+      window.location.href = '/login';  // redirect on auth failure
     }
     return Promise.reject(error);
   }

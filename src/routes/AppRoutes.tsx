@@ -1,6 +1,7 @@
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
+import Login from "@/pages/auth/Login/Login";
 
 // Lazy-loaded components
 const Index = lazy(() => import("@/pages/Index"));
@@ -97,7 +98,7 @@ const InnerPage = lazy(() => import("@/pages/InnerPage/InnerPage"));
 // Route definitions
 const router = createBrowserRouter([
   { path: "/signup", element: <Signup /> },
-  { path: "/login", element: <Signup /> },
+  { path: "/login", element: <Login /> },
 
   // Protected routes
   {
@@ -118,7 +119,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/users",
+    path: "/user",
     element: (
       <PrivateRoute>
         <UserManagement />

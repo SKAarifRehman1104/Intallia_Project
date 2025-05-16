@@ -11,9 +11,9 @@ interface PrivateRouteProps {
 const PrivateRoute = ({ children }: PrivateRouteProps) => {
   const token = useAuthStore((state: { token?: string }) => state?.token);
   const { isLoading } = useUserQuery();
-  // if (!token && !isLoading) {
-  //   return <Navigate to="/login" replace />;
-  // }
+  if (!token && !isLoading) {
+    return <Navigate to="/login" replace />;
+  }
 
   return <>{children}</>;
 };
