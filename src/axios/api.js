@@ -53,6 +53,32 @@ export const updateCompany = async (payload) =>
 export const deleteCompany = async (payload) =>
   await api.post("/DeleteCompany", payload);
 
+
+
+//plans api
+export const plansById = async (payload) =>
+  await api.post("/GetPlans", payload);
+export const Plans = async (payload) =>
+  await api.post("/AddPlans", payload);
+export const updatePlans = async (payload) =>
+  await api.post("/UpdatePlans", payload);
+export const deletePlans = async (payload) =>
+  await api.post("/DeletePlans", payload);
+
+
+
+
+//UserEduction
+export const userEducationById = async (payload) =>
+  await api.post("/GetUserEducation", payload);
+export const addUserEducation = async (payload) =>
+  await api.post("/AddUserEducation", payload);
+export const updateUserEduction = async (payload) =>
+  await api.post("/UpdateUserEduction", payload);
+export const deleteUserEduction = async (payload) =>
+  await api.post("/DeleteUserEduction", payload);
+
+
 // // Axios interceptor to attach token to every request
 // api.interceptors.request.use(
 //   (config) => {

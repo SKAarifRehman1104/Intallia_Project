@@ -104,7 +104,7 @@ export const UserTableActions = ({ onSearch }: UserTableActionsProps) => {
           <ActionButton
             variant="primary"
             className="h-9 px-4"
-            onClick={() => navigate("/packages")}
+            onClick={() => navigate("/add-new-package")}
           >
             Add New Package
           </ActionButton>

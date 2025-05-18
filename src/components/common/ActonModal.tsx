@@ -1,6 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 
-const ActonModal: React.FC = () => {
+interface ActionModalProps {
+  id: string;
+}
+
+const ActonModal: React.FC = ({ id }: ActionModalProps) => {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 

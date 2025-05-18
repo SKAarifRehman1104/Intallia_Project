@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import React, { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import Login from "@/pages/auth/Login/Login";
@@ -48,11 +48,8 @@ const ViewPackage = lazy(() =>
     default: module.ViewPackage,
   })),
 );
-const DataScience = lazy(() =>
-  import("@/pages/Packages/DataScience").then((module) => ({
-    default: module.DataScience,
-  })),
-);
+const DataScience = lazy(() => import("@/pages/Packages/DataScience"));
+
 const Plans = lazy(() => import("@/pages/Packages/plans"));
 
 const Invitations = lazy(() =>
@@ -145,10 +142,18 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/add-package",
+    path: "/add-new-package",
     element: (
       <PrivateRoute>
         <AddNewPackage />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/package/:id",
+    element: (
+      <PrivateRoute>
+        <ViewPackage />
       </PrivateRoute>
     ),
   },
@@ -169,7 +174,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/add-user",
+    path: "/add-new-user",
     element: (
       <PrivateRoute>
         <AddNewUser />
@@ -201,21 +206,14 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/plans",
+    path: "/plan",
     element: (
       <PrivateRoute>
         <Plans />
       </PrivateRoute>
     ),
   },
-  {
-    path: "/package/:id",
-    element: (
-      <PrivateRoute>
-        <ViewPackage />
-      </PrivateRoute>
-    ),
-  },
+
   {
     path: "/payments",
     element: (
