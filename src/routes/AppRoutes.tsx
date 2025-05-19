@@ -91,6 +91,10 @@ const router = createBrowserRouter([
   { path: "/signup", element: <Signup /> },
   { path: "/login", element: <Login /> },
 
+  // {
+  //   path: "/add-company/:companyId",
+  //   element: <AddNewCompany />,
+  // },
   // Protected routes
   {
     path: "/",

@@ -29,18 +29,25 @@ const tableColumns: Column<Company>[] = [
   {
     key: "status",
     header: "Status",
-    render: (company) => (
-      <Badge
-        variant="secondary"
-        className={
-          company.Status === "Active"
-            ? "bg-[#ECFDF3] text-[#23C16B]"
-            : "bg-[#FEF3F2] text-[#FF3A3A]"
-        }
-      >
-        {company.Status}
-      </Badge>
-    ),
+    render: (company) => {
+      const status = company.Status
+        ? company.Status.charAt(0).toUpperCase() + company.Status.slice(1).toLowerCase()
+        : "";
+      return (
+        <Badge
+          variant="secondary"
+          className={
+            status === "Active"
+              ? "bg-[#ECFDF3] text-[#23C16B]"
+              : status === "Inactive"
+              ? "bg-[#FEF3F2] text-[#FF3A3A]"
+              : ""
+          }
+        >
+          {status}
+        </Badge>
+      );
+    },
   },
   {
     key: "website",
@@ -52,15 +59,11 @@ const tableColumns: Column<Company>[] = [
 ];
 
 interface CTableProps {
-  startIndex: number;
-  endIndex: number;
   searchQuery: string;
   companies: Company[];
 }
 
 export const CTable = ({
-  startIndex,
-  endIndex,
   searchQuery,
   companies,
 }: CTableProps) => {
@@ -70,7 +73,8 @@ export const CTable = ({
       columns={tableColumns}
       rowKey={(company) => company.CompanyId}
       selectable
-      actions={() => <ThreeDotMenu />}
+      actions={(company) => (company && company.CompanyId ? <ThreeDotMenu company={company} /> : null)}
+
     />
   );
 };

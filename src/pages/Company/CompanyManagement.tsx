@@ -57,6 +57,12 @@ const CompanyManagement = () => {
     startIndex,
     endIndex,
   );
+  // console.log(displayedCompanies);
+  // if (displayedCompanies && Array.isArray(displayedCompanies)) {
+  //   displayedCompanies.forEach(company => {
+  //     console.log(`CompanyId: ${company.CompanyId}, Status: ${company.Status}`);
+  //   });
+  // }
 
   return (
     <MainLayout>
@@ -73,8 +79,6 @@ const CompanyManagement = () => {
               {!isLoading && !isError && (
                 <>
                   <CTable
-                    startIndex={startIndex}
-                    endIndex={endIndex}
                     searchQuery={searchQuery}
                     companies={displayedCompanies}
                   />

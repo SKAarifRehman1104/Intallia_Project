@@ -1,12 +1,54 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { deleteCompany } from "@/axios/api";
+import { useNavigate } from "react-router-dom";
 
-interface ActionModalProps {
-  id: string;
+// Define props
+interface Company {
+  CompanyId: string;
+  // Add other fields if needed
 }
 
-const ActonModal: React.FC = ({ id }: ActionModalProps) => {
+
+interface Props {
+  company: Company;
+}
+
+const ActionModal: React.FC<Props> = ({ company }) => {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  // Inside ActionModal component
+  const navigate = useNavigate();
+
+  const handleEdit = () => {
+  if (!company || !company.CompanyId) {
+    console.error("Company is undefined or missing CompanyId");
+    return;
+  }
+  setOpen(false);
+  navigate(`/add-company?companyId=${company.CompanyId}`);
+};
+
+  const queryClient = useQueryClient();
+
+  const deleteCompanyMutation = useMutation({
+    mutationFn: async (companyId: string) => {
+      const payload = {
+        JSON: JSON.stringify({
+          Header: [{ CompanyId: companyId }],
+          Response: [{ ResponseText: "", ErrorCode: "" }],
+        }),
+      };
+      return await deleteCompany(payload);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["companies"] });
+    },
+    onError: (error) => {
+      console.error("Delete failed:", error);
+      alert("Failed to delete company.");
+    },
+  });
 
   // Close menu on outside click
   useEffect(() => {
@@ -41,17 +83,17 @@ const ActonModal: React.FC = ({ id }: ActionModalProps) => {
           <div className="py-1">
             <button
               type="button"
-              onClick={() => handleAction("Assign Simulation")}
+              onClick={handleEdit}
               className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               Edit Company
             </button>
             <button
-              type="button"
-              onClick={() => handleAction("View score board")}
-              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="text-red-500 hover:underline px-4 py-2 text-sm w-full text-left"
+              onClick={() => deleteCompanyMutation.mutate(company.CompanyId)}
+              disabled={deleteCompanyMutation.isPending}
             >
-              Delete Companny
+              {deleteCompanyMutation.isPending ? "Deleting..." : "Delete"}
             </button>
           </div>
         </div>
@@ -60,4 +102,4 @@ const ActonModal: React.FC = ({ id }: ActionModalProps) => {
   );
 };
 
-export default ActonModal;
+export default ActionModal;
