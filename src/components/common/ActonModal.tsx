@@ -1,8 +1,61 @@
 import React, { useState, useRef, useEffect } from "react";
+<<<<<<< HEAD
 
 const ActonModal: React.FC = () => {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+=======
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { deleteCompany } from "@/axios/api";
+import { useNavigate } from "react-router-dom";
+
+// Define props
+interface Company {
+  CompanyId: string;
+  // Add other fields if needed
+}
+
+
+interface Props {
+  company: Company;
+}
+
+const ActionModal: React.FC<Props> = ({ company }) => {
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  // Inside ActionModal component
+  const navigate = useNavigate();
+
+  const handleEdit = () => {
+  if (!company || !company.CompanyId) {
+    console.error("Company is undefined or missing CompanyId");
+    return;
+  }
+  setOpen(false);
+  navigate(`/add-company?companyId=${company.CompanyId}`);
+};
+
+  const queryClient = useQueryClient();
+
+  const deleteCompanyMutation = useMutation({
+    mutationFn: async (companyId: string) => {
+      const payload = {
+        JSON: JSON.stringify({
+          Header: [{ CompanyId: companyId }],
+          Response: [{ ResponseText: "", ErrorCode: "" }],
+        }),
+      };
+      return await deleteCompany(payload);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["companies"] });
+    },
+    onError: (error) => {
+      console.error("Delete failed:", error);
+      alert("Failed to delete company.");
+    },
+  });
+>>>>>>> d86edb3 (Create, Read and Delete of Company Completed)
 
   // Close menu on outside click
   useEffect(() => {
@@ -37,17 +90,29 @@ const ActonModal: React.FC = () => {
           <div className="py-1">
             <button
               type="button"
+<<<<<<< HEAD
               onClick={() => handleAction("Assign Simulation")}
+=======
+              onClick={handleEdit}
+>>>>>>> d86edb3 (Create, Read and Delete of Company Completed)
               className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               Edit Company
             </button>
             <button
+<<<<<<< HEAD
               type="button"
               onClick={() => handleAction("View score board")}
               className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               Delete Companny
+=======
+              className="text-red-500 hover:underline px-4 py-2 text-sm w-full text-left"
+              onClick={() => deleteCompanyMutation.mutate(company.CompanyId)}
+              disabled={deleteCompanyMutation.isPending}
+            >
+              {deleteCompanyMutation.isPending ? "Deleting..." : "Delete"}
+>>>>>>> d86edb3 (Create, Read and Delete of Company Completed)
             </button>
           </div>
         </div>
@@ -56,4 +121,8 @@ const ActonModal: React.FC = () => {
   );
 };
 
+<<<<<<< HEAD
 export default ActonModal;
+=======
+export default ActionModal;
+>>>>>>> d86edb3 (Create, Read and Delete of Company Completed)
