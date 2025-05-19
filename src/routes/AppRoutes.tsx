@@ -94,13 +94,10 @@ const router = createBrowserRouter([
   { path: "/signup", element: <Signup /> },
   { path: "/login", element: <Login /> },
 
-<<<<<<< HEAD
-=======
   // {
   //   path: "/add-company/:companyId",
   //   element: <AddNewCompany />,
   // },
->>>>>>> d86edb3 (Create, Read and Delete of Company Completed)
   // Protected routes
   {
     path: "/",
@@ -208,11 +205,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-<<<<<<< HEAD
-    path: "/plans",
-=======
     path: "/plan",
->>>>>>> d86edb3 (Create, Read and Delete of Company Completed)
     element: (
       <PrivateRoute>
         <Plans />

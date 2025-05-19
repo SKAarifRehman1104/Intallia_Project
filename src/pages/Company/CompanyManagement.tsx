@@ -55,16 +55,12 @@ const CompanyManagement = () => {
     startIndex,
     endIndex,
   );
-<<<<<<< HEAD
-  console.log(displayedCompanies);
-=======
   // console.log(displayedCompanies);
   // if (displayedCompanies && Array.isArray(displayedCompanies)) {
   //   displayedCompanies.forEach(company => {
   //     console.log(`CompanyId: ${company.CompanyId}, Status: ${company.Status}`);
   //   });
   // }
->>>>>>> d86edb3 (Create, Read and Delete of Company Completed)
 
   return (
     <MainLayout>
@@ -81,11 +77,6 @@ const CompanyManagement = () => {
               {!isLoading && !isError && (
                 <>
                   <CTable
-<<<<<<< HEAD
-                    startIndex={startIndex}
-                    endIndex={endIndex}
-=======
->>>>>>> d86edb3 (Create, Read and Delete of Company Completed)
                     searchQuery={searchQuery}
                     companies={displayedCompanies}
                   />

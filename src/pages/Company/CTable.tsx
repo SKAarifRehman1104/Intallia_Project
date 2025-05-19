@@ -29,20 +29,6 @@ const tableColumns: Column<Company>[] = [
   {
     key: "status",
     header: "Status",
-<<<<<<< HEAD
-    render: (company) => (
-      <Badge
-        variant="secondary"
-        className={
-          company.Status === "Active"
-            ? "bg-[#ECFDF3] text-[#23C16B]"
-            : "bg-[#FEF3F2] text-[#FF3A3A]"
-        }
-      >
-        {company.Status}
-      </Badge>
-    ),
-=======
     render: (company) => {
       const status = company.Status
         ? company.Status.charAt(0).toUpperCase() + company.Status.slice(1).toLowerCase()
@@ -62,7 +48,6 @@ const tableColumns: Column<Company>[] = [
         </Badge>
       );
     },
->>>>>>> d86edb3 (Create, Read and Delete of Company Completed)
   },
   {
     key: "website",
@@ -74,21 +59,11 @@ const tableColumns: Column<Company>[] = [
 ];
 
 interface CTableProps {
-<<<<<<< HEAD
-  startIndex: number;
-  endIndex: number;
-=======
->>>>>>> d86edb3 (Create, Read and Delete of Company Completed)
   searchQuery: string;
   companies: Company[];
 }
 
 export const CTable = ({
-<<<<<<< HEAD
-  startIndex,
-  endIndex,
-=======
->>>>>>> d86edb3 (Create, Read and Delete of Company Completed)
   searchQuery,
   companies,
 }: CTableProps) => {
@@ -98,12 +73,8 @@ export const CTable = ({
       columns={tableColumns}
       rowKey={(company) => company.CompanyId}
       selectable
-<<<<<<< HEAD
-      actions={() => <ThreeDotMenu />}
-=======
       actions={(company) => (company && company.CompanyId ? <ThreeDotMenu company={company} /> : null)}
 
->>>>>>> d86edb3 (Create, Read and Delete of Company Completed)
     />
   );
 };

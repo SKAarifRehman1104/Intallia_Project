@@ -98,6 +98,10 @@ export const AddNewCompany: React.FC = () => {
   }, [companyData]);
 
   const handleAddNewCompany = async () => {
+    if (!formData.companyId.trim() || !formData.companyName.trim() || !formData.contactPersonName.trim() || !formData.phoneNumber.trim() || !formData.website.trim() || !formData.email.trim() || !formData.address.trim() || !formData.city.trim() || !formData.state.trim() || !formData.country.trim() || !formData.status.trim()) {
+      alert("Please fill in all required fields before submitting.");
+      return;
+    }
     try {
       const payload = {
         JSON: JSON.stringify({
@@ -147,22 +151,11 @@ export const AddNewCompany: React.FC = () => {
     {
       variant: "primary",
       text: "Add New User",
-<<<<<<< HEAD
-      onClick: handleAddNewUser,
-=======
       onClick: () => console.log("Add New User clicked"),
->>>>>>> d86edb3 (Create, Read and Delete of Company Completed)
     },
     {
       variant: "outline",
       text: "Save & Exit",
-<<<<<<< HEAD
-      onClick: handleSaveAndExit,
-    },
-    { variant: "outline", text: "Save", onClick: handleSave },
-    { variant: "danger", text: "Delete", onClick: handleDelete },
-  ];
-=======
       onClick: () => console.log("Save & Exit clicked"),
     },
     {
@@ -177,20 +170,14 @@ export const AddNewCompany: React.FC = () => {
     },
   ];
 
->>>>>>> d86edb3 (Create, Read and Delete of Company Completed)
   return (
     <MainLayout>
       <div className="bg-[#F8F9FA] flex items-start gap-[35px] overflow-hidden flex-wrap p-8">
         <div className="flex flex-col items-stretch grow shrink-0 basis-0 w-fit">
           <h1 className="page-heading">Add New Company</h1>
 
-<<<<<<< HEAD
-          <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.02)] bg-white flex items-stretch gap-5 flex-wrap justify-between mt-[30px] px-[45px] py-[31px] rounded-[15px]  h-[88vh] sticky top-0 overflow-y-scroll">
-            <CompanyForm />
-=======
           <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.02)] bg-white flex items-stretch gap-5 flex-wrap justify-between mt-[30px] px-[45px] py-[31px] rounded-[15px] h-[88vh] sticky top-0 overflow-y-scroll">
             <CompanyForm formData={formData} setFormData={setFormData} />
->>>>>>> d86edb3 (Create, Read and Delete of Company Completed)
             <SidebarActions actions={actions} />
           </div>
         </div>
