@@ -48,6 +48,7 @@ const CompanyManagement = () => {
       );
     },
   );
+  const rowPerPage = 8;
   const totalPages = Math.ceil(filteredCompanies?.length / rowPerPage);
   const startIndex = (currentPage - 1) * rowPerPage;
   const endIndex = startIndex + rowPerPage;

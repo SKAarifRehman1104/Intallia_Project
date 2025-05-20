@@ -8,7 +8,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-
 export interface Column<T> {
   key: keyof T | string;
   header: React.ReactNode;
@@ -45,7 +44,9 @@ export function DataTable<T>({
 
   const handleSelectRow = (id: string) => {
     setSelectedRows((prev) =>
-      prev.includes(id) ? prev.filter((rowId) => rowId !== id) : [...prev, id]
+      prev.includes(id)
+        ? prev.filter((rowId) => rowId !== id)
+        : [...prev, id]
     );
   };
 
@@ -54,14 +55,17 @@ export function DataTable<T>({
       <Table className="table-fixed w-full border-collapse">
         <TableHeader>
           <TableRow className="bg-[#F9FAFB]">
-              <input
-                type="checkbox"
-                checked={selectAll}
-                onChange={handleSelectAll}
-                className="mx-auto"
-              />
-            </TableHead>
-            {columns?.map((col) => (
+            {selectable && (
+              <TableHead className="w-12 text-center">
+                <input
+                  type="checkbox"
+                  checked={selectAll}
+                  onChange={handleSelectAll}
+                  className="mx-auto"
+                />
+              </TableHead>
+            )}
+            {columns.map((col) => (
               <TableHead
                 key={String(col.key)}
                 className={`${
@@ -72,20 +76,17 @@ export function DataTable<T>({
               </TableHead>
             ))}
             {actions && (
-              <TableHead className="w-20 text-center">
-                Action
-              </TableHead>
+              <TableHead className="w-20 text-center">Action</TableHead>
             )}
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data?.map((row) => {
+          {data.map((row) => {
             const id = rowKey(row);
             return (
               <TableRow key={id} className="text-sm">
                 {selectable && (
                   <TableCell className="w-12 text-center">
-
                     <input
                       type="checkbox"
                       checked={selectedRows.includes(id)}
