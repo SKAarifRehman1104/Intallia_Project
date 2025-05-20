@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import jsPDF from "jspdf";
+
+
 
 interface CompanyFormProps {
   formData: {
@@ -52,6 +55,8 @@ const CompanyForm: React.FC<CompanyFormProps> = ({ formData, setFormData }) => {
 
 const { companyId } = useParams<{ companyId: string }>();
 
+
+  
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -285,7 +290,7 @@ const { companyId } = useParams<{ companyId: string }>();
           name="address"
           type="text"
           value={formData.address}
-          onChange={handleChange}
+          onChange={(handleChange)}
           placeholder="Enter address"
           className={`rounded border px-4 py-3.5 min-h-12 bg-white ${
             errors.address ? "border-red-500" : "border-[#E5E5EA]"

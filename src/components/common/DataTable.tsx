@@ -54,7 +54,7 @@ export function DataTable<T>({
       <Table>
         <TableHeader>
           <TableRow className="bg-[#F9FAFB]">
-            <TableHead>
+            <TableHead className="px-4">
               <input
                 type="checkbox"
                 checked={selectAll}
@@ -79,7 +79,7 @@ export function DataTable<T>({
             return (
               <TableRow key={id} className="text-sm">
                 {selectable && (
-                  <td>
+                  <td className="px-4">
                     <input
                       type="checkbox"
                       checked={selectedRows.includes(id)}
@@ -92,7 +92,9 @@ export function DataTable<T>({
                     key={String(col.key)}
                     className={col.className || "py-4 text-sm"}
                   >
-                    {col.render ? col.render(row) : String(row[col.key as keyof T] ?? "")}
+                    {col.render
+                      ? col.render(row)
+                      : String(row[col.key as keyof T] ?? "")}
                   </TableCell>
                 ))}
                 {actions && <TableCell>{actions(row)}</TableCell>}

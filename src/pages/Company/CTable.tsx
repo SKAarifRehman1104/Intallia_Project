@@ -3,6 +3,9 @@ import { Company } from "@/types/index";
 import ThreeDotMenu from "@/components/common/ActonModal";
 import { DataTable, Column } from "@/components/common/DataTable";
 
+
+
+
 const tableColumns: Column<Company>[] = [
   {
     key: "companyid",
