@@ -11,7 +11,7 @@ interface Company {
 
 
 interface Props {
-  company: Company;
+  company?: Company;
 }
 
 const ActionModal: React.FC<Props> = ({ company }) => {

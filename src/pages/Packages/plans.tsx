@@ -6,6 +6,8 @@ import { UserTableActions } from "@/components/users/UserTableActions";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { users } from "@/data/users";
+import { useQuery } from "@tanstack/react-query";
+import { getScreen } from "@/axios/api.js";
 
 
 const Plans = () => {
@@ -18,6 +20,40 @@ const Plans = () => {
 
   const startIndex = (currentPage - 1) * usersPerPage;
   const endIndex = startIndex + usersPerPage;
+
+  const {
+    data: plans = [],
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["plans"],
+    queryFn: async () =>
+      await getScreen({
+        ScreenName: "Plan",
+        LookUpKey: "GetList",
+        Filter1: "",
+        Filter2: "",
+        Filter3: "",
+        Filter4: "",
+        Filter5: "",
+      }),
+    retry: 2,
+  });
+
+const filteredPlans = plans?.LookupData?.filter(
+    (plan) => {
+      const searchStr = searchQuery.toLowerCase();
+      return (
+        plan.UserId?.toLowerCase().includes(searchStr) ||
+        plan.UserGroupId?.toLowerCase().includes(searchStr) ||
+        plan.CompanyId?.toLowerCase().includes(searchStr) ||
+        plan.IsValid?.toLowerCase().includes(searchStr) ||
+        plan.Token?.toLowerCaser().includes(searchStr)
+      );
+    },
+  );
+
+
 
   return (
     <MainLayout>

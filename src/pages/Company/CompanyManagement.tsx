@@ -8,6 +8,9 @@ import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getScreen } from "@/axios/api.js";
 import { Company } from "@/types";
+import { jsPDF } from "jspdf";
+import { autoTable } from "jspdf-autotable";
+import * as XLSX from "xlsx";
 
 const CompanyManagement = () => {
   const navigate = useNavigate();
@@ -33,9 +36,6 @@ const CompanyManagement = () => {
       }),
     retry: 2,
   });
-
-  const rowPerPage = 8;
-
   // Filter companies by search query
   const filteredCompanies = companies?.LookupData?.filter(
     (company: Company) => {
@@ -48,7 +48,6 @@ const CompanyManagement = () => {
       );
     },
   );
-
   const totalPages = Math.ceil(filteredCompanies?.length / rowPerPage);
   const startIndex = (currentPage - 1) * rowPerPage;
   const endIndex = startIndex + rowPerPage;
@@ -64,15 +63,83 @@ const CompanyManagement = () => {
   //   });
   // }
 
+  const exportInExcel = () => {
+    // Define the columns you want in the Excel and their order
+    const headers = [
+      "CompanyID",
+      "CompanyName",
+      "Email",
+      "Phone Number",
+      "Status",
+      "Website",
+    ];
+
+    // Prepare data rows
+    const data = (filteredCompanies || []).map((company: Company) => ({
+      CompanyID: company.CompanyId ?? "",
+      CompanyName: company.CompanyName ?? "",
+      Email: company.Email ?? "",
+      "Phone Number": company.PhoneNumber ?? "",
+      Status: company.Status ?? "",
+      Website: company.Website ?? "",
+    }));
+
+    // Create worksheet and workbook
+    const worksheet = XLSX.utils.json_to_sheet(data, { header: headers });
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Companies");
+
+    // Export to Excel file
+    XLSX.writeFile(workbook, "companies.xlsx");
+  };
+
+  const handleDownloadPDF = () => {
+    const doc = new jsPDF();
+
+    // Define the columns you want in the PDF and their order
+    const headers = [
+      "CompanyID",
+      "CompanyName",
+      "Email",
+      "Phone Number",
+      "Status",
+      "Website",
+    ];
+
+    // Map your data to match the header order
+    const body = (filteredCompanies || []).map((company: Company) => [
+      company.CompanyId ?? "",
+      company.CompanyName ?? "",
+      company.Email ?? "",
+      company.PhoneNumber ?? "",
+      company.Status ?? "",
+      company.Website ?? "",
+    ]);
+
+    autoTable(doc, {
+      head: [headers],
+      body,
+      styles: { fontSize: 10 },
+      //theme: "grid",
+      headStyles: { fillColor: [13, 175, 220] },
+    });
+
+    doc.save("companies.pdf");
+  };
+
   return (
     <MainLayout>
-      <div className="flex min-h-screen bg-background">
-        <main className="flex-1 p-8">
-          <div className="space-y-6">
+      <div className="flex p-8 min-h-screen bg-background">
+        <main className="flex-1 ">
+          <div className="space-y-6 ">
             <div className="flex justify-between items-center">
               <h1 className="page-heading">User Management (Company)</h1>
             </div>
-            <UserTableActions onSearch={setSearchQuery} />
+            <UserTableActions
+              onSearch={setSearchQuery}
+              exportInExcel={exportInExcel}
+              handleDownload={handleDownloadPDF}
+            />
             <div className="bg-white p-6 rounded-lg">
               {isLoading && <div>Loading...</div>}
               {isError && <div>Error loading companies.</div>}

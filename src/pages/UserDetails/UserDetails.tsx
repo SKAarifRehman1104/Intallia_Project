@@ -8,8 +8,31 @@ import { EducationForm } from "@/components/login/EducationForm";
 import { CustomButton } from "@/components/login/CustomButton";
 import skipIcon from "@/assets/skip.svg";
 import nextIcon from "@/assets/next.svg";
+import { getScreen } from "@/axios/api.js";
+import {useQuery} from "@tanstack/react-query";
+
 
 const UserDetails: React.FC = () => {
+    const {
+      data: usereducation = [],
+      isLoading,
+      isError,
+    } = useQuery({
+      queryKey: ["UserEduction"],
+      queryFn: async () =>
+        await getScreen({
+          ScreenName: "UserEduction",
+          LookUpKey: "GetUserEduction",
+          Filter1: "",
+          Filter2: "",
+          Filter3: "",
+          Filter4: "",
+          Filter5: "",
+        }),
+      retry: 2,
+    });
+    console.log(usereducation);
+
   const [step, setStep] = useState(1);
   const navigate = useNavigate();
 

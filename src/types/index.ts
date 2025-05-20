@@ -1,12 +1,11 @@
 
+
+
 export interface User {
-  id: string;
-  name: string;
-  email: string;
-  date: string;
-  packageCategory: string;
-  amount: string;
-  type: string;
+  UserId: string;
+  Email: string;
+  UserGroupId: string;
+  CompanyId: string;
 }
 
 export interface Payment {
@@ -52,8 +51,33 @@ export interface Company {
   State: string;
   Country: string;
   Status: string;
-  CreateBy: Date;
+  CreateBy: string;
   CreateDate: Date;
   ModifyBy: string;
   ModifyDate: Date;
 }
+
+export interface Plan {
+  PlanID: string;
+  UserID: string;
+  PackageName: string;
+  Plan1: string;
+  Plan2: string;
+  Plan3: string;
+}
+
+export interface UserEduction {
+  Education: string;
+  UserId: string;
+  Degree: string;
+  Description: string;
+  StartDate: Date;
+  EndDate: Date;
+  CreateBy: string;
+  CreateDate: Date;
+  ModifyBy: null;
+  ModifyDate:Date;
+}
+
+
+

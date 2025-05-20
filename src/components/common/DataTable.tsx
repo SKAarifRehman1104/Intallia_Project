@@ -54,7 +54,6 @@ export function DataTable<T>({
       <Table className="table-fixed w-full border-collapse">
         <TableHeader>
           <TableRow className="bg-[#F9FAFB]">
-            <TableHead className="w-12 text-center">
               <input
                 type="checkbox"
                 checked={selectAll}
@@ -86,6 +85,7 @@ export function DataTable<T>({
               <TableRow key={id} className="text-sm">
                 {selectable && (
                   <TableCell className="w-12 text-center">
+
                     <input
                       type="checkbox"
                       checked={selectedRows.includes(id)}

@@ -9,9 +9,15 @@ import AssignSimulationForm from "@/pages/Simulation/AssignSimulation/AssignSimu
 // import { users } from "@/data/users";
 interface UserTableActionsProps {
   onSearch: (query: string) => void;
+  handleDownload?: () => void;
+  exportInExcel?: () => void;
 }
 
-export const UserTableActions = ({ onSearch }: UserTableActionsProps) => {
+export const UserTableActions = ({
+  onSearch,
+  handleDownload,
+  exportInExcel
+}: UserTableActionsProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -23,6 +29,7 @@ export const UserTableActions = ({ onSearch }: UserTableActionsProps) => {
           size="sm"
           variant="outline"
           className="text-[#06B2E1] py-2 pl-4 pr-2 font-medium w-40 text-base  ring-[#06B2E1] rounded-full ring-1 border-[#06B2E1] hover:bg-[#06B2E1] hover:text-white"
+          onClick={handleDownload}
         >
           Download PDF
           <Download className="w-4 h-4" />
@@ -31,6 +38,7 @@ export const UserTableActions = ({ onSearch }: UserTableActionsProps) => {
           size="sm"
           variant="outline"
           className="text-[#06B2E1] py-2 pl-4 pr-2 font-medium w-40 text-base  ring-[#06B2E1] rounded-full ring-1 border-[#06B2E1] hover:bg-[#06B2E1] hover:text-white"
+          onClick={exportInExcel}
         >
           Export To Excel
           <Download className="w-4 h-4 " />
@@ -104,7 +112,7 @@ export const UserTableActions = ({ onSearch }: UserTableActionsProps) => {
           <ActionButton
             variant="primary"
             className="h-9 px-4"
-            onClick={() => navigate("/packages")}
+            onClick={() => navigate("/add-new-package")}
           >
             Add New Package
           </ActionButton>

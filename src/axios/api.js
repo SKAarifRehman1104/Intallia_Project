@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -14,22 +14,6 @@ const api = axios.create({
 export const login = async (payload) => await api.post("/Login", payload);
 //export const signup = async (payload) => await api.post('', payload);
 export const logOut = async (payload) => await api.post("LogOut", payload);
-
-//Screen
-// export const getScreen = async (payload) => {
-//   const response = await fetch(
-//     `${import.meta.env.VITE_API_URL}/GETLookupData`,
-//     {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify(payload),
-//     },
-//   );
-//   if (!response.ok) {
-//     throw new Error("Network response was not ok");
-//   }
-//   return response.json();
-// };
 
 export const getScreen = async (payload) => {
   const response = await axios.post(
@@ -53,19 +37,38 @@ export const updateCompany = async (payload) =>
 export const deleteCompany = async (payload) =>
   await api.post("/DeleteCompany", payload);
 
-// // Axios interceptor to attach token to every request
-// api.interceptors.request.use(
-//   (config) => {
-//     const token = localStorage.getItem("token");
-//     if (token) {
-//       // Ensure headers exist and set Authorization
-//       config.headers = config.headers || {};
-//       config.headers['Authorization'] = `Bearer ${token}`;
-//     }
-//     return config;
-//   },
-//   (error) => Promise.reject(error)
-// );
+//plans api
+export const plansById = async (payload) =>
+  await api.post("/GetPlans", payload);
+export const Plans = async (payload) => await api.post("/AddPlans", payload);
+export const updatePlans = async (payload) =>
+  await api.post("/UpdatePlans", payload);
+export const deletePlans = async (payload) =>
+  await api.post("/DeletePlans", payload);
+
+//UserEduction
+export const userEducationById = async (payload) =>
+  await api.post("/GetUserEducation", payload);
+export const addUserEducation = async (payload) =>
+  await api.post("/AddUserEducation", payload);
+export const updateUserEduction = async (payload) =>
+  await api.post("/UpdateUserEduction", payload);
+export const deleteUserEduction = async (payload) =>
+  await api.post("/DeleteUserEduction", payload);
+
+// Axios interceptor to attach token to every request
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      // Ensure headers exist and set Authorization
+      config.headers = config.headers || {};
+      config.headers["Authorization"] = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error),
+);
 
 api.interceptors.response.use(
   (response) => response,

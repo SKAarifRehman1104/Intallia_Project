@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import jsPDF from "jspdf";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+
 
 import CompanyForm from "./CompanyForm";
 import { MainLayout } from "../../components/layout/MainLayout";
@@ -37,6 +39,35 @@ export const AddNewCompany: React.FC = () => {
     numberOfUsers: "",
     numberOfSimulations: "",
   });
+
+  // const handleChange = (e) => {
+  //   setFormData({ ...formData, [e.target.name]: e.target.value });
+  // };
+
+
+  // const generatePDF = () => {
+  //     const doc = new jsPDF();
+
+  //     doc.setFontSize(16);
+  //     doc.text("Company Information", 20, 20);
+  //     doc.setFontSize(12);
+
+  //     doc.text(`CompanyId:  ${formData.companyId}`, 20, 40);
+  //     doc.text(`CompanyName: ${formData.companyName}`, 20, 40);
+  //     doc.text(`ContactPersonName: ${formData.contactPersonName}`, 20, 30);
+  //     doc.text(`PhoneNumber: ${formData.phoneNumber}`, 20, 30);
+  //     doc.text(`website: ${formData.website}`, 60, 70);
+  //     doc.text(`email: ${formData.email}`, 30, 40);
+  //     doc.text(`address: ${formData.address}`, 30, 40);
+  //     doc.text(`city: ${formData.city}`, 40, 50);
+  //     doc.text(`state: ${formData.state}`, 30, 40);
+  //     doc.text(`country: ${formData.country}`, 20, 40);
+  //     doc.text(`status: ${formData.status}`, 20, 30);
+  //     doc.text(`numberOfUsers: ${formData.numberOfUsers}`, 20, 30);
+  //     doc.text(`numberOfSimulations: ${formData.numberOfSimulations}`, 40, 50);
+
+  //     doc.save("company-info.pdf");
+  //   };
 
   const { data: companyData } = useQuery({
     queryKey: ["company", companyId],
@@ -181,6 +212,7 @@ export const AddNewCompany: React.FC = () => {
           <h1 className="page-heading">Add New Company</h1>
 
           <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.02)] bg-white flex items-stretch gap-5 flex-wrap justify-between mt-[30px] px-[45px] py-[31px] rounded-[15px] h-[88vh] sticky top-0 overflow-y-scroll">
+
             <CompanyForm formData={formData} setFormData={setFormData} />
             <SidebarActions actions={actions} />
           </div>
