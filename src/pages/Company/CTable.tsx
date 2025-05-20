@@ -19,7 +19,14 @@ const tableColumns: Column<Company>[] = [
   {
     key: "email",
     header: "Email",
-    render: (company) => company.Email,
+    render: (company) => (
+      <span
+        className="inline-block max-w-full truncate overflow-hidden whitespace-nowrap cursor-pointer"
+        title={company.Email}
+      >
+        {company.Email}
+      </span>
+    ),
   },
   {
     key: "phone",
@@ -53,7 +60,12 @@ const tableColumns: Column<Company>[] = [
     key: "website",
     header: "Website",
     render: (company) => (
-      <span className="text-blue-600">{company.Website}</span>
+      <span
+        className="inline-block max-w-full truncate overflow-hidden whitespace-nowrap cursor-pointer text-blue-600"
+        title={company.Website}
+      >
+        {company.Website}
+      </span>
     ),
   },
 ];

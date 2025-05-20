@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 import CompanyForm from "./CompanyForm";
 import { MainLayout } from "../../components/layout/MainLayout";
@@ -15,6 +15,8 @@ type Action = {
 
 export const AddNewCompany: React.FC = () => {
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const companyId = searchParams.get("companyId");
   console.log("companyId:", companyId);
@@ -137,6 +139,8 @@ export const AddNewCompany: React.FC = () => {
 
       const response = await addCompany(payload);
       console.log("Company added:", response);
+      await queryClient.invalidateQueries({ queryKey: ["companies"] });
+      navigate('/company')
     } catch (error) {
       console.error("Failed to add company:", error);
     }

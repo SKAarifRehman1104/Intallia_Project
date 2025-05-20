@@ -195,19 +195,11 @@ const { companyId } = useParams<{ companyId: string }>();
               errors.phoneNumber ? "border-red-500" : "border-[#E5E5EA]"
             }`}
           >
-            <div className="flex items-center gap-2 mr-3">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/4e93f2d3d72f4b58b47d979bd758d34a/b3e578b8881e144097eda901ab80255224febf55ffe07d1428a77e2beb4c1939"
-                alt="Country flag"
-                className="w-5 h-3.5"
-              />
-              <span className="select-none">+91</span>
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/4e93f2d3d72f4b58b47d979bd758d34a/610bae2bd3fec3226daeb553c69952d46dcb01bf137f75b31b35e8b80820ae1e"
-                alt="Dropdown"
-                className="w-4 h-4"
-              />
-            </div>
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/4e93f2d3d72f4b58b47d979bd758d34a/b3e578b8881e144097eda901ab80255224febf55ffe07d1428a77e2beb4c1939"
+              alt="Country flag"
+              className="w-5 h-3.5"
+            />
             <input
               id="phoneNumber"
               name="phoneNumber"
@@ -215,7 +207,12 @@ const { companyId } = useParams<{ companyId: string }>();
               value={formData.phoneNumber}
               onChange={handleChange}
               placeholder="12344568"
-              className="w-full outline-none placeholder:text-black"
+              className="w-full outline-none placeholder:text-black ml-3"
+            />
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/4e93f2d3d72f4b58b47d979bd758d34a/610bae2bd3fec3226daeb553c69952d46dcb01bf137f75b31b35e8b80820ae1e"
+              alt="Dropdown"
+              className="w-4 h-4 ml-2"
             />
           </div>
           {errors.phoneNumber && (
