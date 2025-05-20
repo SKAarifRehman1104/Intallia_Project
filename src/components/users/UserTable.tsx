@@ -16,7 +16,7 @@ interface UserTableProps {
   startIndex: number;
   endIndex: number;
   searchQuery: string;
-  users: User[];
+  users?: User[];
 }
 
 export const UserTable = ({
@@ -43,7 +43,7 @@ export const UserTable = ({
       columns={userColumns}
       rowKey={(user) => user.UserId}
       selectable
-      actions={() => <ThreeDotMenu />}
+      actions={() => <ThreeDotMenu company={undefined} />}
     />
   );
 };

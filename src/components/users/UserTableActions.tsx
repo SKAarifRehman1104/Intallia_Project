@@ -9,8 +9,8 @@ import AssignSimulationForm from "@/pages/Simulation/AssignSimulation/AssignSimu
 // import { users } from "@/data/users";
 interface UserTableActionsProps {
   onSearch: (query: string) => void;
-  handleDownload: () => void;
-  exportInExcel: () => void;
+  handleDownload?: () => void;
+  exportInExcel?: () => void;
 }
 
 export const UserTableActions = ({

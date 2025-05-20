@@ -2,7 +2,7 @@ import React from "react";
 import SidebarActions from "@/components/users/SidebarActions";
 import { MainLayout } from "@/components/layout/MainLayout";
 
-export const DataScience: React.FC = () => {
+const DataScience: React.FC = () => {
   const handleAddNewPackage = () => {
     console.log("Add New Company clicked");
   };
@@ -168,3 +168,5 @@ export const DataScience: React.FC = () => {
     </MainLayout>
   );
 };
+
+export default DataScience;
