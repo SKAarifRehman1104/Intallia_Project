@@ -36,7 +36,6 @@ const CompanyManagement = () => {
       }),
     retry: 2,
   });
-
   // Filter companies by search query
   const filteredCompanies = companies?.LookupData?.filter(
     (company: Company) => {
@@ -49,8 +48,6 @@ const CompanyManagement = () => {
       );
     },
   );
-
-  const rowPerPage = 8;
   const totalPages = Math.ceil(filteredCompanies?.length / rowPerPage);
   const startIndex = (currentPage - 1) * rowPerPage;
   const endIndex = startIndex + rowPerPage;

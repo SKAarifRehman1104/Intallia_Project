@@ -50,27 +50,32 @@ export function DataTable<T>({
   };
 
   return (
-    <div className="rounded-md">
-      <Table>
+    <div className="rounded-md overflow-x-auto">
+      <Table className="table-fixed w-full border-collapse">
         <TableHeader>
           <TableRow className="bg-[#F9FAFB]">
-            <TableHead className="px-4">
               <input
                 type="checkbox"
                 checked={selectAll}
                 onChange={handleSelectAll}
+                className="mx-auto"
               />
             </TableHead>
             {columns?.map((col) => (
               <TableHead
                 key={String(col.key)}
-                className={col.className || "text-sm"}
+                className={`${
+                  col.className || "text-sm"
+                } px-4 py-3 text-left min-w-[120px]`}
               >
-                {" "}
                 {col.header}
               </TableHead>
             ))}
-            {actions && <th>Action</th>}
+            {actions && (
+              <TableHead className="w-20 text-center">
+                Action
+              </TableHead>
+            )}
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -79,25 +84,38 @@ export function DataTable<T>({
             return (
               <TableRow key={id} className="text-sm">
                 {selectable && (
-                  <td className="px-4">
+                  <TableCell className="w-12 text-center">
+
                     <input
                       type="checkbox"
                       checked={selectedRows.includes(id)}
                       onChange={() => handleSelectRow(id)}
+                      className="mx-auto"
                     />
-                  </td>
+                  </TableCell>
                 )}
                 {columns.map((col) => (
                   <TableCell
                     key={String(col.key)}
-                    className={col.className || "py-4 text-sm"}
+                    className={`${
+                      col.className || "py-4 text-sm"
+                    } px-4 break-words min-w-[120px]`}
+                    style={{
+                      maxWidth: "200px",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
                   >
                     {col.render
                       ? col.render(row)
                       : String(row[col.key as keyof T] ?? "")}
                   </TableCell>
                 ))}
-                {actions && <TableCell>{actions(row)}</TableCell>}
+                {actions && (
+                  <TableCell className="w-20 text-center">
+                    {actions(row)}
+                  </TableCell>
+                )}
               </TableRow>
             );
           })}
