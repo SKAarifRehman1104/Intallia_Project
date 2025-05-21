@@ -98,7 +98,7 @@ export const UserTableActions = ({
           </Dialog>
         )}
 
-        {location.pathname === "/roles" && (
+        {location.pathname === "/user-role-&-access" && (
           <ActionButton
             variant="primary"
             className="h-9 px-4"

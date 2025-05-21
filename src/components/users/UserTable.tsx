@@ -23,7 +23,7 @@ export const UserTable = ({
   startIndex,
   endIndex,
   searchQuery,
-  users,
+  users = [],
 }: UserTableProps) => {
   // const filteredUsers = users.filter((user) => {
   //   const searchStr = searchQuery.toLowerCase();

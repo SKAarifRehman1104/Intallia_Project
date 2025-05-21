@@ -4,7 +4,6 @@ const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
   headers: {
     "Content-Type": "application/json",
-    // Add any other default headers here if needed
   },
   timeout: 10000, // Optional: set a timeout for requests (in ms)
   withCredentials: false, // Set to true if you need to send cookies
@@ -37,6 +36,7 @@ export const updateCompany = async (payload) =>
 export const deleteCompany = async (payload) =>
   await api.post("/DeleteCompany", payload);
 
+
 //plans api
 export const plansById = async (payload) =>
   await api.post("/GetPlans", payload);
@@ -55,6 +55,13 @@ export const updateUserEduction = async (payload) =>
   await api.post("/UpdateUserEduction", payload);
 export const deleteUserEduction = async (payload) =>
   await api.post("/DeleteUserEduction", payload);
+
+//User-Roles-And-Access
+export const getRolesAndAccessList = async (payload) => {
+  const response = await api.post("/GETLookupData", payload);
+  return response.data.LookupData;
+};
+
 
 // Axios interceptor to attach token to every request
 api.interceptors.request.use(

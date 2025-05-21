@@ -24,7 +24,7 @@ interface DataTableProps<T> {
 }
 
 export function DataTable<T>({
-  data,
+  data = [],
   columns,
   rowKey,
   selectable = false,

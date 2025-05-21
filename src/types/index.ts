@@ -1,4 +1,8 @@
-
+export interface Roles {
+  UserGroupId: string;
+  CompanyId: string;
+  Description: string;
+}
 
 
 export interface User {

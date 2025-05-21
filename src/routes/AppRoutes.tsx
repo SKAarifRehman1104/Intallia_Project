@@ -106,13 +106,23 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
   {
-    path: "/roles",
+    path: "/user-role-&-access",
     element: (
       <PrivateRoute>
         <RolesAndAccess />
       </PrivateRoute>
     ),
   },
+  {
+  path: "/user-role-&-access/:UserGroupId",
+  element: (
+    <PrivateRoute>
+      {/* TODO: Replace with actual component for user role and access detail */}
+      <div>User Role and Access Detail Page for UserGroupId</div>
+    </PrivateRoute>
+  ),
+},
+
   {
     path: "/user",
     element: (
