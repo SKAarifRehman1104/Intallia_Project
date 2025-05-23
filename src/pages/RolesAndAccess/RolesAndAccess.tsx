@@ -5,6 +5,9 @@ import Pagination from "@/components/common/Pagination";
 import { MainLayout } from "@/components/layout/MainLayout";
 import { UserTableActions } from "@/components/users/UserTableActions";
 import RolesAndAccessTable from "./RolesAndAccessTable";
+import { autoTable } from "jspdf-autotable";
+import { jsPDF } from "jspdf";
+import * as XLSX from "xlsx";
 
 const RolesAndAccess = () => {
   const navigate = useNavigate();
@@ -39,7 +42,7 @@ const RolesAndAccess = () => {
             "Content-Type": "application/json",
             // Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       );
       console.log(response);
 
@@ -57,9 +60,10 @@ const RolesAndAccess = () => {
   }, []);
 
   const filteredData = useMemo(() => {
-    return data.filter((item) =>
-      item?.UserGroupId?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item?.Description?.toLowerCase().includes(searchQuery.toLowerCase())
+    return data.filter(
+      (item) =>
+        item?.UserGroupId?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item?.Description?.toLowerCase().includes(searchQuery.toLowerCase()),
     );
   }, [data, searchQuery]);
 
@@ -67,6 +71,51 @@ const RolesAndAccess = () => {
   const startIndex = (currentPage - 1) * usersPerPage;
   const endIndex = startIndex + usersPerPage;
   const paginatedUsers = filteredData.slice(startIndex, endIndex);
+
+  const handleDownloadPDF = () => {
+    const doc = new jsPDF();
+
+    // Define the columns you want in the PDF and their order
+    const headers = ["UserGroupId", "CompanyId", "Description", "Status"];
+
+    // Map your data to match the header order
+
+    const body = (filteredData || []).map((usergroup: UserGroup) => [
+      usergroup.UserGroupId ?? "",
+      usergroup.CompanyId ?? "",
+      usergroup.Description ?? "",
+      usergroup.Status ?? "",
+    ]);
+
+    autoTable(doc, {
+      head: [headers],
+      body,
+      styles: { fontSize: 10 },
+      headStyles: { fillColor: [13, 175, 220] },
+    });
+    doc.save("usergroup.pdf");
+  };
+
+  const exportInExcel = () => {
+    // Define the columns you want in the Excel and their order
+    const headers = ["UserGroupId", "CompanyId", "Description", "Status"];
+
+    // Prepare data rows
+    // const data = (filteredData || []).map((usergroup: UserGroup) => ({
+    //   UserGroupId: usergroup.UserGroupId ?? "",
+    //   CompanyId: usergroup.CompanyId ?? "",
+    //   Description: usergroup.Description ?? "",
+    //   Status: usergroup.Status ?? "",
+    // }));
+
+    // Create worksheet and workbook
+    const worksheet = XLSX.utils.json_to_sheet(data, { header: headers });
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "UserGroups");
+
+    // Export to Excel file
+    XLSX.writeFile(workbook, "usergroups.xlsx");
+  };
 
   return (
     <MainLayout>
@@ -83,8 +132,13 @@ const RolesAndAccess = () => {
               </ActionButton> */}
             </div>
 
-            <UserTableActions onSearch={setSearchQuery} />
+            {/* <UserTableActions onSearch={setSearchQuery} /> */}
 
+            <UserTableActions
+              onSearch={setSearchQuery}
+              exportInExcel={exportInExcel}
+              handleDownload={handleDownloadPDF}
+            />
             <div className="bg-white p-6 rounded-lg">
               {loading ? (
                 <p>Loading...</p>
