@@ -2,6 +2,7 @@ import React, { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import Login from "@/pages/auth/Login/Login";
+import UserGroupDetails from "@/pages/RolesAndAccess/UserGroupDetails"; 
 
 // Lazy-loaded components
 const Index = lazy(() => import("@/pages/Index"));
@@ -114,14 +115,13 @@ const router = createBrowserRouter([
     ),
   },
   {
-  path: "/user-role-&-access/:UserGroupId",
-  element: (
-    <PrivateRoute>
-      {/* TODO: Replace with actual component for user role and access detail */}
-      <div>User Role and Access Detail Page for UserGroupId</div>
-    </PrivateRoute>
-  ),
-},
+    path: "/user-role-&-access/:UserGroupId",
+    element: (
+      <PrivateRoute>
+          <UserGroupDetails />
+      </PrivateRoute>
+    ),
+  },
 
   {
     path: "/user",

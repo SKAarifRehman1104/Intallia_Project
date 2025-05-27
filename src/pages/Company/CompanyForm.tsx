@@ -1,39 +1,11 @@
-import React, { useState } from "react";
+
+import React from "react";
 import { useParams } from "react-router-dom";
-import jsPDF from "jspdf";
-
-
+import { useForm, SubmitHandler } from "react-hook-form";
 
 interface CompanyFormProps {
-  formData: {
-    companyId: string;
-    companyName: string;
-    contactPersonName: string;
-    phoneNumber: string;
-    website: string;
-    email: string;
-    address: string;
-    city: string;
-    state: string;
-    country: string;
-    status: string;
-    // Add more fields if necessary
-  };
-  setFormData: React.Dispatch<
-    React.SetStateAction<{
-      companyId: string;
-      companyName: string;
-      contactPersonName: string;
-      phoneNumber: string;
-      website: string;
-      email: string;
-      address: string;
-      city: string;
-      state: string;
-      country: string;
-      status: string;
-    }>
-  >;
+  formData: CompanyFormData;
+  setFormData: React.Dispatch<React.SetStateAction<CompanyFormData>>;
 }
 
 interface CompanyFormData {
@@ -51,143 +23,90 @@ interface CompanyFormData {
 }
 
 const CompanyForm: React.FC<CompanyFormProps> = ({ formData, setFormData }) => {
-  const [errors, setErrors] = useState<Partial<CompanyFormData>>({});
+  const { companyId } = useParams<{ companyId: string }>();
 
-const { companyId } = useParams<{ companyId: string }>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+  } = useForm<CompanyFormData>({
+    defaultValues: formData,
+    mode: "onChange",
+  });
 
+  React.useEffect(() => {
+    // Update react-hook-form values when formData prop changes
+    Object.entries(formData).forEach(([key, value]) => {
+      setValue(key as keyof CompanyFormData, value);
+    });
+  }, [formData, setValue]);
 
-  
-
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >,
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+  const onSubmit: SubmitHandler<CompanyFormData> = (data) => {
+    setFormData(data);
+    console.log("Form is valid:", data);
   };
 
-  const validate = (): boolean => {
-    const newErrors: Partial<CompanyFormData> = {};
-
-    if (!formData.companyId.trim())
-      newErrors.companyId = "CompanyId is required";
-    if (!formData.companyName.trim())
-      newErrors.companyName = "CompanyName is required";
-    if (!formData.contactPersonName.trim())
-      newErrors.contactPersonName = "Contact Person Name is required";
-    if (!formData.phoneNumber.trim())
-      newErrors.phoneNumber = "Phone Number is required";
-    if (!formData.website.trim()) newErrors.website = "Website is required";
-    if (!formData.email.trim()) newErrors.email = "Email is required";
-    if (!formData.address.trim()) newErrors.address = "Address is required";
-    if (!formData.city.trim()) newErrors.city = "City is required";
-    if (!formData.state.trim()) newErrors.state = "State is required";
-    if (!formData.country.trim()) newErrors.country = "Country is required";
-    if (!formData.status.trim()) newErrors.status = "Status is required";
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (validate()) {
-      // You can add form submission logic here or call a prop function
-      alert("Form submitted successfully!");
-    }
-  };
+  const renderInput = (
+    id: keyof CompanyFormData,
+    label: string,
+    type: string = "text",
+    placeholder: string = "",
+    validationRules: Record<string, any> = {}
+  ) => (
+    <div className="flex flex-col gap-1">
+      <label htmlFor={id} className="text-[15px] text-[#444446] flex gap-1">
+        {label} <span className="text-[#FF3A3A] text-sm">*</span>
+      </label>
+      <input
+        id={id}
+        {...register(id, validationRules)}
+        type={type}
+        placeholder={placeholder}
+        className={`rounded border px-4 py-3.5 min-h-12 bg-white ${
+          errors[id] ? "border-red-500" : "border-[#E5E5EA]"
+        }`}
+      />
+      {errors[id] && (
+        <p className="text-red-500 text-xs mt-1">{errors[id]?.message}</p>
+      )}
+    </div>
+  );
 
   return (
     <form
       className="flex font-plusJakarta flex-col gap-6 overflow-y-auto max-w-4xl mx-auto p-4"
       noValidate
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit(onSubmit)}
     >
       <h2 className="text-xl font-medium tracking-[0.38px] bg-clip-text bg-gradient-to-r from-[#0DAFDC] to-[#22E9A2] text-transparent">
-        Personal Details
+        Company Details
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* CompanyId */}
-        <div className="flex flex-col gap-1">
-          <label
-            htmlFor="companyId"
-            className="text-[15px] text-[#444446] flex items-center gap-1"
-          >
-            CompanyId <span className="text-[#FF3A3A] text-sm">*</span>
-          </label>
-          <input
-            id="companyId"
-            name="companyId"
-            type="text"
-            value={formData.companyId}
-            onChange={handleChange}
-            placeholder="Enter Company ID"
-            className={`rounded border px-4 py-3.5 min-h-12 bg-white ${
-              errors.companyId ? "border-red-500" : "border-[#E5E5EA]"
-            }`}
-          />
-          {errors.companyId && (
-            <p className="text-red-500 text-xs mt-1">{errors.companyId}</p>
-          )}
-        </div>
+        {renderInput("companyId", "Company ID", "text", "Enter Company ID", {
+          required: "Company ID is required",
+          validate: (val: string) =>
+            val.trim() !== "" || "Company ID is required",
+        })}
+        {renderInput("companyName", "Company Name", "text", "Enter Company Name", {
+          required: "Company Name is required",
+          validate: (val: string) =>
+            val.trim() !== "" || "Company Name is required",
+        })}
+        {renderInput(
+          "contactPersonName",
+          "Contact Person Name",
+          "text",
+          "Enter Contact Person Name",
+          {
+            required: "Contact Person Name is required",
+            validate: (val: string) =>
+              val.trim() !== "" || "Contact Person Name is required",
+          }
+        )}
 
-        {/* CompanyName */}
-        <div className="flex flex-col gap-1">
-          <label
-            htmlFor="companyName"
-            className="text-[15px] text-[#444446] flex items-center gap-1"
-          >
-            CompanyName <span className="text-[#FF3A3A] text-sm">*</span>
-          </label>
-          <input
-            id="companyName"
-            name="companyName"
-            type="text"
-            value={formData.companyName}
-            onChange={handleChange}
-            placeholder="Enter Company Name"
-            className={`rounded border px-4 py-3.5 min-h-12 bg-white ${
-              errors.companyName ? "border-red-500" : "border-[#E5E5EA]"
-            }`}
-          />
-          {errors.companyName && (
-            <p className="text-red-500 text-xs mt-1">{errors.companyName}</p>
-          )}
-        </div>
-
-        {/* Contact Person Name */}
-        <div className="flex flex-col gap-1">
-          <label
-            htmlFor="contactPersonName"
-            className="text-[15px] text-[#444446] flex items-center gap-1"
-          >
-            Contact Person Name{" "}
-            <span className="text-[#FF3A3A] text-sm">*</span>
-          </label>
-          <input
-            id="contactPersonName"
-            name="contactPersonName"
-            type="text"
-            value={formData.contactPersonName}
-            onChange={handleChange}
-            placeholder="Enter Contact Person Name"
-            className={`rounded border px-4 py-3.5 min-h-12 bg-white ${
-              errors.contactPersonName ? "border-red-500" : "border-[#E5E5EA]"
-            }`}
-          />
-          {errors.contactPersonName && (
-            <p className="text-red-500 text-xs mt-1">
-              {errors.contactPersonName}
-            </p>
-          )}
-        </div>
-
-        {/* Phone Number */}
+        {/* Phone number input with icon */}
         <div className="flex flex-col gap-1">
           <label
             htmlFor="phoneNumber"
@@ -207,194 +126,97 @@ const { companyId } = useParams<{ companyId: string }>();
             />
             <input
               id="phoneNumber"
-              name="phoneNumber"
+              {...register("phoneNumber", {
+                required: "Phone Number is required",
+                pattern: {
+                  value: /^\+?\d{7,15}$/,
+                  message:
+                    "Enter a valid phone number (7-15 digits, optional +)",
+                },
+              })}
               type="tel"
-              value={formData.phoneNumber}
-              onChange={handleChange}
-              placeholder="12344568"
+              placeholder="1234567890"
               className="w-full outline-none placeholder:text-black ml-3"
-            />
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/4e93f2d3d72f4b58b47d979bd758d34a/610bae2bd3fec3226daeb553c69952d46dcb01bf137f75b31b35e8b80820ae1e"
-              alt="Dropdown"
-              className="w-4 h-4 ml-2"
             />
           </div>
           {errors.phoneNumber && (
-            <p className="text-red-500 text-xs mt-1">{errors.phoneNumber}</p>
+            <p className="text-red-500 text-xs mt-1">{errors.phoneNumber.message}</p>
           )}
         </div>
 
-        {/* Website */}
-        <div className="flex flex-col gap-1">
-          <label
-            htmlFor="website"
-            className="text-[15px] text-[#444446] flex items-center gap-1"
-          >
-            Website <span className="text-[#FF3A3A] text-sm">*</span>
-          </label>
-          <input
-            id="website"
-            name="website"
-            type="url"
-            value={formData.website}
-            onChange={handleChange}
-            placeholder="https://example.com"
-            className={`rounded border px-4 py-3.5 min-h-12 bg-white ${
-              errors.website ? "border-red-500" : "border-[#E5E5EA]"
-            }`}
-          />
-          {errors.website && (
-            <p className="text-red-500 text-xs mt-1">{errors.website}</p>
-          )}
-        </div>
-
-        {/* Email */}
-        <div className="flex flex-col gap-1">
-          <label
-            htmlFor="email"
-            className="text-[15px] text-[#444446] flex items-center gap-1"
-          >
-            Email <span className="text-[#FF3A3A] text-sm">*</span>
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="example@mail.com"
-            className={`rounded border px-4 py-3.5 min-h-12 bg-white ${
-              errors.email ? "border-red-500" : "border-[#E5E5EA]"
-            }`}
-          />
-          {errors.email && (
-            <p className="text-red-500 text-xs mt-1">{errors.email}</p>
-          )}
-        </div>
+        {renderInput("website", "Website", "url", "https://example.com", {
+          required: "Website is required",
+          validate: (val: string) => {
+            if (val.trim() === "") return "Website is required";
+            try {
+              new URL(val);
+              return true;
+            } catch {
+              return "Enter a valid URL (include https://)";
+            }
+          },
+        })}
+        {renderInput("email", "Email", "email", "example@mail.com", {
+          required: "Email is required",
+          pattern: {
+            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            message: "Enter a valid email address",
+          },
+        })}
       </div>
 
-      {/* Address */}
-      <div className="flex flex-col gap-1">
-        <label
-          htmlFor="address"
-          className="text-[15px] text-[#444446] flex items-center gap-1"
-        >
-          Address <span className="text-[#FF3A3A] text-sm">*</span>
-        </label>
-        <input
-          id="address"
-          name="address"
-          type="text"
-          value={formData.address}
-          onChange={(handleChange)}
-          placeholder="Enter address"
-          className={`rounded border px-4 py-3.5 min-h-12 bg-white ${
-            errors.address ? "border-red-500" : "border-[#E5E5EA]"
-          }`}
-        />
-        {errors.address && (
-          <p className="text-red-500 text-xs mt-1">{errors.address}</p>
-        )}
-      </div>
+      {renderInput("address", "Address", "text", "Enter address", {
+        required: "Address is required",
+        validate: (val: string) => val.trim() !== "" || "Address is required",
+      })}
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* City */}
-        <div className="flex flex-col gap-1">
-          <label
-            htmlFor="city"
-            className="text-[15px] text-[#444446] flex items-center gap-1"
-          >
-            City <span className="text-[#FF3A3A] text-sm">*</span>
-          </label>
-          <input
-            id="city"
-            name="city"
-            type="text"
-            value={formData.city}
-            onChange={handleChange}
-            placeholder="Enter City"
-            className={`rounded border px-4 py-3.5 min-h-12 bg-white ${
-              errors.city ? "border-red-500" : "border-[#E5E5EA]"
-            }`}
-          />
-          {errors.city && (
-            <p className="text-red-500 text-xs mt-1">{errors.city}</p>
-          )}
-        </div>
-
-        {/* State */}
-        <div className="flex flex-col gap-1">
-          <label
-            htmlFor="state"
-            className="text-[15px] text-[#444446] flex items-center gap-1"
-          >
-            State <span className="text-[#FF3A3A] text-sm">*</span>
-          </label>
-          <input
-            id="state"
-            name="state"
-            type="text"
-            value={formData.state}
-            onChange={handleChange}
-            placeholder="Enter State"
-            className={`rounded border px-4 py-3.5 min-h-12 bg-white ${
-              errors.state ? "border-red-500" : "border-[#E5E5EA]"
-            }`}
-          />
-          {errors.state && (
-            <p className="text-red-500 text-xs mt-1">{errors.state}</p>
-          )}
-        </div>
-
-        {/* Country */}
-        <div className="flex flex-col gap-1">
-          <label
-            htmlFor="country"
-            className="text-[15px] text-[#444446] flex items-center gap-1"
-          >
-            Country <span className="text-[#FF3A3A] text-sm">*</span>
-          </label>
-          <input
-            id="country"
-            name="country"
-            type="text"
-            value={formData.country}
-            onChange={handleChange}
-            placeholder="Enter Country"
-            className={`rounded border px-4 py-3.5 min-h-12 bg-white ${
-              errors.country ? "border-red-500" : "border-[#E5E5EA]"
-            }`}
-          />
-          {errors.country && (
-            <p className="text-red-500 text-xs mt-1">{errors.country}</p>
-          )}
-        </div>
+        {renderInput("city", "City", "text", "Enter city", {
+          required: "City is required",
+          validate: (val: string) => val.trim() !== "" || "City is required",
+        })}
+        {renderInput("state", "State", "text", "Enter state", {
+          required: "State is required",
+          validate: (val: string) => val.trim() !== "" || "State is required",
+        })}
+        {renderInput("country", "Country", "text", "Enter country", {
+          required: "Country is required",
+          validate: (val: string) => val.trim() !== "" || "Country is required",
+        })}
       </div>
 
-      {/* Status */}
       <div className="flex flex-col gap-1">
         <label
           htmlFor="status"
-          className="text-[15px] text-[#444446] flex items-center gap-1"
+          className="text-[15px] text-[#444446] flex gap-1"
         >
           Status <span className="text-[#FF3A3A] text-sm">*</span>
         </label>
-        <input
+        <select
           id="status"
-          name="status"
-          type="text"
-          value={formData.status}
-          onChange={handleChange}
-          placeholder="Enter Status"
+          {...register("status", {
+            required: "Status must be selected",
+            validate: (val: string) => val.trim() !== "" || "Status must be selected",
+          })}
           className={`rounded border px-4 py-3.5 min-h-12 bg-white ${
             errors.status ? "border-red-500" : "border-[#E5E5EA]"
           }`}
-        />
+        >
+          <option value="">Select Status</option>
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+        </select>
         {errors.status && (
-          <p className="text-red-500 text-xs mt-1">{errors.status}</p>
+          <p className="text-red-500 text-xs mt-1">{errors.status.message}</p>
         )}
       </div>
+
+      <button
+        type="submit"
+        className="w-full md:w-max px-6 py-3 bg-gradient-to-r from-[#0DAFDC] to-[#22E9A2] text-white font-semibold rounded hover:opacity-90 transition"
+      >
+        Submit
+      </button>
     </form>
   );
 };

@@ -66,6 +66,21 @@ const ActionModal: React.FC<Props> = ({ company }) => {
     setOpen(false);
   };
 
+const handleDelete = async () => {
+  const confirmDelete = window.confirm("Are you sure you want to delete this company?");
+  if (!confirmDelete) return;
+
+  try {
+    await deleteCompany(company.CompanyId);
+    alert("Company deleted successfully!");
+    // Refresh current page
+    window.location.reload();
+  } catch (error) {
+    console.error("Error deleting company:", error);
+    alert("Failed to delete company.");
+  }
+};
+
   return (
     <div className="relative inline-block text-left" ref={menuRef}>
       <button
@@ -86,11 +101,12 @@ const ActionModal: React.FC<Props> = ({ company }) => {
               onClick={handleEdit}
               className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
-              Edit Company
+              Edit
             </button>
             <button
               className="text-red-500 hover:underline px-4 py-2 text-sm w-full text-left"
-              onClick={() => deleteCompanyMutation.mutate(company.CompanyId)}
+              // onClick={() => deleteCompanyMutation.mutate(company.CompanyId)}
+              onClick={handleDelete}
               disabled={deleteCompanyMutation.isPending}
             >
               {deleteCompanyMutation.isPending ? "Deleting..." : "Delete"}

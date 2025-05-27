@@ -33,9 +33,24 @@ export const addCompany = async (payload) =>
   await api.post("/AddCompany", payload);
 export const updateCompany = async (payload) =>
   await api.post("/UpdateCompany", payload);
-export const deleteCompany = async (payload) =>
-  await api.post("/DeleteCompany", payload);
+// export const deleteCompany = async (payload) =>
+//   await api.post("/DeleteCompany", payload);
 
+export const deleteCompany = async (companyId) => {
+  const payload = {
+    JSON: JSON.stringify({
+      Header: [{ CompanyId: companyId }],
+      Response: [{ ResponseText: "", ErrorCode: "" }],
+    }),
+  };
+
+  const response = await axios.post(
+    "http://3.6.31.102/Intallia24/api/Intallia24/DeleteCompany",
+    payload
+  );
+
+  return response.data;
+};
 
 //plans api
 export const plansById = async (payload) =>
@@ -64,18 +79,18 @@ export const getRolesAndAccessList = async (payload) => {
 
 
 // Axios interceptor to attach token to every request
-api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      // Ensure headers exist and set Authorization
-      config.headers = config.headers || {};
-      config.headers["Authorization"] = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => Promise.reject(error),
-);
+// api.interceptors.request.use(
+//   (config) => {
+//     const token = localStorage.getItem("token");
+//     if (token) {
+//       // Ensure headers exist and set Authorization
+//       config.headers = config.headers || {};
+//       config.headers["Authorization"] = `Bearer ${token}`;
+//     }
+//     return config;
+//   },
+//   (error) => Promise.reject(error),
+// );
 
 api.interceptors.response.use(
   (response) => response,

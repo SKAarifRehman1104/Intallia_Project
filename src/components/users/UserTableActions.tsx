@@ -43,13 +43,13 @@ export const UserTableActions = ({
           Export To Excel
           <Download className="w-4 h-4 " />
         </Button>
-        <Button
+        {/* <Button
           variant="outline"
           className="gap-2 w-[110px] h-[38px] py-2 pr-2 pl-4 rounded-full ring-1 ring-[#444446]"
         >
           Filter By
           <ChevronDown className="w-4 h-4" />
-        </Button>
+        </Button> */}
 
         {location.pathname === "/user" && (
           <ActionButton

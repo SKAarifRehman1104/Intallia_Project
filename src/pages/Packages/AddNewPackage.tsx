@@ -79,7 +79,7 @@ export const AddNewPackage: React.FC<{
     },
     {
       variant: "outline",
-      text: "Save & Exit",
+      text: "Back",
       onClick: () => { handleSubmit(handleAddNewPackage)(); },
     },
     {
