@@ -189,3 +189,266 @@ export const AddNewCompany: React.FC = () => {
     </MainLayout>
   );
 };
+// import React, { useEffect, useState } from "react";
+// import { useNavigate, useSearchParams } from "react-router-dom";
+// import axios from "axios";
+
+// import CompanyForm from "./CompanyForm";
+// import { MainLayout } from "../../components/layout/MainLayout";
+// import SidebarActions from "../../components/users/SidebarActions";
+// import { useDeleteCompany } from "@/hooks/useDeleteCompany"; // adjust path if needed
+
+// type Action = {
+//   variant: "primary" | "outline" | "danger";
+//   text: string;
+//   onClick?: () => void;
+// };
+
+// export const AddNewCompany: React.FC = () => {
+//   const [searchParams] = useSearchParams();
+//   const navigate = useNavigate();
+//   const companyId = searchParams.get("companyId"); // string | null
+// const deleteCompanyMutation = useDeleteCompany();
+
+// const { isLoading, mutateAsync } = deleteCompanyMutation;
+
+
+//   const [formData, setFormData] = useState({
+//     companyId: "",
+//     companyName: "",
+//     contactPersonName: "",
+//     phoneNumber: "",
+//     website: "",
+//     email: "",
+//     address: "",
+//     city: "",
+//     state: "",
+//     country: "",
+//     status: "",
+//     numberOfUsers: "",
+//     numberOfSimulations: "",
+//   });
+
+//   // Fetch company data when companyId changes
+//   const fetchCompanyData = async () => {
+//     if (!companyId) return;
+
+//     try {
+//       const payload = {
+//         JSON: JSON.stringify({
+//           Header: [{ CompanyId: companyId }],
+//           Response: [{ ResponseText: "", ErrorCode: "" }],
+//         }),
+//       };
+
+//       const response = await axios.post(
+//         "http://3.6.31.102/Intallia24/api/Intallia24/GetCompany",
+//         payload
+//       );
+
+//       const company = response?.data?.Header?.[0];
+//       if (company) {
+//         setFormData({
+//           companyId: company.CompanyId || "",
+//           companyName: company.CompanyName || "",
+//           contactPersonName: company.ContactPersonName || "",
+//           phoneNumber: company.PhoneNumber || "",
+//           website: company.Website || "",
+//           email: company.Email || "",
+//           address: company.Address || "",
+//           city: company.City || "",
+//           state: company.State || "",
+//           country: company.Country || "",
+//           status: company.Status || "",
+//           numberOfUsers: company.NumberOfUsers || "",
+//           numberOfSimulations: company.NumberOfSimulations || "",
+//         });
+//       }
+//     } catch (error) {
+//       console.error("Error fetching company data:", error);
+//       alert("Failed to fetch company data.");
+//     }
+//   };
+
+//   useEffect(() => {
+//     if (companyId) {
+//       fetchCompanyData();
+//     }
+//   }, [companyId]);
+
+//   // Validation helper
+//   const isFormValid = () => {
+//     return (
+//       formData.companyName.trim() &&
+//       formData.contactPersonName.trim() &&
+//       formData.phoneNumber.trim() &&
+//       formData.website.trim() &&
+//       formData.email.trim() &&
+//       formData.address.trim() &&
+//       formData.city.trim() &&
+//       formData.state.trim() &&
+//       formData.country.trim() &&
+//       formData.status.trim()
+//     );
+//   };
+
+//   // Add new company handler
+//   const handleAddNewCompany = async () => {
+//     if (!isFormValid()) {
+//       alert("Please fill in all required fields before submitting.");
+//       return;
+//     }
+
+//     try {
+//       const payload = {
+//         JSON: JSON.stringify({
+//           Header: [
+//             {
+//               ...formData,
+//               NumberOfUsers: formData.numberOfUsers || "500",
+//               NumberOfSimulations: formData.numberOfSimulations || "500",
+//               CreateBy: "Admin",
+//               CreateDate: new Date().toISOString(),
+//               ModifyBy: "Admin",
+//               ModifyDate: new Date().toISOString(),
+//               Intallia1: null,
+//               Intallia2: null,
+//               Intallia3: null,
+//               Intallia4: null,
+//               Intallia5: null,
+//               Intallia6: null,
+//               Intallia7: null,
+//               Intallia8: null,
+//               Intallia9: null,
+//               Intallia10: null,
+//               Intallia11: null,
+//               Intallia12: null,
+//               Intallia13: null,
+//               Intallia14: null,
+//               Intallia15: null,
+//             },
+//           ],
+//           Response: [{ ResponseText: "", ErrorCode: "" }],
+//         }),
+//       };
+
+//       const response = await axios.post(
+//         "http://3.6.31.102/Intallia24/api/Intallia24/AddCompany",
+//         payload
+//       );
+//       console.log("Company added:", response.data);
+//       navigate("/company");
+//     } catch (error) {
+//       console.error("Failed to add company:", error);
+//       alert("Failed to add company.");
+//     }
+//   };
+
+//   // Update company handler
+//   const handleUpdateCompany = async () => {
+//     if (!formData.companyId) {
+//       alert("Company ID is missing. Cannot update.");
+//       return;
+//     }
+
+//     if (!isFormValid()) {
+//       alert("Please fill in all required fields before submitting.");
+//       return;
+//     }
+
+//     try {
+//       const payload = {
+//         JSON: JSON.stringify({
+//           Header: [
+//             {
+//               ...formData,
+//               NumberOfUsers: formData.numberOfUsers || "500",
+//               NumberOfSimulations: formData.numberOfSimulations || "500",
+//               ModifyBy: "Admin",
+//               ModifyDate: new Date().toISOString(),
+//               Intallia1: null,
+//               Intallia2: null,
+//               Intallia3: null,
+//               Intallia4: null,
+//               Intallia5: null,
+//               Intallia6: null,
+//               Intallia7: null,
+//               Intallia8: null,
+//               Intallia9: null,
+//               Intallia10: null,
+//               Intallia11: null,
+//               Intallia12: null,
+//               Intallia13: null,
+//               Intallia14: null,
+//               Intallia15: null,
+//             },
+//           ],
+//           Response: [{ ResponseText: "", ErrorCode: "" }],
+//         }),
+//       };
+
+//       const response = await axios.post(
+//         "http://3.6.31.102/Intallia24/api/Intallia24/UpdateCompany",
+//         payload
+//       );
+//       console.log("Company updated:", response.data);
+//       navigate("/company");
+//     } catch (error) {
+//       console.error("Failed to update company:", error);
+//       alert("Failed to update company.");
+//     }
+//   };
+
+//   // Define sidebar actions
+//   const actions: Action[] = [
+//     ...(companyId
+//     ? [
+//         {
+//           variant: "danger" as const,
+//           text: isLoading ? "Deleting..." : "Delete",
+//           onClick: async () => {
+//             if (!companyId) return;
+//             try {
+//               await mutateAsync(companyId);
+//               navigate("/company");
+//             } catch (error) {
+//               console.error("Deletion failed:", error);
+//               alert("Failed to delete company.");
+//             }
+//           },
+//         },
+//       ]
+//     : []),
+//     {
+//       variant: "primary" as const,
+//       text: companyId ? "Update" : "Add New Company",
+//       onClick: companyId ? handleUpdateCompany : handleAddNewCompany,
+//     },
+//     {
+//       variant: "outline" as const,
+//       text: "Back",
+//       onClick: () => {
+//         if (companyId) {
+//           handleUpdateCompany();
+//         } else {
+//           handleAddNewCompany();
+//         }
+//       },
+//     },
+//   ];
+
+//   return (
+//     <MainLayout>
+//       <div className="bg-[#F8F9FA] flex items-start gap-[35px] overflow-hidden flex-wrap p-8">
+//         <div className="flex flex-col items-stretch grow shrink-0 basis-0 w-fit">
+//           <h1 className="page-heading">{companyId ? "Edit Company" : "Add New Company"}</h1>
+
+//           <div className="shadow-[0px_3.5px_5.5px_0px_rgba(0,0,0,0.02)] bg-white flex items-stretch gap-5 flex-wrap justify-between mt-[30px] px-[45px] py-[31px] rounded-[15px] h-[88vh] sticky top-0 overflow-y-scroll">
+//             <CompanyForm formData={formData} setFormData={setFormData} />
+//             <SidebarActions actions={actions} />
+//           </div>
+//         </div>
+//       </div>
+//     </MainLayout>
+//   );
+// };
