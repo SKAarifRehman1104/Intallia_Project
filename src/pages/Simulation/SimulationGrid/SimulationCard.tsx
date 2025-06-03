@@ -10,6 +10,8 @@ interface SimulationCardProps {
   id?: number;
 }
 
+import { format } from "date-fns";
+
 export const SimulationCard: React.FC<SimulationCardProps> = ({
   title,
   description,
@@ -23,6 +25,11 @@ export const SimulationCard: React.FC<SimulationCardProps> = ({
   const handleClick = () => {
     navigate(`/simulation/${id}`);
   };
+
+  // Format the createdDate to "dd MMM yyyy" e.g. "14 Jan 2024"
+  const formattedDate = createdDate
+    ? format(new Date(createdDate), "dd MMM yyyy")
+    : "";
 
   return (
     <button
@@ -41,7 +48,7 @@ export const SimulationCard: React.FC<SimulationCardProps> = ({
           </div>
         </div>
         <div className="self-center w-full max-w-full text-sm text-[#242426] font-normal tracking-[-0.32px] leading-none mt-auto text-center font-regular">
-          <div>Created On: {createdDate}</div>
+          <div>Created On: {formattedDate}</div>
           {isGuided && <div className="mt-[10px] ">Guided</div>}
           {isPaid && <div className="mt-[10px]">Paid</div>}
         </div>

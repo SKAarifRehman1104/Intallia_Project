@@ -2,7 +2,8 @@ import React, { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import Login from "@/pages/auth/Login/Login";
-import UserGroupDetails from "@/pages/RolesAndAccess/UserGroupDetails"; 
+import UserGroupDetails from "@/pages/RolesAndAccess/UserGroupDetails";
+import AddRole from "@/pages/RolesAndAccess/AddRole";
 
 // Lazy-loaded components
 const Index = lazy(() => import("@/pages/Index"));
@@ -115,13 +116,21 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/user-role-&-access/:UserGroupId",
+    path: "/add-role",
     element: (
       <PrivateRoute>
-          <UserGroupDetails />
+          <AddRole />
       </PrivateRoute>
     ),
   },
+      {
+        path: "/user-group-permissions/:UserGroupId",
+        element: (
+          <PrivateRoute>
+              <UserGroupDetails />
+          </PrivateRoute>
+        ),
+      },
 
   {
     path: "/user",
@@ -211,14 +220,14 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
   },
-  {
-    path: "/add-role",
-    element: (
-      <PrivateRoute>
-        <RoleForm />
-      </PrivateRoute>
-    ),
-  },
+  // {
+  //   path: "/add-role",
+  //   element: (
+  //     <PrivateRoute>
+  //       <RoleForm />
+  //     </PrivateRoute>
+  //   ),
+  // },
   {
     path: "/plan",
     element: (

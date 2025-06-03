@@ -11,10 +11,10 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
     proxy: {
-      '/api': {
+      '/Intallia24/api/Intallia24': {
         target: 'http://3.6.31.102',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+        secure:false,
       },
     },
   },
