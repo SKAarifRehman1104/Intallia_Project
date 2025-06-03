@@ -1,18 +1,17 @@
 import { Badge } from "@/components/ui/badge";
 import { Company } from "@/types/index";
-import ThreeDotMenu from "@/components/common/ActonModal";
+import ActionModal from "@/components/common/ActonModal";
 import { DataTable, Column } from "@/components/common/DataTable";
-
-
-
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { deleteCompany } from "@/axios/api";
+import { useNavigate } from "react-router-dom";
+import React from "react";
 
 const tableColumns: Column<Company>[] = [
   {
     key: "companyid",
     header: "Company ID",
-    render: (company) => (
-      company.CompanyId
-    ),
+    render: (company) => company.CompanyId,
   },
   {
     key: "name",
@@ -82,14 +81,40 @@ export const CTable = ({
   searchQuery,
   companies,
 }: CTableProps) => {
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
+  const deleteCompanyMutation = useMutation({
+    mutationFn: async (companyId: string) => {
+      const payload = {
+        JSON: JSON.stringify({
+          Header: [{ CompanyId: companyId }],
+          Response: [{ ResponseText: "", ErrorCode: "" }],
+        }),
+      };
+      return await deleteCompany(payload);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["companies"] });
+    },
+  });
+
   return (
     <DataTable
       data={companies}
       columns={tableColumns}
       rowKey={(company) => company.CompanyId}
       selectable
-      actions={(company) => (company && company.CompanyId ? <ThreeDotMenu company={company} /> : null)}
-
+      actions={(company) =>
+        company && company.CompanyId ? (
+          <ActionModal
+            onEdit={() => navigate(`/add-company?companyId=${company.CompanyId}`)}
+            onDelete={() => deleteCompanyMutation.mutate(company.CompanyId)}
+            deleteLabel={deleteCompanyMutation.isPending ? "Deleting..." : "Delete"}
+            disabled={deleteCompanyMutation.isPending}
+          />
+        ) : null
+      }
     />
   );
 };

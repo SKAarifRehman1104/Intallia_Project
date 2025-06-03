@@ -44,24 +44,8 @@ export const ContentSection = () => {
         <div className="mt-[50px] text-xl font-medium flex gap-2 text-[#AEAEB2] hover:text-transparent hover:bg-gradient-to-r hover:from-[#06B2E1] hover:to-[#09CE88] hover:bg-clip-text transition duration-300">
           <p className=" text-6xl  ">|</p>
           <div className="flex gap-2 flex-col">
-            <h2 className=" Gradient">1 Task</h2>
-            <h2>Microsoft Excel</h2>
-          </div>
-        </div>
-
-        <div className="mt-[50px] text-xl font-medium flex gap-2 text-[#AEAEB2] hover:text-transparent hover:bg-gradient-to-r hover:from-[#06B2E1] hover:to-[#09CE88] hover:bg-clip-text transition duration-300">
-          <p className="   text-6xl  ">|</p>
-          <div className="flex gap-2 flex-col">
-            <h2 className=" Gradient">1 Task</h2>
-            <h2>Microsoft Excel</h2>
-          </div>
-        </div>
-
-        <div className="mt-[50px] text-xl font-medium flex gap-2 text-[#AEAEB2] hover:text-transparent hover:bg-gradient-to-r hover:from-[#06B2E1] hover:to-[#09CE88] hover:bg-clip-text transition duration-300">
-          <p className="   text-6xl  ">|</p>
-          <div className="flex gap-2 flex-col">
-            <h2 className=" Gradient">1 Task</h2>
-            <h2>Microsoft Excel</h2>
+            <h2 className=" Gradient">0 Task</h2>
+            <h2>No Content</h2>
           </div>
         </div>
       </div>

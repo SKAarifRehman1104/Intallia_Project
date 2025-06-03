@@ -1,56 +1,24 @@
+// ActonModal.tsx
 import React, { useState, useRef, useEffect } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteCompany } from "@/axios/api";
-import { useNavigate } from "react-router-dom";
 
-// Define props
-interface Company {
-  CompanyId: string;
-  // Add other fields if needed
+interface ActionModalProps {
+  onEdit?: () => void;
+  onDelete?: () => void;
+  editLabel?: string;
+  deleteLabel?: string;
+  disabled?: boolean;
 }
 
-
-interface Props {
-  company?: Company;
-}
-
-const ActionModal: React.FC<Props> = ({ company }) => {
+const ActionModal: React.FC<ActionModalProps> = ({
+  onEdit,
+  onDelete,
+  editLabel = "Edit",
+  deleteLabel = "Delete",
+  disabled = false,
+}) => {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  // Inside ActionModal component
-  const navigate = useNavigate();
 
-  const handleEdit = () => {
-  if (!company || !company.CompanyId) {
-    console.error("Company is undefined or missing CompanyId");
-    return;
-  }
-  setOpen(false);
-  navigate(`/add-company?companyId=${company.CompanyId}`);
-};
-
-  const queryClient = useQueryClient();
-
-  const deleteCompanyMutation = useMutation({
-    mutationFn: async (companyId: string) => {
-      const payload = {
-        JSON: JSON.stringify({
-          Header: [{ CompanyId: companyId }],
-          Response: [{ ResponseText: "", ErrorCode: "" }],
-        }),
-      };
-      return await deleteCompany(payload);
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["companies"] });
-    },
-    onError: (error) => {
-      console.error("Delete failed:", error);
-      alert("Failed to delete company.");
-    },
-  });
-
-  // Close menu on outside click
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
@@ -60,26 +28,6 @@ const ActionModal: React.FC<Props> = ({ company }) => {
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, []);
-
-  const handleAction = (label: string) => {
-    alert(`You clicked: ${label}`);
-    setOpen(false);
-  };
-
-const handleDelete = async () => {
-  const confirmDelete = window.confirm("Are you sure you want to delete this company?");
-  if (!confirmDelete) return;
-
-  try {
-    await deleteCompany(company.CompanyId);
-    alert("Company deleted successfully!");
-    // Refresh current page
-    window.location.reload();
-  } catch (error) {
-    console.error("Error deleting company:", error);
-    alert("Failed to delete company.");
-  }
-};
 
   return (
     <div className="relative inline-block text-left" ref={menuRef}>
@@ -96,21 +44,32 @@ const handleDelete = async () => {
       {open && (
         <div className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md border border-gray-200 bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
-            <button
-              type="button"
-              onClick={handleEdit}
-              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            >
-              Edit
-            </button>
-            <button
-              className="text-red-500 hover:underline px-4 py-2 text-sm w-full text-left"
-              // onClick={() => deleteCompanyMutation.mutate(company.CompanyId)}
-              onClick={handleDelete}
-              disabled={deleteCompanyMutation.isPending}
-            >
-              {deleteCompanyMutation.isPending ? "Deleting..." : "Delete"}
-            </button>
+            {onEdit && (
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false);
+                  onEdit();
+                }}
+                className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                disabled={disabled}
+              >
+                {editLabel}
+              </button>
+            )}
+            {onDelete && (
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false);
+                  onDelete();
+                }}
+                className="text-red-500 hover:underline px-4 py-2 text-sm w-full text-left"
+                disabled={disabled}
+              >
+                {deleteLabel}
+              </button>
+            )}
           </div>
         </div>
       )}

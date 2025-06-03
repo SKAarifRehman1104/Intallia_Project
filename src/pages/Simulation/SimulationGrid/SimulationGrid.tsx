@@ -1,45 +1,62 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getScreen } from "@/axios/api";
 import { SimulationCard } from "./SimulationCard";
 import { AddSimulationCard } from "./AddSimulationCard";
-
-const simulationData = Array(14)
-  .fill(null)
-  .map((_, index) => ({
-    id: index + 1,
-    title: "Microsoft Excel",
-    description: "Lorem ipsum dolor sit amet consectetur.",
-    createdDate: "14 Jan 2024",
-    isGuided: true,
-    isPaid: true,
-  }));
 
 export const SimulationGrid: React.FC = () => {
   const cardsPerRow = 5;
 
-  // Clone the simulation data to avoid modifying the original
-  const allCards = [...simulationData];
+  const payload = {
+    ScreenName: "JobSimulation",
+    LookUpKey: "GetList",
+    Filter1: "",
+    Filter2: "",
+    Filter3: "",
+    Filter4: "",
+    Filter5: ""
+  };
 
-  // Create chunks of 5 cards each
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["simulation-data"],
+    queryFn: () => getScreen(payload),
+    select: (data) => data?.LookupData || [], // extract LookupData
+  });
+
+  if (isLoading) return <div>Loading simulations...</div>;
+  if (isError || !data) return <div>Failed to load simulations.</div>;
+
+  console.log("Simulation data:", data);
+
+
+  const simulationData = data;
+
+  // Create chunks of simulation cards
   const chunks: JSX.Element[] = [];
 
-  // First chunk will have the AddSimulationCard and 4 simulation cards
+  // First chunk includes AddSimulationCard + 4 cards
   chunks.push(
     <div
       key="row-0"
       className="flex items-start gap-[1rem] flex-wrap mt-5 max-md:max-w-full"
     >
       <AddSimulationCard />
-      {allCards.slice(0, 4).map((simulation, index) => (
-        <SimulationCard key={`first-row-${index}`} {...simulation} />
+      {simulationData.slice(0, 4).map((simulation, index) => (
+        <SimulationCard
+          key={`first-row-${index}`}
+          id={simulation.SimulationId}
+          title={simulation.Name}
+          description={simulation.Description}
+          createdDate={simulation.CreateDate}
+          isGuided={simulation.Guided}
+          isPaid={simulation.IsPaid}
+        />
       ))}
-    </div>,
+    </div>
   );
 
-  // Process the remaining cards in chunks of 5
-  for (let i = 4; i < allCards.length; i += cardsPerRow) {
-    const rowCards = allCards.slice(i, i + cardsPerRow);
-
-    // If we have fewer than 5 cards for the last row, add dummy cards to maintain layout
+  for (let i = 4; i < simulationData.length; i += cardsPerRow) {
+    const rowCards = simulationData.slice(i, i + cardsPerRow);
     const rowIndex = Math.floor(i / cardsPerRow) + 1;
 
     chunks.push(
@@ -50,11 +67,16 @@ export const SimulationGrid: React.FC = () => {
         {rowCards.map((simulation, index) => (
           <SimulationCard
             key={`row-${rowIndex}-card-${index}`}
-            {...simulation}
+            id={simulation.SimulationId}
+            title={simulation.Name}
+            description={simulation.Description}
+            createdDate={simulation.CreateDate}
+            isGuided={simulation.Guided}
+            isPaid={simulation.IsPaid}
           />
         ))}
 
-        {/* Add empty space fillers if needed to maintain 5 cards per row */}
+        {/* Fill layout if fewer than 5 cards */}
         {rowCards.length < cardsPerRow &&
           Array(cardsPerRow - rowCards.length)
             .fill(null)
@@ -64,13 +86,9 @@ export const SimulationGrid: React.FC = () => {
                 className="w-[225px] h-[225px] invisible"
               />
             ))}
-      </div>,
+      </div>
     );
   }
-
-  useEffect(() => {
-    console.log("Rendering SimulationGrid with data:", allCards);
-  }, [allCards]);
 
   return <div className="flex flex-col gap-[1rem]">{chunks}</div>;
 };

@@ -9,50 +9,71 @@ const api = axios.create({
   withCredentials: false, // Set to true if you need to send cookies
 });
 
-//auth
+// auth
 export const login = async (payload) => await api.post("/Login", payload);
-//export const signup = async (payload) => await api.post('', payload);
+// export const signup = async (payload) => await api.post('', payload);
 export const logOut = async (payload) => await api.post("LogOut", payload);
 
 export const getScreen = async (payload) => {
-  const response = await axios.post(
-    `${import.meta.env.VITE_API_URL}/GETLookupData`,
+  const response = await api.post("/GETLookupData",
     payload,
-    {
-      headers: { "Content-Type": "application/json" },
-    },
   );
-  console.log(response);
   return await response.data;
 };
 
-//company api
+// Screen permissions
+export const getUserGroupScreens = async (payload) => {
+  const res = await api.post("/GetScreenGroup", payload);
+  return res.data;
+};
+
+
+
+export const getUserGroup = async (payload) => {
+  const response = await api.post("/GetUserGroup", payload);
+  return response.data;
+};
+
+export const updateUserGroupScreens = async (payload) => {
+  const response = await api.post("/UpdateUserGroup", payload);
+  console.log("Response from updateUserGroupScreens:", response.data);
+  return response.data;
+};
+
+// Add User Group
+export const createUserGroupScreens = async (payload) => {
+  const response = await api.post("/AddUserGroup", payload);
+  return response.data;
+};
+
+//Delete User Group
+export const deleteUserGroup = async (payload) => {
+  console.log("Payload for deleteUserGroup:", payload);
+  const response = await api.post("/DeleteUserGroup", payload);
+  console.log("Response from deleteUserGroup:", response.data);
+  return response.data;
+
+};
+
+// company api
 export const getCompanyById = async (payload) =>
   await api.post("/GetCompany", payload);
 export const addCompany = async (payload) =>
   await api.post("/AddCompany", payload);
 export const updateCompany = async (payload) =>
   await api.post("/UpdateCompany", payload);
-// export const deleteCompany = async (payload) =>
-//   await api.post("/DeleteCompany", payload);
 
-export const deleteCompany = async (companyId) => {
-  const payload = {
-    JSON: JSON.stringify({
-      Header: [{ CompanyId: companyId }],
-      Response: [{ ResponseText: "", ErrorCode: "" }],
-    }),
-  };
-
-  const response = await axios.post(
-    "http://3.6.31.102/Intallia24/api/Intallia24/DeleteCompany",
+export const deleteCompany = async (payload) => {
+  console.log("Payload for deleteCompany:", payload);
+  const response = await api.post(
+    "/DeleteCompany",
     payload
   );
 
   return response.data;
 };
 
-//plans api
+// plans api
 export const plansById = async (payload) =>
   await api.post("/GetPlans", payload);
 export const Plans = async (payload) => await api.post("/AddPlans", payload);
@@ -61,7 +82,7 @@ export const updatePlans = async (payload) =>
 export const deletePlans = async (payload) =>
   await api.post("/DeletePlans", payload);
 
-//UserEduction
+// UserEduction
 export const userEducationById = async (payload) =>
   await api.post("/GetUserEducation", payload);
 export const addUserEducation = async (payload) =>
@@ -71,12 +92,11 @@ export const updateUserEduction = async (payload) =>
 export const deleteUserEduction = async (payload) =>
   await api.post("/DeleteUserEduction", payload);
 
-//User-Roles-And-Access
+// User-Roles-And-Access
 export const getRolesAndAccessList = async (payload) => {
   const response = await api.post("/GETLookupData", payload);
   return response.data.LookupData;
 };
-
 
 // Axios interceptor to attach token to every request
 // api.interceptors.request.use(

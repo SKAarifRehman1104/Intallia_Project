@@ -17,6 +17,16 @@ const CompanyManagement = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
 
+
+  const payload = {
+    ScreenName: "CompanyMaster",
+    LookUpKey: "GetList",
+    Filter1: "",
+    Filter2: "",
+    Filter3: "",
+    Filter4: "",
+    Filter5: "",
+  }
   // Use React Query for fetching companies
   const {
     data: companies = [],
@@ -25,15 +35,7 @@ const CompanyManagement = () => {
   } = useQuery({
     queryKey: ["companies"],
     queryFn: async () =>
-      await getScreen({
-        ScreenName: "CompanyMaster",
-        LookUpKey: "GetList",
-        Filter1: "",
-        Filter2: "",
-        Filter3: "",
-        Filter4: "",
-        Filter5: "",
-      }),
+      await getScreen(payload),
     retry: 2,
   });
   // Filter companies by search query
